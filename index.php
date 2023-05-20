@@ -1,5 +1,6 @@
 <?php
     include "includes/ConectBd.php";
+    include "includes/ProLogin.php";
 
 ?>
 <!DOCTYPE html>
@@ -34,14 +35,14 @@
                     </div>
                 </div>
             </div>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="FormLogin" class="px-3">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off" name="FormLogin" class="px-3">
                 <div class="input-group mb-3 mt-1">
                     <span class="input-group-text" id="User">
                         <svg class="bi" width="15" height="15" fill="currentColor">
                             <use xlink:href="library/icons/bootstrap-icons.svg#person-fill-check" />
                         </svg>
                     </span>
-                    <input type="text" name="usuario" class="form-control" placeholder="Usuario" aria-label="Usuario" required />
+                    <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Usuario" autocomplete="off" required />
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="Pas">
@@ -66,11 +67,15 @@
                         </svg>&nbsp;&nbsp;¿Perdiste tu Password?
                     </div>
                 </div>
-                <div class="d-grid gap-2 mt-1">
+                <div class="d-grid gap-2 mt-2">
                     <input type="submit" name="BtnLogin" value="Ingresar" class="btn btn-sm btn-success rounded-pill">
                 </div>
             </form>
-
+            <div class="row py-1 px-2 mt-3">
+                <div class="col container">
+                    <?php echo $alerta; ?>
+                </div>
+            </div>
 
 
         </div>
