@@ -42,7 +42,7 @@
                             <use xlink:href="library/icons/bootstrap-icons.svg#person-fill-check" />
                         </svg>
                     </span>
-                    <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Usuario" autocomplete="off" required />
+                    <input type="text" name="usuario" class="form-control" placeholder="Nombre de Usuario" aria-label="Usuario" autocomplete="off" required />
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="Pas">
