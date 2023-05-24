@@ -1,0 +1,52 @@
+.items{
+  border-bottom: .5px solid #ccc;
+}
+.items:hover{
+  background-color: rgba(30, 176, 238, 0.5);
+  border-radius: 5px;
+
+}
+.fuente{
+  color:#3b3d3e;
+}
+.fuente:hover{
+  color:#fff;
+  border-left: 2px solid #084863;;
+}
+#map{
+    margin: auto;
+    margin-top: 10px;
+    margin-right:0px;
+    padding: 40px;
+    height: 300px;
+    width: 100%;
+    padding: 10px;
+}
+.justifado{
+  text-align: justify;
+  padding: 3px;
+}
+textarea {
+  resize: none;
+}
+.ImgHover{
+  opacity: 1;
+  width: 250px;
+  height: 250px;
+  margin: auto;
+}
+.ImgHover:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}
+textarea {
+  resize: none;
+}
+.btn-slider{
+  background-color: rgba(218, 170, 20,.8);
+  padding: 15px;
+  border-radius: 50%;
+}
+#mapa {
+  height: 100%;
+}

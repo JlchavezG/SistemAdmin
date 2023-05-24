@@ -1,0 +1,51 @@
+/* tap scroll */
+#slideOut {
+  position: fixed;
+  width: 300px;
+  height: 800px;
+  top: 150px;
+  right: -300px;
+  /* Animation  */
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  z-index: 4;
+}
+/* Display slideOut */
+.showSlideOut {
+  right: 0px !important;
+}
+/* Tab */
+.slideOutTab {
+  margin-top: 50px;
+  position: absolute;
+  left: -40px;
+  height: 200px;
+  width: 40px;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  background: #F2AB34;
+  border-radius: 15px 0px 0px 15px;
+  z-index: 4;
+}
+.slideOutTab div {
+  text-align: center;
+  position: relative;
+  right: 70px;
+  top: 90px;
+  background: #F2AB34;
+  width: 180px;
+  cursor: pointer;
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  writing-mode: lr-tb;
+  z-index: 4;
+}
+.modal-body {
+  height: 400px;
+}
+.intro {
+        display: table-cell;
+        vertical-align: middle;
+}

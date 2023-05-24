@@ -1,6 +1,6 @@
 <?php
-    include "includes/ConectBd.php";
-    include "includes/ProLogin.php";
+include "includes/ConectBd.php";
+include "includes/ProLogin.php";
 
 ?>
 <!DOCTYPE html>
@@ -10,14 +10,20 @@
     <title>Inicio de Sistema | IscjlchavezG</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/dark.css">
-    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 
 <body>
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 col-lg-6 px-2 mt-3">
             <h3 class="mb-4 text-center mt-3">Inicio de sesión</h3>
+            <div class="row mt-1 text-center">
+                <div class="col container ">
+                    <img src="img/logo_iscjlchavezg.png" alt="logoIscjlchavez" class="img-fluid" id="img1">
+                </div>
 
+            </div>
             <div class="row py-1">
                 <div class="col"></div>
                 <div class="col"></div>
@@ -62,13 +68,13 @@
                         </div>
                     </div>
                     <div class="col">
-                        <svg class="bi" width="15" height="15" fill="currentColor">
+                        <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="library/icons/bootstrap-icons.svg#key-fill" />
                         </svg>&nbsp;&nbsp;¿Perdiste tu Password?
                     </div>
                 </div>
                 <div class="d-grid gap-2 mt-2">
-                    <input type="submit" name="BtnLogin" value="Ingresar" class="btn btn-sm btn-success rounded-pill">
+                    <input type="submit" name="BtnLogin" value="Ingresar" class="btn btn-sm btn-outline-success rounded-pill">
                 </div>
             </form>
             <div class="row py-1 px-2 mt-3">
@@ -76,19 +82,44 @@
                     <?php echo $alerta; ?>
                 </div>
             </div>
+            <div class="row py-1 mt-1 justify-content-center">
+               <div class="col-sm-6 col-md-6 col-lg-6">
+                  <div class="border-0 ">
+                      <div class="row mt-1 py-1 text-center">
+                          <div class="col">
+                             <svg class="bi" width="25" height="25" fill="currentColor">
+                               <use xlink:href="library/icons/bootstrap-icons.svg#github" />
+                             </svg>
+                          </div>
+                          <div class="col">
+                             <svg class="bi" width="25" height="25" fill="currentColor">
+                               <use xlink:href="library/icons/bootstrap-icons.svg#facebook" />
+                             </svg>
+                          </div>
+                          <div class="col">
+                             <svg class="bi" width="25" height="25" fill="currentColor">
+                               <use xlink:href="library/icons/bootstrap-icons.svg#instagram" />
+                             </svg>
+                          </div>
+                          <div class="col">
+                             <svg class="bi" width="25" height="25" fill="currentColor">
+                               <use xlink:href="library/icons/bootstrap-icons.svg#twitter" />
+                             </svg>
+                          </div>
+                      </div>
+                  </div>
+               </div>
 
-
-        </div>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/dark-mode.js"></script>
-        <script>
-            function verPass(ck){
-             if(ck.checked)
-               $('#VerPassWord').attr("type","text");
-              else
-              $('#VerPassWord').attr("type","password");
-            }
-        </script>
+            </div>
+            <script src="js/dark-mode.js"></script>
+            <script>
+                function verPass(ck) {
+                    if (ck.checked)
+                        $('#VerPassWord').attr("type", "text");
+                    else
+                        $('#VerPassWord').attr("type", "password");
+                }
+            </script>
 </body>
 
 </html>
