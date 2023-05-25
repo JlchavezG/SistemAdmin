@@ -43,20 +43,20 @@ include "includes/ProLogin.php";
             </div>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off" name="FormLogin" class="px-3">
                 <div class="input-group mb-3 mt-1">
-                    <span class="input-group-text" id="User">
-                        <svg class="bi" width="15" height="15" fill="currentColor">
+                    <span class="input-group-text bg-success" id="User">
+                        <svg class="bi text-white" width="15" height="15" fill="currentColor">
                             <use xlink:href="library/icons/bootstrap-icons.svg#person-fill-check" />
                         </svg>
                     </span>
-                    <input type="text" name="usuario" class="form-control" placeholder="Nombre de Usuario" aria-label="Usuario" autocomplete="off" required />
+                    <input type="text" name="usuario" class="form-control border-success" placeholder="Nombre de Usuario" aria-label="Usuario" autocomplete="off" required />
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="Pas">
-                        <svg class="bi" width="15" height="15" fill="currentColor">
+                    <span class="input-group-text bg-success" id="Pas">
+                        <svg class="bi text-white" width="15" height="15" fill="currentColor">
                             <use xlink:href="library/icons/bootstrap-icons.svg#lock-fill" />
                         </svg>
                     </span>
-                    <input type="password" name="password" class="form-control" placeholder="Password" id="VerPassWord" aria-label="Password" required />
+                    <input type="password" name="password" class="form-control border-success" placeholder="Password" id="VerPassWord" aria-label="Password" required />
                 </div>
                 <div class="row py-1 px-1">
                     <div class="col">
@@ -83,33 +83,48 @@ include "includes/ProLogin.php";
                 </div>
             </div>
             <div class="row py-1 mt-1 justify-content-center">
-               <div class="col-sm-6 col-md-6 col-lg-6">
-                  <div class="border-0 ">
-                      <div class="row mt-1 py-1 text-center">
-                          <div class="col">
-                             <svg class="bi" width="25" height="25" fill="currentColor">
-                               <use xlink:href="library/icons/bootstrap-icons.svg#github" />
-                             </svg>
-                          </div>
-                          <div class="col">
-                             <svg class="bi" width="25" height="25" fill="currentColor">
-                               <use xlink:href="library/icons/bootstrap-icons.svg#facebook" />
-                             </svg>
-                          </div>
-                          <div class="col">
-                             <svg class="bi" width="25" height="25" fill="currentColor">
-                               <use xlink:href="library/icons/bootstrap-icons.svg#instagram" />
-                             </svg>
-                          </div>
-                          <div class="col">
-                             <svg class="bi" width="25" height="25" fill="currentColor">
-                               <use xlink:href="library/icons/bootstrap-icons.svg#twitter" />
-                             </svg>
-                          </div>
-                      </div>
-                  </div>
-               </div>
-
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="border-0 ">
+                        <div class="row mt-1 py-1 text-center">
+                            <div class="col">
+                                <a href="https://github.com/JlchavezG" target="_blank" class="text-secondary text-decoration-none">
+                                <svg class="bi" width="25" height="25" fill="currentColor">
+                                    <use xlink:href="library/icons/bootstrap-icons.svg#github" />
+                                </svg>
+                            </a>
+                            </div>
+                            <div class="col">
+                             <a href="https://www.facebook.com/iscjoseluischavezg" target="_blank" class="text-secondary text-decoration-none">
+                                <svg class="bi" width="25" height="25" fill="currentColor">
+                                    <use xlink:href="library/icons/bootstrap-icons.svg#facebook" />
+                                </svg>
+                              </a>
+                            </div>
+                            <div class="col">
+                              <a href="https://www.instagram.com/iscjlchavezg/" target="_blank" class="text-secondary text-decoration-none">
+                                <svg class="bi" width="25" height="25" fill="currentColor">
+                                    <use xlink:href="library/icons/bootstrap-icons.svg#instagram" />
+                                </svg>
+                              </a>
+                            </div>
+                            <div class="col">
+                              <a href="https://twitter.com/daerblack" target="_blank" class="text-secondary text-decoration-none">  
+                                <svg class="bi" width="25" height="25" fill="currentColor">
+                                    <use xlink:href="library/icons/bootstrap-icons.svg#twitter" />
+                                </svg>
+                              </a>  
+                            </div>
+                            <div class="col">
+                               <svg class="bi" width="25" height="25" fill="currentColor">
+                                    <use xlink:href="library/icons/bootstrap-icons.svg#headset" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-6 col-md-6 col-lg-6 text-center mt-3"><span class="text-success">SistemAdmin | iscjoseluischavezg.mx Developer@2023 </span></div>
             </div>
             <script src="js/dark-mode.js"></script>
             <script>
