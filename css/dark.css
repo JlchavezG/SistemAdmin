@@ -15,3 +15,9 @@
     background-color: #eee !important;
     color:#fff;
   }
+  [data-theme="dark"] .bg-success{
+    background-color: #220f3c !important;
+    color:#fff;
+  }
+
+   

@@ -20,6 +20,7 @@ require "includes/configuracion.php";
 </head>
 <!-- navbar-->
 <?php include "process/navbar.php"; ?>
+<?php include "process/ModalSoporte.php"; ?>
 <!-- termina navbar-->
 <script src="js/dark-mode.js"></script>
 </body>

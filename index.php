@@ -10,6 +10,7 @@ include "includes/ProLogin.php";
     <title>Inicio de Sistema | IscjlchavezG</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/dark.css">
+    <link rel="stylesheet" type="text/css" href="css/pace.css">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
@@ -115,18 +116,21 @@ include "includes/ProLogin.php";
                               </a>  
                             </div>
                             <div class="col">
+                             <a href="#" data-bs-toggle="modal" data-bs-target="#ModalSoporte" class="text-decoration-none text-secondary">   
                                <svg class="bi" width="25" height="25" fill="currentColor">
                                     <use xlink:href="library/icons/bootstrap-icons.svg#headset" />
                                 </svg>
+                             </a>    
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-sm-6 col-md-6 col-lg-6 text-center mt-3"><span class="text-success">SistemAdmin | iscjoseluischavezg.mx Developer@2023 </span></div>
+                <div class="col-sm-6 col-md-6 col-lg-6 text-center mt-4"><span class="text-success text-wrap fs-6">SistemAdmin | iscjoseluischavezg.mx Developer@2023 </span></div>
             </div>
-            <script src="js/dark-mode.js"></script>
+            <?php include "process/ModalSoporte.php"; ?>
+            
             <script>
                 function verPass(ck) {
                     if (ck.checked)
@@ -135,6 +139,8 @@ include "includes/ProLogin.php";
                         $('#VerPassWord').attr("type", "password");
                 }
             </script>
+            <script src="js/dark-mode.js"></script>
+            <script src="js/pace.js"></script>
 </body>
 
 </html>
