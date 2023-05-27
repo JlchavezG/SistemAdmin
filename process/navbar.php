@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg  bg-success">
+<nav class="navbar navbar-expand-lg navbar-dark  bg-success">
     <div class="container-fluid">
         <a class="navbar-brand text-light" href="#">IscjlchavezG</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -9,7 +9,7 @@
                 <li class="nav-item">
                     <a class="nav-link active text-light" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu">
                         <svg class="bi" width="18" height="18" fill="currentColor">
-                            <use xlink:href="library/icons/bootstrap-icons.svg#grip-vertical" />
+                            <use xlink:href="library/icons/bootstrap-icons.svg#sliders" />
                         </svg>
                     </a>
                 </li>
@@ -28,7 +28,7 @@
                     </a>
                     <ul class="dropdown-menu bg-success" aria-labelledby="navbarDropdownMenuLink">
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item items" href="#">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" role="switch" id="darkSwitch">
                                     <label class="form-check-label" for="darkSwitch">
@@ -42,7 +42,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item items" href="#">
                                 <svg class="bi text-light" width="15" height="15" fill="currentColor">
                                     <use xlink:href="library/icons/bootstrap-icons.svg#sliders" />
                                 </svg>&nbsp;&nbsp;<span class="text-light">Opciones de Perfil</span>
@@ -79,6 +79,7 @@
                             <svg class="bi text-light" width="18" height="18" fill="currentColor">
                                 <use xlink:href="library/icons/bootstrap-icons.svg#bell-fill" />
                             </svg>
+                            <!-- <span class="position-absolute top-1 start-1 translate-middle badge rounded-pill bg-danger">1</span> -->
                         </a>
                     </li>
                     <li class="nav-item dropdown">
@@ -89,24 +90,21 @@
                         </a>
                         <ul class="dropdown-menu bg-success" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item items" href="#">
                                     <svg class="bi text-light" width="15" height="15" fill="currentColor">
                                         <use xlink:href="library/icons/bootstrap-icons.svg#person-circle" />
                                     </svg>&nbsp;&nbsp;<span class="text-light">Perfil</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item items" href="#">
                                     <svg class="bi text-light" width="15" height="15" fill="currentColor">
                                         <use xlink:href="library/icons/bootstrap-icons.svg#calendar-fill" />
                                     </svg>&nbsp;&nbsp;<span class="text-light">Historial</span>
                                 </a>
                             </li>
                             <li>
-                                <hr class="dropdown-divider text-light">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="includes/CerrarSesion.php">
+                                <a class="dropdown-item items" href="includes/CerrarSesion.php">
                                     <svg class="bi text-light" width="17" height="17" fill="currentColor">
                                         <use xlink:href="library/icons/bootstrap-icons.svg#power" />
                                     </svg>&nbsp;&nbsp;<span class="text-light">Cerrar Sesión</span>
