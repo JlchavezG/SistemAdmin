@@ -14,15 +14,21 @@ require "includes/configuracion.php";
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/dark.css">
+    <link rel="stylesheet" type="text/css" href="css/pace.css">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.0.min.js"></script>
-    <title>Inicio de Sistema | Dashboard</title>
+    <title>Inicio de Sistema | Dashboard SistemAdmin</title>
 </head>
 <!-- navbar-->
+<body>
 <?php include "process/navbar.php"; ?>
+<!-- termina navbar -->
+<!-- inicia menu -->
+<?php include "process/MenuSistem.php"; ?>
+<!-- terminar el menu -->
 <?php include "process/ModalSoporte.php"; ?>
-<!-- termina navbar-->
 <script src="js/dark-mode.js"></script>
+<script src="js/pace.js"></script>
 </body>
 
 </html>
