@@ -18,7 +18,7 @@ include "includes/ProLogin.php";
 <body>
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 col-lg-6 px-2 mt-3">
-            <h3 class="mb-4 text-center mt-3">Inicio de sesión</h3>
+            <h3 class="mb-4 text-center mt-3 display-6">Inicio de sesión</h3>
             <div class="row mt-1 text-center">
                 <div class="col container ">
                     <img src="img/logo_iscjlchavezg.png" alt="logoIscjlchavez" class="img-fluid" id="img1">
