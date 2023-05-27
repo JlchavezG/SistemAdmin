@@ -43,4 +43,10 @@ if(isset($_SESSION['time'])){
     }
     }
     $_SESSION['time'] = time();
+    // variables para el menu, dasboard y tipo de usuario
+    $Msistemas = 1;
+    $MAdmin = 2;
+    $MUsuario = 3;
+    $Tmenu = $user['Id_TUsuario'];
+
 ?>
