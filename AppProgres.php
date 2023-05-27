@@ -26,15 +26,9 @@ require "includes/configuracion.php";
 <!-- termina navbar -->
 <!-- inicia menu -->
 <?php 
- if($Tmenu == $Msistemas){
-  include "process/MenuSistem.php";
- }
- else if($Tmenu == $MAdmin){
-  include "process/MenuAdmin.php";
- }
- else if($Tmenu == $MUsuario){
- include "process/MenuUsuarios.php";
- }
+ if($Tmenu == $Msistemas){include "process/MenuSistem.php";}
+ else if($Tmenu == $MAdmin){include "process/MenuAdmin.php";}
+ else if($Tmenu == $MUsuario){include "process/MenuUsuarios.php";}
 
 ?>
 <!-- terminar el menu -->
