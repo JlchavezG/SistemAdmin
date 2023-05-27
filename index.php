@@ -69,9 +69,11 @@ include "includes/ProLogin.php";
                         </div>
                     </div>
                     <div class="col">
+                      <a href="RecuperarPass.php" class="link-success link-offset-2 link-underline-opacity-25 text-decoration-none link-underline-opacity-100-hover">  
                         <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="library/icons/bootstrap-icons.svg#key-fill" />
                         </svg>&nbsp;&nbsp;¿Perdiste tu Password?
+                      </a>  
                     </div>
                 </div>
                 <div class="d-grid gap-2 mt-2">
@@ -130,6 +132,7 @@ include "includes/ProLogin.php";
                 <div class="col-sm-6 col-md-6 col-lg-6 text-center mt-4"><span class="text-success text-wrap fs-6">SistemAdmin | iscjoseluischavezg.mx Developer@2023 </span></div>
             </div>
             <?php include "process/ModalSoporte.php"; ?>
+            <?php include "process/ModalRecuperar.php"; ?>
             
             <script>
                 function verPass(ck) {
