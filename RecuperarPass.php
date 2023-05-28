@@ -16,8 +16,10 @@ require "includes/ConectBd.php";
     <link rel="stylesheet" type="text/css" href="css/pace.css">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/main.js"></script>
     <title>Inicio de Sistema | Recuperar Password</title>
 </head>
+
 <body>
     <!-- inicia pagina -->
     <?php include "process/PrecuperarPass.php"; ?>
@@ -25,6 +27,27 @@ require "includes/ConectBd.php";
     <?php include "process/ModalSoporte.php"; ?>
     <script src="js/dark-mode.js"></script>
     <script src="js/pace.js"></script>
+    <script>
+        (function() {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
 </body>
 
 </html>

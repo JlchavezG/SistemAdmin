@@ -1,3 +1,4 @@
+
 <div class="container py-4">
     <div class="row text-center mt-3">
         <h1 class="display-6"> Recuperar password de | <span class="text-success">Usuario</span> </h1>
@@ -13,7 +14,7 @@
 <div class="container">
     <div class="row justify-content-center px-2 py-2">
         <div class="col-sm-10 col-md-10 col-lg-5">
-            <form action="" method="post">
+            <form action="" method="post" class="needs-validation" novalidate>
                 <div class="row">
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-success" id="basic-addon1">
