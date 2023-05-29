@@ -42,7 +42,7 @@ include "includes/ProLogin.php";
                     </div>
                 </div>
             </div>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off" name="FormLogin" class="px-3">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off" name="FormLogin" class="px-3 needs-validation" novalidate>
                 <div class="input-group mb-3 mt-1">
                     <span class="input-group-text bg-success" id="User">
                         <svg class="bi text-white" width="15" height="15" fill="currentColor">
@@ -69,11 +69,11 @@ include "includes/ProLogin.php";
                         </div>
                     </div>
                     <div class="col">
-                      <a href="RecuperarPass.php" class="link-success link-offset-2 link-underline-opacity-25 text-decoration-none link-underline-opacity-100-hover">  
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                            <use xlink:href="library/icons/bootstrap-icons.svg#key-fill" />
-                        </svg>&nbsp;&nbsp;¿Perdiste tu Password?
-                      </a>  
+                        <a href="RecuperarPass.php" class="link-success link-offset-2 link-underline-opacity-25 text-decoration-none link-underline-opacity-100-hover">
+                            <svg class="bi" width="20" height="20" fill="currentColor">
+                                <use xlink:href="library/icons/bootstrap-icons.svg#key-fill" />
+                            </svg>&nbsp;&nbsp;¿Perdiste tu Password?
+                        </a>
                     </div>
                 </div>
                 <div class="d-grid gap-2 mt-2">
@@ -91,38 +91,38 @@ include "includes/ProLogin.php";
                         <div class="row mt-1 py-1 text-center">
                             <div class="col">
                                 <a href="https://github.com/JlchavezG" target="_blank" class="text-secondary text-decoration-none">
-                                <svg class="bi" width="25" height="25" fill="currentColor">
-                                    <use xlink:href="library/icons/bootstrap-icons.svg#github" />
-                                </svg>
-                            </a>
+                                    <svg class="bi" width="25" height="25" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#github" />
+                                    </svg>
+                                </a>
                             </div>
                             <div class="col">
-                             <a href="https://www.facebook.com/iscjoseluischavezg" target="_blank" class="text-secondary text-decoration-none">
-                                <svg class="bi" width="25" height="25" fill="currentColor">
-                                    <use xlink:href="library/icons/bootstrap-icons.svg#facebook" />
-                                </svg>
-                              </a>
+                                <a href="https://www.facebook.com/iscjoseluischavezg" target="_blank" class="text-secondary text-decoration-none">
+                                    <svg class="bi" width="25" height="25" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#facebook" />
+                                    </svg>
+                                </a>
                             </div>
                             <div class="col">
-                              <a href="https://www.instagram.com/iscjlchavezg/" target="_blank" class="text-secondary text-decoration-none">
-                                <svg class="bi" width="25" height="25" fill="currentColor">
-                                    <use xlink:href="library/icons/bootstrap-icons.svg#instagram" />
-                                </svg>
-                              </a>
+                                <a href="https://www.instagram.com/iscjlchavezg/" target="_blank" class="text-secondary text-decoration-none">
+                                    <svg class="bi" width="25" height="25" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#instagram" />
+                                    </svg>
+                                </a>
                             </div>
                             <div class="col">
-                              <a href="https://twitter.com/daerblack" target="_blank" class="text-secondary text-decoration-none">  
-                                <svg class="bi" width="25" height="25" fill="currentColor">
-                                    <use xlink:href="library/icons/bootstrap-icons.svg#twitter" />
-                                </svg>
-                              </a>  
+                                <a href="https://twitter.com/daerblack" target="_blank" class="text-secondary text-decoration-none">
+                                    <svg class="bi" width="25" height="25" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#twitter" />
+                                    </svg>
+                                </a>
                             </div>
                             <div class="col">
-                             <a href="#" data-bs-toggle="modal" data-bs-target="#ModalSoporte" class="text-decoration-none text-secondary">   
-                               <svg class="bi" width="25" height="25" fill="currentColor">
-                                    <use xlink:href="library/icons/bootstrap-icons.svg#headset" />
-                                </svg>
-                             </a>    
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#ModalSoporte" class="text-decoration-none text-secondary">
+                                    <svg class="bi" width="25" height="25" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#headset" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@ include "includes/ProLogin.php";
             </div>
             <?php include "process/ModalSoporte.php"; ?>
             <?php include "process/ModalRecuperar.php"; ?>
-            
+
             <script>
                 function verPass(ck) {
                     if (ck.checked)
@@ -144,6 +144,27 @@ include "includes/ProLogin.php";
             </script>
             <script src="js/dark-mode.js"></script>
             <script src="js/pace.js"></script>
+            <script>
+                (function() {
+                    'use strict'
+
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.querySelectorAll('.needs-validation')
+
+                    // Loop over them and prevent submission
+                    Array.prototype.slice.call(forms)
+                        .forEach(function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (!form.checkValidity()) {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                }
+
+                                form.classList.add('was-validated')
+                            }, false)
+                        })
+                })()
+            </script>
 </body>
 
 </html>
