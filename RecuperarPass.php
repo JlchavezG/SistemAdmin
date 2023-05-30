@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 require "includes/ConectBd.php";
+include "includes/Acciones.php";
 
 ?>
 <!DOCTYPE html>

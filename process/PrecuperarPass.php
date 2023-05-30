@@ -1,7 +1,7 @@
 
 <div class="container py-4">
     <div class="row text-center mt-3">
-        <h1 class="display-6"> Recuperar password de | <span class="text-success">Usuario</span> </h1>
+        <h1 class="display-6"> Restablecer password de | <span class="text-success">Usuario</span> </h1>
     </div>
     <div class="row text-center mt-4 justify-content-center">
         <div class="row mt-3">
@@ -12,9 +12,14 @@
     </div>
 </div>
 <div class="container">
+    <div class="row justify-content-center mt-1">
+        <div class="col-sm-10 col-md-10 col-lg-5">
+            <?php echo $AlertaB; ?>
+        </div>
+    </div>
     <div class="row justify-content-center px-2 py-2">
         <div class="col-sm-10 col-md-10 col-lg-5">
-            <form action="" method="post" class="needs-validation" novalidate>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="needs-validation" novalidate>
                 <div class="row">
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-success" id="basic-addon1">
@@ -22,7 +27,7 @@
                                 <use xlink:href="library/icons/bootstrap-icons.svg#person-fill-check" />
                             </svg>
                         </span>
-                        <input type="text" class="form-control border-success" placeholder="Usuario" aria-label="Usuario" aria-describedby="basic-addon1" required />
+                        <input type="text" class="form-control border-success" name = "Ruser" placeholder="Usuario" aria-label="Usuario" aria-describedby="basic-addon1" required />
                     </div>
                 </div>
                 <div class="row">
@@ -32,12 +37,12 @@
                                 <use xlink:href="library/icons/bootstrap-icons.svg#person-fill-check" />
                             </svg>
                         </span>
-                        <input type="email" class="form-control border-success" placeholder="Email" aria-label="Usuario" aria-describedby="basic-addon1" required />
+                        <input type="email" class="form-control border-success" name ="Remail" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="d-grid gap-2 mt-2">
-                        <input type="submit" name="BtnRecPass" value="Recuperar" class="btn btn-sm btn-outline-success rounded-pill">
+                        <input type="submit" name="BtnRecPass" value="Restablecer" class="btn btn-sm btn-outline-success rounded-pill">
                     </div>
                 </div>
                 <div class="row mt-4 align-items-end">
