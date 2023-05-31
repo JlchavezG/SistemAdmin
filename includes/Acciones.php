@@ -26,7 +26,7 @@ if(isset($_POST['BtnRecPass'])){
                           <input type='hidden' name='EmaiR' value = '$EmailBuscar'>
                        <div class='row'>
                          <div class='col-sm-12 col-md-12 col-lg-12 mt-2'>
-                            <input type='password' id='password' class='form-control' name='npass' placeholder='Nuevo Password' required'>
+                            <input type='password' id='password' class='form-control needs-validation' novalidate name='npass' placeholder='Nuevo Password' required>
                          </div>
                         </div>
                         <div class='row'> 
@@ -36,9 +36,13 @@ if(isset($_POST['BtnRecPass'])){
                         </div> 
                        </div>
                        <div class='row mt-2'>
-                         <input type='submit' name='guardar' value='Guardar' class='btn btn-success btn-sm rounded-pill'>
+                         <input type='submit' name='guardar' value='Restablecer' class='btn btn-success btn-sm rounded-pill'>
                        </div>
                        </form>
+                   </div>
+                   <hr>
+                   <div class='row text-center' py-2>
+                      <p><a href='index.php' class='text-center text-decoration-none text-success'>Ya recorde mi password</a></p>
                    </div>
                  </div>
                </div>

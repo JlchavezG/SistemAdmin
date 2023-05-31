@@ -1,4 +1,3 @@
-
 <div class="container py-4">
     <div class="row text-center mt-3">
         <h1 class="display-6"> Restablecer password de | <span class="text-success">Usuario</span> </h1>
@@ -27,22 +26,22 @@
                                 <use xlink:href="library/icons/bootstrap-icons.svg#person-fill-check" />
                             </svg>
                         </span>
-                        <input type="text" class="form-control border-success" name = "Ruser" placeholder="Usuario" aria-label="Usuario" aria-describedby="basic-addon1" required />
+                        <input type="text" class="form-control border-success" name="Ruser" placeholder="Usuario" aria-label="Usuario" aria-describedby="basic-addon1" required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-group mb-3">
                         <span class="input-group-text bg-success" id="basic-addon1">
                             <svg class="bi text-white" width="15" height="15" fill="currentColor">
-                                <use xlink:href="library/icons/bootstrap-icons.svg#person-fill-check" />
+                                <use xlink:href="library/icons/bootstrap-icons.svg#envelope-open-fill" />
                             </svg>
                         </span>
-                        <input type="email" class="form-control border-success" name ="Remail" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required />
+                        <input type="email" class="form-control border-success" name="Remail" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required />
                     </div>
                 </div>
                 <div class="row">
                     <div class="d-grid gap-2 mt-2">
-                        <input type="submit" name="BtnRecPass" value="Restablecer" class="btn btn-sm btn-outline-success rounded-pill">
+                        <input type="submit" name="BtnRecPass" value="Buscar" class="btn btn-sm btn-outline-success rounded-pill">
                     </div>
                 </div>
                 <div class="row mt-4 align-items-end">
@@ -60,7 +59,7 @@
                 </div>
             </form>
             <div class="row py-2 mt-2">
-                
+
             </div>
             <div class="row mt-3">
                 <div class="col-ms-10 col-md-10 col-lg-10 bg-light rounded-pill text-center py-2" style="width:550px;">
@@ -80,12 +79,60 @@
     </div>
 </div>
 <!-- inicia offvanvas para ayuda -->
-<div class="offcanvas offcanvas-end bg-success" tabindex="-1" id="offcanvasAyudaRPass" aria-labelledby="offcanvasAyudaRPassLabel">
+<div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="offcanvasAyudaRPass" aria-labelledby="offcanvasAyudaRPassLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        ...
+        <ul class="list-group list-group-flush bg-light">
+            <li class="list-group-item bg-light text-success">
+              <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
+              </svg>
+            </li>
+            <li class="list-group-item bg-light text-success">
+              <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
+              </svg>
+            </li>
+            <li class="list-group-item bg-light text-success">
+              <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
+              </svg>
+            </li>
+            <li class="list-group-item bg-light text-success">
+              <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
+              </svg>
+            </li>
+            <li class="list-group-item bg-light text-success">
+              <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
+              </svg>
+            </li>
+        
+        </ul>
     </div>
 </div>
+<script>
+    (function() {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>

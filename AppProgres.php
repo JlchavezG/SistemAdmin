@@ -28,9 +28,8 @@ require "includes/configuracion.php";
 <?php 
  if($Tmenu == $Msistemas){include "process/MenuSistem.php";}
  else if($Tmenu == $MAdmin){include "process/MenuAdmin.php";}
- else if($Tmenu == $MUsuario){include "process/MenuUsuarios.php";}
-
-?>
+ else if($Tmenu == $MUsuario){include "process/MenuUsuarios.php";}?>
+ <?php  include "process/EscritorioSistem.php"; ?>
 <!-- terminar el menu -->
 <?php include "process/ModalSoporte.php"; ?>
 <script src="js/dark-mode.js"></script>

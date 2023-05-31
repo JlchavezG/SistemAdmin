@@ -72,8 +72,6 @@ $MensajeAlert = '<div class="alert alert-success alert-dismissible fade show" ro
             </div>
         </div>
     </div>
-    
-    
     <script src="js/bootstrap.min.js"></script>
     <script src="js/pace.js"></script>
     <script src="js/dark-mode.js"></script>    
