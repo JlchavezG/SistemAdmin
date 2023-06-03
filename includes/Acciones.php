@@ -19,6 +19,9 @@ if(isset($_POST['BtnRecPass'])){
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                </div>
                <div class='container mt-1'>
+               <div class='row justify-content-center py-2'>
+                 <div class='col' id='mensaje'></div>
+               </div>
                  <div class='row justify-content-center py-2'>
                    <div class='col-sm-12 col-md-12 col-lg-12'>
                        <form action='UpdatePass.php' method='get'>
@@ -29,11 +32,6 @@ if(isset($_POST['BtnRecPass'])){
                             <input type='password' id='password' class='form-control needs-validation' novalidate name='npass' placeholder='Nuevo Password' required>
                          </div>
                         </div>
-                        <div class='row'> 
-                         <div class='col-sm-12 col-md-12 col-lg-12 mt-2'>
-                            <input type='password' id='passwordc' class='form-control' name='cpass' placeholder='Confirma tu password'required>
-                         </div>
-                        </div> 
                        </div>
                        <div class='row mt-2'>
                          <input type='submit' name='guardar' value='Restablecer' class='btn btn-success btn-sm rounded-pill'>
@@ -56,3 +54,5 @@ if(isset($_POST['BtnRecPass'])){
                
  }
 }
+?>
+

@@ -81,35 +81,35 @@
 <!-- inicia offvanvas para ayuda -->
 <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="offcanvasAyudaRPass" aria-labelledby="offcanvasAyudaRPassLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Ayuda! Restablecer Password</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <ul class="list-group list-group-flush bg-light">
             <li class="list-group-item bg-light text-success">
-              <svg class="bi" width="20" height="20" fill="currentColor">
+              <svg class="bi" width="15" height="15" fill="currentColor">
                 <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
-              </svg>
+              </svg><span> Digita tu usuario y email registrados en el sistema para realizar la busqueda</span>
             </li>
             <li class="list-group-item bg-light text-success">
-              <svg class="bi" width="20" height="20" fill="currentColor">
+              <svg class="bi" width="15" height="15" fill="currentColor">
                 <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
-              </svg>
+              </svg><span> Digita tu nuevo Password y confirmalo</span>
             </li>
             <li class="list-group-item bg-light text-success">
-              <svg class="bi" width="20" height="20" fill="currentColor">
+              <svg class="bi" width="15" height="15" fill="currentColor">
                 <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
-              </svg>
+              </svg><span> Al conformarlo se actualizara dentro de la plataforma</span>
             </li>
             <li class="list-group-item bg-light text-success">
-              <svg class="bi" width="20" height="20" fill="currentColor">
+              <svg class="bi" width="15" height="15" fill="currentColor">
                 <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
-              </svg>
+              </svg><span> Inicia sesión con tu usuario y nuevo Password</span>
             </li>
             <li class="list-group-item bg-light text-success">
-              <svg class="bi" width="20" height="20" fill="currentColor">
+              <svg class="bi" width="15" height="15" fill="currentColor">
                 <use xlink:href="library/icons/bootstrap-icons.svg#check-circle" />
-              </svg>
+              </svg><span> De lo contrario contacta a soporte tecnico para verificar tus credenciales</span>
             </li>
         
         </ul>
