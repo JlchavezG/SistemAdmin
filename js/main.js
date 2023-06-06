@@ -1,4 +1,3 @@
-
 // funcion solo numeros
    function VNumeros(e){
     key = e.keyCode || e.which;

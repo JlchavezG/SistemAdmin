@@ -4,7 +4,7 @@
             <div class="border-bottom rounded-top border-1 border-primary bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Usuarios</span>&nbsp;&nbsp;&nbsp;<b>0</b>
+                        <span class="fw-light fs-6">Usuarios</span>&nbsp;&nbsp;&nbsp;<b><?php echo $TUsuarios; ?></b>
 
                     </div>
                     <div class="col mb-2">
@@ -19,7 +19,7 @@
             <div class="border-bottom rounded-top border-1 border-secondary bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">T.Usuario</span>&nbsp;&nbsp;&nbsp;<b>0</b>
+                        <span class="fw-light fs-6">T.Usuario</span>&nbsp;&nbsp;&nbsp;<b><?php echo $TTUsuario; ?></b>
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -33,7 +33,7 @@
             <div class="border-bottom rounded-top border-1 border-success bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Online</span>&nbsp;&nbsp;&nbsp;<b>0</b>
+                        <span class="fw-light fs-6">Online</span>&nbsp;&nbsp;&nbsp;<b><?php echo $TCOnUser; ?></b>
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -47,7 +47,7 @@
             <div class="border-bottom rounded-top border-1 border-warning bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Materiales</span>&nbsp;&nbsp;&nbsp;<b>0</b>
+                        <span class="fw-light fs-6">Materiales</span>&nbsp;&nbsp;&nbsp;<b><?php echo $TMateriales; ?></b>
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -64,7 +64,7 @@
             <div class="border-bottom rounded-top border-1 border-success bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Solicitudes</span>&nbsp;&nbsp;&nbsp;<b>0</b>
+                        <span class="fw-light fs-6">Solicitudes</span>&nbsp;&nbsp;&nbsp;<b><?php echo $TSolicitudes; ?></b>
 
                     </div>
                     <div class="col mb-2">
@@ -79,7 +79,7 @@
             <div class="border-bottom rounded-top border-1 border-warning bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Laboratorios</span>&nbsp;&nbsp;&nbsp;<b>0</b>
+                        <span class="fw-light fs-6">Laboratorios</span>&nbsp;&nbsp;&nbsp;<b><?php echo $TLaboratorios; ?></b>
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -93,7 +93,7 @@
             <div class="border-bottom rounded-top border-1 border-primary bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Planteles</span>&nbsp;&nbsp;&nbsp;<b>0</b>
+                        <span class="fw-light fs-6">Planteles</span>&nbsp;&nbsp;&nbsp;<b><?php echo $TPlanteles; ?></b>
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -111,7 +111,7 @@
             <div class="border-bottom rounded-top border-1 border-success bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Nombre Completo</span>
+                        <span class="fw-light fs-6"><?php echo $Perfil['Nombre']." ".$Perfil['ApellidoP']." ".$Perfil['ApellidoM'] ?></span>
 
                     </div>
                     <div class="col mb-2">
@@ -126,7 +126,7 @@
             <div class="border-bottom rounded-top border-1 border-warning bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Usuario tipo</span>&nbsp;&nbsp;&nbsp;<b>0</b>
+                        <span class="fw-light fs-6"><?php echo $Perfil['NTUsuario']; ?></span>
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -139,11 +139,11 @@
     </div>
     <!-- termina la linea -->
     <div class="row py-2 px-2 mt-3 text-center mt-3">
-        <div class="col-sm-4 col-md-2 col-lg-2">
+        <div class="col-sm-6 col-md-4 col-lg-4">
             <div class="border-bottom rounded-top border-1 border-success bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Fecha:</span>
+                        <span class="fw-light">Fecha: <?php echo $FechaD; ?></span>
 
                     </div>
                     <div class="col mb-2">
@@ -154,11 +154,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4 col-md-2 col-lg-2">
+        <div class="col-sm-6 col-md-2 col-lg-2">
             <div class="border-bottom rounded-top border-1 border-warning bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Hora</span>
+                        <span class="fw-light fs-6">
+                          <form name="form_reloj" class="bg-light">
+                            <input type="text" name="reloj" size="10" class="border-0 px-2 bg-light">
+                          </form>
+                        </span>
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -168,11 +172,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4 col-md-2 col-lg-2">
+        <div class="col-sm-6 col-md-2 col-lg-2">
             <div class="border-bottom rounded-top border-1 border-primary bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6">Plantel</span>
+                        <span class="fw-light fs-6"><?php echo $Perfil['NombrePlantel']; ?></span>
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -182,7 +186,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4 col-md-2 col-lg-2">
+        <div class="col-sm-6 col-md-2 col-lg-2">
             <div class="border-bottom rounded-top border-1 border-danger bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
@@ -196,7 +200,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4 col-md-2 col-lg-2">
+        <div class="col-sm-6 col-md-2 col-lg-2">
             <div class="border-bottom rounded-top border-1 border-secondary bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
@@ -210,19 +214,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4 col-md-2 col-lg-2">
-            <div class="border-bottom rounded-top border-1 border-success bg-light py-2 shadow">
-                <div class="row mt-2">
-                    <div class="col mb-2">
-                        <span class="fw-light fs-6">Respaldo</span>
-                    </div>
-                    <div class="col mb-2">
-                        <svg class="bi" width="30" height="30" fill="currentColor">
-                            <use xlink:href="library/icons/bootstrap-icons.svg#inboxes" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
+    </div>
+    <div class="row py-2 px-2 mt-3 text-center mt-3">
+        <div class="container justify-content-center">
+            1
         </div>
     </div>
 

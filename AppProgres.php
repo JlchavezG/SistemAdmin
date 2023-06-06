@@ -2,6 +2,7 @@
 error_reporting(0);
 require "includes/ConectBd.php";
 require "includes/configuracion.php";
+include "includes/consultas.php";
 
 ?>
 <!DOCTYPE html>
@@ -18,10 +19,21 @@ require "includes/configuracion.php";
     <link rel="stylesheet" type="text/css" href="css/Config.css">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.0.min.js"></script>
+    <script>
+        function mueveReloj(){
+            momentoActual = new Date()
+            hora = momentoActual.getHours()
+            minuto = momentoActual.getMinutes()
+            segundo = momentoActual.getSeconds()
+            horaImprimible = hora + " : " + minuto + " : " + segundo
+            document.form_reloj.reloj.value = horaImprimible
+            setTimeout("mueveReloj()",1000)
+        }
+    </script>
     <title>Inicio de Sistema | Dashboard SistemAdmin</title>
 </head>
 <!-- navbar-->
-<body>
+<body onload="mueveReloj()">
 <?php include "process/navbar.php"; ?>
 <!-- termina navbar -->
 <!-- inicia menu -->
