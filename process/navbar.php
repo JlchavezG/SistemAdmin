@@ -90,7 +90,7 @@
                         </a>
                         <ul class="dropdown-menu bg-success" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a class="dropdown-item items" href="#">
+                                <a class="dropdown-item items" href="PerfilUser.php">
                                     <svg class="bi text-light" width="15" height="15" fill="currentColor">
                                         <use xlink:href="library/icons/bootstrap-icons.svg#person-circle" />
                                     </svg>&nbsp;&nbsp;<span class="text-light">Perfil</span>
@@ -139,23 +139,23 @@
 <!-- modal para cerrar sesion  -->
 <!-- Modal -->
 <div class="modal fade" id="CSesionModal" tabindex="-1" aria-labelledby="CSesionModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-light">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-         <div class="row">
-            <div class="container">
-               <?php echo $Perfil['Nombre']." ¿Quieres cerrar la sesión?" ?>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <a href="includes/CerrarSesion.php" class="btn btn-sm btn-success">Cerrar Sesión</a>
-      </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="container">
+                        <?php echo $Perfil['Nombre'] . " ¿Quieres cerrar la sesión?" ?>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <a href="includes/CerrarSesion.php" class="btn btn-sm btn-success">Cerrar Sesión</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
