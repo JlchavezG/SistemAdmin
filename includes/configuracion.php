@@ -17,6 +17,31 @@ TU.Id_TUsuario, TU.NTUsuario, ES.Id_EstatusUser, ES.DEstatusUser FROM Usuario U 
  INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser WHERE UserName = '$usuario'"; 
  $verificar = $ConectionBd->query($UserIngresa);
  $Perfil = $verificar->fetch_array();
+ // genera el Qr del usuario que ingresa a la plataforma 
+ $dir = 'img/qr/';
+ if(!file_exists($dir))
+   mkdir($dir);
+ /*{
+  $FileName = $dir.'Usuario'.$Perfil['Id_Usuario'].'png';
+  $tam = 4;
+  $lavel = 'H';
+  $frameSize = '3';
+  $QrNombre = $Perfil['Nombre'];
+  $QrApellidoP = $Perfil['ApellidoP'];
+  $QrApellidoM = $Perfil['ApellidoM'];
+  $QrTelefono = $Perfil['Telefono'];
+  $QrEmail = $Perfil['Email'];
+  $QrTUser = $Perfil['NTUsuario'];
+  $QrContenido = 'BEGIN:VCARD'."\n"
+  .'VERSION:2.1'."\n"
+  .'FN:'.$QrNombre. $QrApellidoP. $QrApellidoM."\n"
+  .'TEL;WORK;VOICE:'.$QrTelefono."\n"
+  .'TITLE:'.$QrTUser."\n"
+  .'EMAIL:'.$QrEmail."\n"
+  ."END:VCARD";
+  QRcode::png($QrContenido,$FileName,$lavel,$tam,$frameSize);
+ }*/
+
 
 // configurar la zona horaria de nuestro servidor
 ini_Set('date.timezone','America/Mexico_City');

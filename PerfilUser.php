@@ -3,6 +3,7 @@ error_reporting(0);
 require "includes/ConectBd.php";
 require "includes/configuracion.php";
 include "includes/consultas.php";
+require "library/phpqrcode/qrlib.php";
 
 ?>
 <!DOCTYPE html>
