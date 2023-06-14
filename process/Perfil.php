@@ -1,3 +1,29 @@
+<?php 
+$dir = 'img/qr/';
+if(!file_exists($dir))
+mkdir($dir);
+{
+$QrPerfil = $dir.'Usuario'.$Perfil['Id_Usuario'].'png';
+$tam = 4;
+$lavel = 'H';
+$FrameSize = '3';
+$QrNombre = $Perfil['Nombre'];
+$QrApellidoP = $Perfil['ApellidoP'];
+$QrApellidoM = $Perfil['ApellidoM'];
+$QrTelefono = $Perfil['Telefono'];
+$QrEmail = $Perfil['Email'];
+$QrPerfilU = $Perfil['NTUsuario'];
+$QrContenido = 'BEGIN:VCARD'."\n";
+$QrContenido .= 'FN:'.$QrNombre. " ".$QrApellidoP .$QrApellidoM. "\n";
+$QrContenido .= 'TEL;WORK;VOICE:'.$QrTelefono."\n";
+$QrContenido .= 'TITLE'.$QrPerfil."\n";
+$QrContenido .= 'EMAIL'.$QrEmail."\n";
+$QrContenido .= 'END:VCARD';
+QRcode::png($QrContenido, $QrPerfil,$lavel,$tam,$FrameSize);
+
+}
+
+?>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col col-sm-10 col-md-10 col-lg-10">
@@ -9,7 +35,7 @@
                     <span class="display-6"><?php echo $Perfil['Nombre']." ".$Perfil['ApellidoP']." ".$Perfil['ApellidoM']; ?></span>
                 </div>
                 <div class="row mt-4  justify-content-center">
-                    <div class="col col-sm-10 col-md-4 col-lg-4">
+                    <div class="col col-sm-10 col-md-6 col-lg-6">
                         <ul class="list-group list-group-flush rounded">
                             <li class="list-group-item bg-light">
                                 <svg class="bi text-success" width="15" height="15" fill="currentColor">
@@ -25,7 +51,6 @@
                                 <svg class="bi text-success" width="15" height="15" fill="currentColor">
                                     <use xlink:href="library/icons/bootstrap-icons.svg#telephone-inbound-fill" />
                                 </svg>&nbsp;&nbsp;Telefono:&nbsp;<?php echo $Perfil['Telefono']; ?>
-                            </li>
                             <li class="list-group-item bg-light">
                                 <svg class="bi text-success" width="15" height="15" fill="currentColor">
                                     <use xlink:href="library/icons/bootstrap-icons.svg#person-vcard-fill" />
@@ -38,8 +63,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col col-sm-10 col-md-6 col-lg-6">
-                       <?php // echo '<img src="'.$FileName.'" class="rounded mx-auto img-thumbnail">' ?>
+                    <div class="col col-sm-10 col-md-4 col-lg-4">
+                       <?php echo '<img src="'.$QrPerfil.'" class="rounded mx-auto img-thumbnail"'?>       ' ?>
                     </div>
                 </div>
 
