@@ -51,3 +51,11 @@ textarea {
 #mapa {
   height: 100%;
 }
+.Img-Hover{
+  background-color: transparent;
+}
+.Img-Hover:hover{
+  background-color: rgba(26, 04, 41,.3);
+  border: 1px solid #260441;
+  cursor: pointer;
+}

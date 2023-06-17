@@ -1,38 +1,36 @@
-<?php 
+<?php
 $dir = 'img/qr/';
-if(!file_exists($dir))
-mkdir($dir);
-{
-$QrPerfil = $dir.'Usuario'.$Perfil['Id_Usuario'].'png';
-$tam = 4;
-$lavel = 'H';
-$FrameSize = '3';
-$QrNombre = $Perfil['Nombre'];
-$QrApellidoP = $Perfil['ApellidoP'];
-$QrApellidoM = $Perfil['ApellidoM'];
-$QrTelefono = $Perfil['Telefono'];
-$QrEmail = $Perfil['Email'];
-$QrPerfilU = $Perfil['NTUsuario'];
-$QrContenido = 'BEGIN:VCARD'."\n";
-$QrContenido .= 'FN:'.$QrNombre. " ".$QrApellidoP .$QrApellidoM. "\n";
-$QrContenido .= 'TEL;WORK;VOICE:'.$QrTelefono."\n";
-$QrContenido .= 'TITLE'.$QrPerfil."\n";
-$QrContenido .= 'EMAIL'.$QrEmail."\n";
-$QrContenido .= 'END:VCARD';
-QRcode::png($QrContenido, $QrPerfil,$lavel,$tam,$FrameSize);
-
+if (!file_exists($dir))
+    mkdir($dir); {
+    $QrPerfil = $dir . 'Usuario' . $Perfil['Id_Usuario'] . 'png';
+    $tam = 4;
+    $lavel = 'H';
+    $FrameSize = '3';
+    $QrNombre = $Perfil['Nombre'];
+    $QrApellidoP = $Perfil['ApellidoP'];
+    $QrApellidoM = $Perfil['ApellidoM'];
+    $QrTelefono = $Perfil['Telefono'];
+    $QrEmail = $Perfil['Email'];
+    $QrPerfilU = $Perfil['NTUsuario'];
+    $QrContenido = 'BEGIN:VCARD' . "\n";
+    $QrContenido .= 'FN:' . $QrNombre . " " . $QrApellidoP . $QrApellidoM . "\n";
+    $QrContenido .= 'TEL;WORK;VOICE:' . $QrTelefono . "\n";
+    $QrContenido .= 'TITLE' . $QrPerfil . "\n";
+    $QrContenido .= 'EMAIL' . $QrEmail . "\n";
+    $QrContenido .= 'END:VCARD';
+    QRcode::png($QrContenido, $QrPerfil, $lavel, $tam, $FrameSize);
 }
 
 ?>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col col-sm-10 col-md-10 col-lg-10">
-            <div class="Img-Hover">
+            <div class="">
                 <div class="row mt-2 mx-2 justify-content-center">
-                    <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="img-thumbnail rounded-circle" style="width: 200px;">
+                    <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="img-thumbnail rounded-circle Img-Hover" style="width: 200px;">
                 </div>
                 <div class="row mt-4 text-center justify-content-center">
-                    <span class="display-6"><?php echo $Perfil['Nombre']." ".$Perfil['ApellidoP']." ".$Perfil['ApellidoM']; ?></span>
+                    <span class="display-6"><?php echo $Perfil['Nombre'] . " " . $Perfil['ApellidoP'] . " " . $Perfil['ApellidoM']; ?></span>
                 </div>
                 <div class="row mt-4  justify-content-center">
                     <div class="col col-sm-10 col-md-6 col-lg-6">
@@ -64,7 +62,7 @@ QRcode::png($QrContenido, $QrPerfil,$lavel,$tam,$FrameSize);
                         </ul>
                     </div>
                     <div class="col col-sm-10 col-md-4 col-lg-4">
-                       <?php echo '<img src="'.$QrPerfil.'" class="rounded mx-auto img-thumbnail"'?>       ' ?>
+                        <?php echo '<img src="' . $QrPerfil . '" class="rounded mx-auto img-thumbnail"' ?> ' ?>
                     </div>
                 </div>
 
