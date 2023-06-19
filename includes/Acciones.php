@@ -1,20 +1,20 @@
-<?php 
+<?php
 error_reporting(0);
 include 'ConectBd.php';
 // accion de restablecer password
 // validar el clic de btn restablecer 
-if(isset($_POST['BtnRecPass'])){
+if (isset($_POST['BtnRecPass'])) {
   // recuperar los datos de usuario y email 
   $RecuperaUser = $ConectionBd->real_escape_string($_POST['Ruser']);
   $RecuperaEmail = $ConectionBd->real_escape_string($_POST['Remail']);
   // generar la consulta para extrare los datos de usuario y email a buscar 
- $Buser = "SELECT * FROM Usuario WHERE Email = '$RecuperaEmail' and UserName = '$RecuperaUser'";
- $EBuser = $ConectionBd->query($Buser);
- $ResultadoB = $EBuser->fetch_array();
- $idBuscar = $ResultadoB['Id_Usuario'];
- $EmailBuscar = $ResultadoB['Email'];
- if($ResultadoB > 0){
-   $AlertaB.= "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+  $Buser = "SELECT * FROM Usuario WHERE Email = '$RecuperaEmail' and UserName = '$RecuperaUser'";
+  $EBuser = $ConectionBd->query($Buser);
+  $ResultadoB = $EBuser->fetch_array();
+  $idBuscar = $ResultadoB['Id_Usuario'];
+  $EmailBuscar = $ResultadoB['Email'];
+  if ($ResultadoB > 0) {
+    $AlertaB .= "<div class='alert alert-success alert-dismissible fade show' role='alert'>
                    <strong>Datos Encontrados !</strong> Por favor ingresa y verifica el nuevo password .
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                </div>
@@ -45,14 +45,10 @@ if(isset($_POST['BtnRecPass'])){
                  </div>
                </div>
                ";
- }
- else{
-    $AlertaB.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+  } else {
+    $AlertaB .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                    <strong>Datos <b>No Encontrados !</b></strong> Por favor verifica el usuario y/o comunicate a soporte .
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                </div>";
-               
- }
+  }
 }
-?>
-

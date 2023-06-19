@@ -4,7 +4,7 @@ require "includes/ConectBd.php";
 require "includes/configuracion.php";
 include "includes/consultas.php";
 require "library/phpqrcode/qrlib.php";
-
+require "includes/Acciones.php"
 ?>
 <!DOCTYPE html>
 <html lang="es">
