@@ -73,9 +73,6 @@ if (!file_exists($dir))
                                 <use xlink:href="library/icons/bootstrap-icons.svg#envelope-paper-fill" />
                             </svg>
                         </div>
-                        <div class="row mt-1 py-1 text-center">
-                            <span></span>
-                        </div>
                     </div>
                     <div class="col-sm-1 col-md-1 col-lg-1 rounded  text-light me-1">
                         <div class="row mt-1 py-2">
@@ -89,19 +86,24 @@ if (!file_exists($dir))
                     </div>
                     <div class="col-sm-1 col-md-1 col-lg-1 rounded  text-light me-1">
                         <div class="row mt-1 py-2">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#PerfilModal"> 
-                              <svg class="bi text-success" width="20" height="20" fill="currentColor">
-                                 <use xlink:href="library/icons/bootstrap-icons.svg#pencil-fill" />
-                              </svg>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#PerfilModal">
+                                <svg class="bi text-success" width="20" height="20" fill="currentColor">
+                                    <use xlink:href="library/icons/bootstrap-icons.svg#pencil-fill" />
+                                </svg>
                             </a>
-                        </div>
-                        <div class="row mt-1 py-1 text-center">
-                            <span></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row mt-1 py-2">
+    <div class="container">
+        <div class="col col-sm-10 col-md-10 col-lg-10">
+            <span><?php echo $AlertaPerfil; ?></span> 
+        </div>
+    </div>
 </div>
+</div>
+
 <?php include "process/ModalPerfil.php"; ?>
