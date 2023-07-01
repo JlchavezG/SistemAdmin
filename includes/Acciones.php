@@ -51,7 +51,7 @@ if (isset($_POST['BtnRecPass'])) {
                 </div>";
   }
 }
-// edidat datos de perfil
+// editar datos de perfil
 if(isset($_POST['btn_Mperfil'])){
   $IdPerfil = $ConectionBd->real_escape_string($_POST['idMPerfil']);
   $NombrePerfil = $ConectionBd->real_escape_string($_POST['NombrePerfil']);
@@ -109,9 +109,15 @@ if(isset($_POST['btn_Mperfil'])){
     }
 
   }
-
-
-
-
-
 }
+// Subir la imegen de perfil 
+if(isset($_POST['Btn_Subir'])){
+ // recueperar los datos en variables 
+ $IdImg = $_POST['IdImgPerfil'];
+ $ImgNombre = $_SERVER['imagen']['name'];
+ $ImgTipo = $_FILES['imagen']['type'];
+ $ImgTam =  $_FILES['imagen']['size'];
+ var_dump($ImgTam);
+ var_dump($ImgTipo);
+}
+?>

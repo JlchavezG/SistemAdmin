@@ -56,6 +56,6 @@ textarea {
 }
 .Img-Hover:hover{
   background-color: rgba(26, 04, 41,.3);
-  border: 1px solid #260441;
+  border: 2px solid #260441;
   cursor: pointer;
 }

@@ -27,7 +27,9 @@ if (!file_exists($dir))
         <div class="col col-sm-10 col-md-10 col-lg-10">
             <div class="">
                 <div class="row mt-2 mx-2 justify-content-center">
-                    <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="img-thumbnail rounded-circle Img-Hover" style="width: 200px;">
+                    <a href="#" class="text-decoration-none text-center" data-bs-toggle="modal" data-bs-target="#ModalImagenPerfil">
+                        <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="img-thumbnail rounded-circle Img-Hover" style="width: 200px;">
+                    </a>
                 </div>
                 <div class="row mt-4 text-center justify-content-center">
                     <span class="display-6"><?php echo $Perfil['Nombre'] . " " . $Perfil['ApellidoP'] . " " . $Perfil['ApellidoM']; ?></span>
@@ -97,13 +99,13 @@ if (!file_exists($dir))
             </div>
         </div>
     </div>
-    <div class="row mt-1 py-2">
+    <div class="row mt-1 py-2 justify-content-center">
     <div class="container">
-        <div class="col col-sm-10 col-md-10 col-lg-10">
+        <div class="col col-sm-12 col-md-12 col-lg-12">
             <span><?php echo $AlertaPerfil; ?></span> 
         </div>
     </div>
 </div>
-</div>
 
 <?php include "process/ModalPerfil.php"; ?>
+<?php include "process/ModalImagenPerfil.php";?>
