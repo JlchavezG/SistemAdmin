@@ -117,7 +117,50 @@ if(isset($_POST['Btn_Subir'])){
  $ImgNombre = $_SERVER['imagen']['name'];
  $ImgTipo = $_FILES['imagen']['type'];
  $ImgTam =  $_FILES['imagen']['size'];
- var_dump($ImgTam);
- var_dump($ImgTipo);
+ $img_dir = $_FILES['imagen']['tmp_name'];
+ if(!empty($ImgNombre)){
+          $AlertaPerfil .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                <strong>Error<b>Modificación No exitosa !</b></strong> Los datos del perfil No fueron Modificados contacta a soporte.
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>";
+ }
+ else{
+  $subir_file = './img/User/';
+  $imgExt = strtolower(pathinfo($ImgNombre, PATHINFO_EXTENSION));
+  $validarExt = array('jpeg','jpg','png');
+  $UserPic = rand(1000,1000000).".".$imgExt;
+  if(in_array($imgExt, $validarExt)){
+     if($ImgTam < 1000000){
+      move_uploaded_file($img_dir, $subir_file.$UserPic);
+     }
+     else{
+      $AlertaPerfil .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            <strong>Error<b>Modificación No exitosa !</b></strong> Los datos del perfil No fueron Modificados contacta a soporte.
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>";
+     }
+  }
+  else{
+    $AlertaPerfil .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            <strong>Error<b>Modificación No exitosa !</b></strong> Solo archivosd JPG, JPEG y PNG.
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                      </div>";
+  }
+ } 
+ if(!isset($AlertaPerfil)){
+  $ImgUpdate = "UPDATE Usuario SET ImgUser = '$UserPic' WHERE Id_Usuario = '$IdImg'";
+  $ImgUpdateOk = $ConectionBd->query($ImgUpdate);
+  if($ImgUpdateOk > 0){
+    $AlertaPerfil.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            <strong>Error<b>Modificación No exitosa !</b></strong> Se cambio la imagen de perfil con exito.
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                      </div>";
+                      header("refresh3;Perfil.php");
+  }
+  else{
+    $ErrMSG = "Error al iintentar...";
+  }
+ }
 }
+
 ?>
