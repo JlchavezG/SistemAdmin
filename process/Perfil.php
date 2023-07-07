@@ -28,7 +28,7 @@ if (!file_exists($dir))
             <div class="">
                 <div class="row mt-2 mx-2 justify-content-center">
                     <a href="#" class="text-decoration-none text-center" data-bs-toggle="modal" data-bs-target="#ModalImagenPerfil">
-                        <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="img-thumbnail rounded-circle Img-Hover" style="width: 200px;">
+                        <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="img-thumbnail rounded-circle Img-Hover" style="width: 200px; height: 200px;">
                     </a>
                 </div>
                 <div class="row mt-4 text-center justify-content-center">
@@ -72,15 +72,8 @@ if (!file_exists($dir))
                     <div class="col-sm-1 col-md-1 col-lg-1 rounded  text-light me-1">
                         <div class="row mt-1 py-2">
                             <svg class="bi text-success" width="20" height="20" fill="currentColor">
-                                <use xlink:href="library/icons/bootstrap-icons.svg#envelope-paper-fill" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="col-sm-1 col-md-1 col-lg-1 rounded  text-light me-1">
-                        <div class="row mt-1 py-2">
-                            <svg class="bi text-success" width="20" height="20" fill="currentColor">
                                 <use xlink:href="library/icons/bootstrap-icons.svg#printer-fill" />
-                            </svg>
+                            </svg><span class="text-success">Imprimir Perfil</span>
                         </div>
                         <div class="row mt-1 py-1 text-center">
                             <span></span>
@@ -92,7 +85,16 @@ if (!file_exists($dir))
                                 <svg class="bi text-success" width="20" height="20" fill="currentColor">
                                     <use xlink:href="library/icons/bootstrap-icons.svg#pencil-fill" />
                                 </svg>
-                            </a>
+                            </a><span class="text-success">Modificar Perfil</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1 rounded  text-light me-1">
+                        <div class="row mt-1 py-2">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#PerfilModal">
+                                <svg class="bi text-success" width="20" height="20" fill="currentColor">
+                                    <use xlink:href="library/icons/bootstrap-icons.svg#unlock-fill" />
+                                </svg>
+                            </a><span class="text-success">Modificar Password</span>
                         </div>
                     </div>
                 </div>

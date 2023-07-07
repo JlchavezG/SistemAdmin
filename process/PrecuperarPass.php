@@ -5,7 +5,7 @@
     <div class="row text-center mt-4 justify-content-center">
         <div class="row mt-3">
             <div class="col container">
-                <img src="img/logo_iscjlchavezg.png" alt="logo" class="img-fluid">
+                <img src="img/New_Logo_Gris_2023.png" style="width: 200px;" alt="logo" class="img-fluid">
             </div>
         </div>
     </div>
