@@ -103,6 +103,7 @@ if (!file_exists($dir))
     <div class="container">
         <div class="col col-sm-12 col-md-12 col-lg-12">
             <span><?php echo $AlertaPerfil; ?></span> 
+            <span><?php echo $Mensaje; ?></span>
         </div>
     </div>
 </div>

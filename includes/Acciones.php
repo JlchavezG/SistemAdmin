@@ -112,55 +112,67 @@ if(isset($_POST['btn_Mperfil'])){
 }
 // Subir la imegen de perfil 
 if(isset($_POST['Btn_Subir'])){
- // recueperar los datos en variables 
- $IdImg = $_POST['IdImgPerfil'];
- $ImgNombre = $_SERVER['imagen']['name'];
- $ImgTipo = $_FILES['imagen']['type'];
- $ImgTam =  $_FILES['imagen']['size'];
- $img_dir = $_FILES['imagen']['tmp_name'];
- if(!empty($ImgNombre)){
-          $AlertaPerfil .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                                <strong>Error<b>Modificación No exitosa !</b></strong> Los datos del perfil No fueron Modificados contacta a soporte.
-                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                            </div>";
- }
- else{
-  $subir_file = './img/User/';
-  $imgExt = strtolower(pathinfo($ImgNombre, PATHINFO_EXTENSION));
-  $validarExt = array('jpeg','jpg','png');
-  $UserPic = rand(1000,1000000).".".$imgExt;
-  if(in_array($imgExt, $validarExt)){
-     if($ImgTam < 1000000){
-      move_uploaded_file($img_dir, $subir_file.$UserPic);
-     }
-     else{
-      $AlertaPerfil .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                            <strong>Error<b>Modificación No exitosa !</b></strong> Los datos del perfil No fueron Modificados contacta a soporte.
-                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                        </div>";
-     }
-  }
+  $IdImg = $ConectionBd->real_escape_string($_POST['IdImgPerfil']);
+  $imgFile = $_FILES['imagen']['name'];
+  $tmp_dir = $_FILES['imagen']['tmp_name'];
+  $imgSize = $_FILES['imagen']['size'];
+  if(empty($imgFile)){
+    $Mensaje.="<div class='alert alert-danger alert-dismissible fade show shadow' role='alert'>
+                    <svg class='bi text-danger' width='20' height='20' role='img' aria-label='Tools'>
+                      <use xlink:href='library/icons/bootstrap-icons.svg#x-circle-fill'/>
+                    </svg>
+                    <strong> Error</strong> Por favor selecciona un archivo en formato de imagen.
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>";
+  } 
   else{
-    $AlertaPerfil .= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                            <strong>Error<b>Modificación No exitosa !</b></strong> Solo archivosd JPG, JPEG y PNG.
-                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                      </div>";
+   $upload_dir = './img/Users/'; // Directorio en donde se subira el achivo
+   $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // extencion de la imagen
+// validando imagen y extensiones
+      $valid_extensions = array('jpeg', 'jpg', 'png'); // extenciones validas
+// renombrando uploading imagen
+      $userpic = rand(1000,1000000).".".$imgExt;
+// permitir formatos de archivo de imagen válidos
+    if(in_array($imgExt, $valid_extensions)){     
+       // Comprobando el tamaño del archivo '1 MB'
+      if($imgSize < 1000000)       {
+        move_uploaded_file($tmp_dir,$upload_dir.$userpic);
+      }
+      else{
+        $Mensaje.="<div class='alert alert-danger alert-dismissible fade show shadow' role='alert'>
+                      <svg class='bi text-danger' width='20' height='20' role='img' aria-label='Tools'>
+                          <use xlink:href='library/icons/bootstrap-icons.svg#x-circle-fill'/>
+                      </svg>
+                      <strong> Error</strong> El archivo de la imagen es muy grande por favor selecciona uno no mayo a 1mb.
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";
   }
- } 
- if(!isset($AlertaPerfil)){
-  $ImgUpdate = "UPDATE Usuario SET ImgUser = '$UserPic' WHERE Id_Usuario = '$IdImg'";
-  $ImgUpdateOk = $ConectionBd->query($ImgUpdate);
-  if($ImgUpdateOk > 0){
-    $AlertaPerfil.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                            <strong>Error<b>Modificación No exitosa !</b></strong> Se cambio la imagen de perfil con exito.
-                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                      </div>";
-                      header("refresh3;Perfil.php");
+    }
+    else{
+        $Mensaje.="<div class='alert alert-danger alert-dismissible fade show shadow' role='alert'>
+                      <svg class='bi text-danger' width='20' height='20' role='img' aria-label='Tools'>
+                        <use xlink:href='library/icons/bootstrap-icons.svg#x-circle-fill'/>
+                      </svg>
+                      <strong> Error</strong> Solo se permiten archivos JPG, JPEG, PNG son permitidos.
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";   
+    }
   }
-  else{
-    $ErrMSG = "Error al iintentar...";
+  if(!isset($Mensaje)){
+      $ImgUpdate = "UPDATE Usuario SET ImgUser = '$userpic' WHERE Id_Usuario = '$IdImg'";
+      $ImgUpdateOk = $ConectionBd->query($ImgUpdate);
+      
+      if($ImgUpdateOk > 0){
+        $Mensaje.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                      <strong>Excelente! </strong> La Imagen de perfil se modifico de manera exitosa dentro de la plataforma en breve se refrescara la pagina.
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";     
+       header("refresh:3;PerfilUser.php"); // redirects image view page after 5 seconds.
+      }
+    else
+    {
+      $Mensaje.= "Error al insertar ...";
+    }
   }
- }
 }
-
 ?>
