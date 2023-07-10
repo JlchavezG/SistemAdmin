@@ -175,4 +175,58 @@ if(isset($_POST['Btn_Subir'])){
     }
   }
 }
+// acciones para modificar el password de usuario 
+if(isset($_POST['MoPassword'])){
+$IdPassUser = $ConectionBd->real_escape_string($_POST['IdPass']);
+$PassActual = $ConectionBd->real_escape_string(md5($_POST['PasswordAc']));
+$NewPass = $ConectionBd->real_escape_string($_POST['NewPasswor']);
+$NewPassC = md5($NewPass);
+$CpassN = $ConectionBd->real_escape_string(md5($_POST['PasswordCon']));
+// consulta para verificar si es el password actual 
+$PassVerif = "SELECT * FROM Usuario WHERE Password = '$PassActual' and Id_Usuario = '$IdPassUser'";
+if($PassResultado = $ConectionBd->query($PassVerif)){
+  while($rowPassword = $PassResultado->fetch_array()){
+    $NPassOk = $rowPassword['Password'];
+  }
+}
+if(isset($PassActual)){
+  if($PassActual == $NPassOk){
+    if($NewPassC == $CpassN){
+      // realizar la actualizacion del paswword al usuario 
+      $ActualizarPassword = "UPDATE Usuario SET Password = '$NewPassC' WHERE Id_Usuario = '$IdPassUser'";
+      $Actualizando = $ConectionBd->query($ActualizarPassword);
+      if($ActualizarPassword > 0){
+        $AlertPass.= "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                        <strong>Excelente! </strong> El Password se modifico de manera exitosa dentro de la plataforma los cambios se daran al cerrar la Sesión.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                      </div>";
+      }
+      else{
+        $AlertPass.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        <strong>Error! </strong> El Password no se modifico de manera exitosa dentro de la plataforma intentalo más tarde.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                      </div>";
+      }
+    }
+    else{
+      $AlertPass.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        <strong>Error! </strong> Verifica tu password la confirmación del mismo no coinside.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                      </div>";
+    }
+  }
+  else{
+      $AlertPass.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        <strong>Password Actual no encontrado </strong> Por favor Verifica tu password o contacta a soporte.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                      </div>";
+  }
+}
+else{
+  $AlertPass.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                        <strong>No Existen datos que Buscar </strong> Por favor Digita tu password Actual.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                      </div>";
+}
+}
 ?>
