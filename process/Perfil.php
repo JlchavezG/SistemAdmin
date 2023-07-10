@@ -90,7 +90,7 @@ if (!file_exists($dir))
                     </div>
                     <div class="col-sm-1 col-md-1 col-lg-1 rounded  text-light me-1">
                         <div class="row mt-1 py-2">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#PerfilModal">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#PasswordlModal">
                                 <svg class="bi text-success" width="20" height="20" fill="currentColor">
                                     <use xlink:href="library/icons/bootstrap-icons.svg#unlock-fill" />
                                 </svg>
@@ -106,9 +106,11 @@ if (!file_exists($dir))
         <div class="col col-sm-12 col-md-12 col-lg-12">
             <span><?php echo $AlertaPerfil; ?></span> 
             <span><?php echo $Mensaje; ?></span>
+            <span><?php echo $AlertPass; ?></span>
         </div>
     </div>
 </div>
 
 <?php include "process/ModalPerfil.php"; ?>
 <?php include "process/ModalImagenPerfil.php";?>
+<?php include "process/PasswordlModal.php"; ?>

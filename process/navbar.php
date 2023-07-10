@@ -84,9 +84,8 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg class="bi text-light" width="18" height="18" fill="currentColor">
-                                <use xlink:href="library/icons/bootstrap-icons.svg#person-circle" />
-                            </svg><span class="text-light"> Bienvenido: <?php echo $Perfil['Nombre']; ?></span>
+                        <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="rounded-circle" style="width: 30px; height: 30px;">
+                        <span class="text-light"> Bienvenido: <?php echo $Perfil['Nombre']; ?></span>
                         </a>
                         <ul class="dropdown-menu bg-success" aria-labelledby="navbarDropdownMenuLink">
                             <li>

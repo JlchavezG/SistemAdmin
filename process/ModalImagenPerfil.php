@@ -18,8 +18,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" value="Modificar" name="Btn_Subir" class="btn btn-sm btn-success">
-                    <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <input type="submit" value="Modificar" name="Btn_Subir" class="btn btn-sm btn-outline-success rounded-pill">
+                    <button type="button" class="btn btn-sm btn-outline-danger rounded-pill" data-bs-dismiss="modal">Cancelar</button>
 
                 </div>
             </form>

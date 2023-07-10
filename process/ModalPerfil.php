@@ -47,8 +47,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-sm btn-success" name="btn_Mperfil" value="Editar">
-                    <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <input type="submit" class="btn btn-sm btn-outline-success rounded-pill" name="btn_Mperfil" value="Modificar Perfil">
+                    <button type="button" class="btn btn-sm btn-outline-danger rounded-pill" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </form>
         </div>
