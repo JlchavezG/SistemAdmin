@@ -22,7 +22,7 @@ if (isset($_POST['BtnRecPass'])) {
                 <div class='row justify-content-center py-2'>
                   <div class='col' id='mensaje'></div>
                 </div>
-                  <div class='row justify-content-center py-2'>
+                <div class='row justify-content-center py-2'>
                     <div class='col-sm-12 col-md-12 col-lg-12'>
                         <form action='UpdatePass.php' method='get'>
                           <input type='hidden' name='idRpass' value='$idBuscar'>
@@ -32,16 +32,16 @@ if (isset($_POST['BtnRecPass'])) {
                             <input type='password' id='password' class='form-control needs-validation' novalidate name='npass' placeholder='Nuevo Password' required>
                           </div>
                     </div>
-                  </div>
-                  <div class='row mt-2'>
-                      <input type='submit' name='guardar' value='Restablecer' class='btn btn-success btn-sm rounded-pill'>
-                  </div>
-                      </form>
-                  </div>
-                  <hr>
-                  <div class='row text-center' py-2>
-                      <p><a href='index.php' class='text-center text-decoration-none text-success'>Ya recorde mi password</a></p>
-                  </div>
+                </div>
+                <div class='row mt-2'>
+                  <input type='submit' name='guardar' value='Restablecer' class='btn btn-success btn-sm rounded-pill'>
+                </div>
+                </form>
+                </div>
+                <hr>
+                <div class='row text-center' py-2>
+                    <p><a href='index.php' class='text-center text-decoration-none text-success'>Ya recorde mi password</a></p>
+                </div>
                 </div>
               </div>";
   } else {
@@ -177,56 +177,60 @@ if(isset($_POST['Btn_Subir'])){
 }
 // acciones para modificar el password de usuario 
 if(isset($_POST['MoPassword'])){
-$IdPassUser = $ConectionBd->real_escape_string($_POST['IdPass']);
-$PassActual = $ConectionBd->real_escape_string(md5($_POST['PasswordAc']));
-$NewPass = $ConectionBd->real_escape_string($_POST['NewPasswor']);
-$NewPassC = md5($NewPass);
-$CpassN = $ConectionBd->real_escape_string(md5($_POST['PasswordCon']));
-// consulta para verificar si es el password actual 
-$PassVerif = "SELECT * FROM Usuario WHERE Password = '$PassActual' and Id_Usuario = '$IdPassUser'";
-if($PassResultado = $ConectionBd->query($PassVerif)){
-  while($rowPassword = $PassResultado->fetch_array()){
-    $NPassOk = $rowPassword['Password'];
-  }
-}
-if(isset($PassActual)){
-  if($PassActual == $NPassOk){
-    if($NewPassC == $CpassN){
-      // realizar la actualizacion del paswword al usuario 
-      $ActualizarPassword = "UPDATE Usuario SET Password = '$NewPassC' WHERE Id_Usuario = '$IdPassUser'";
-      $Actualizando = $ConectionBd->query($ActualizarPassword);
-      if($ActualizarPassword > 0){
-        $AlertPass.= "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                        <strong>Excelente! </strong> El Password se modifico de manera exitosa dentro de la plataforma los cambios se daran al cerrar la Sesión.
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                      </div>";
-      }
-      else{
-        $AlertPass.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                        <strong>Error! </strong> El Password no se modifico de manera exitosa dentro de la plataforma intentalo más tarde.
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                      </div>";
+  $IdPass = $ConectionBd->real_escape_string($_POST['IdPass']);
+  $PassActual = $ConectionBd->real_escape_string(md5($_POST['PasswordAc']));
+  $NewPass = $ConectionBd->real_escape_string($_POST['NewPassword']);
+  $NewPassC = md5($NewPass);
+  $CPassN = $ConectionBd->real_escape_string(md5($_POST['PasswordCon']));
+  // consulta para extraer el password actual 
+  $PassVerif = "SELECT * FROM Usuario WHERE  Password = '$PassActual' and Id_Usuario = '$IdPass'";
+    if ($PassResultado = $ConectionBd->query($PassVerif)) {
+      while ($rowPass = $PassResultado->fetch_array()) {
+        $NPassok = $rowPass['Password'];
       }
     }
-    else{
-      $AlertPass.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                        <strong>Error! </strong> Verifica tu password la confirmación del mismo no coinside.
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                      </div>";
+    if(isset($PassActual)) {
+    if ($PassActual  == $NPassok) {
+          if($NewPassC == $CPassN){
+            // realizar la actualización de password al usuario 
+            $ActualizaPassword = "UPDATE Usuario SET Password = '$NewPassC' WHERE Id_Usuario = '$IdPass'";
+            $Actualizado = $ConectionBd->query($ActualizaPassword);
+              if($Actualizado > 0){
+                $AlertPass.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                              <strong>Excelente! </strong> El password se modifico de manera exitosa dentro de la plataforma los cambios se daran al cerrar la sesión.
+                              <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>";   
+              }
+          else{
+                $AlertPass.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                <strong>Error! </strong> El password no se modifico de manera exitosa dentro de la plataforma.
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>";
+              }
+
+          }
+          else{
+            $AlertPass.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            <strong>Error! </strong> La confirmación de los password no coinciden por favor verifica tus credenciales.
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>";
+          }
+
+        }
+          else {
+            $AlertPass.="<div class='alert alert-danger alert-dismissible fade show shadow' role='alert'>
+                            <svg class='bi text-danger' width='20' height='20' role='img' aria-label='Tools'>
+                              <use xlink:href='library/icons/bootstrap-icons.svg#x-circle-fill'/>
+                            </svg>
+                            <strong> Password Actual invalido</strong> Por favor verifica tus credenciales o contacta a soporte.
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>";
+          }
+        }
+          else {
+            $AlertPass.="No hay datos que buscar";
     }
   }
-  else{
-      $AlertPass.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                        <strong>Password Actual no encontrado </strong> Por favor Verifica tu password o contacta a soporte.
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                      </div>";
-  }
-}
-else{
-  $AlertPass.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                        <strong>No Existen datos que Buscar </strong> Por favor Digita tu password Actual.
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                      </div>";
-}
-}
+
+
 ?>
