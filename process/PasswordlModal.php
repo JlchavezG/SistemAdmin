@@ -2,7 +2,10 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-light">
             <div class="modal-header">
-                <h5 class="modal-title">Modificar Password de Usuario</h5>
+                <h5 class="modal-title"> 
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                            <use xlink:href="library/icons/bootstrap-icons.svg#shield-lock-fill"/>
+                    </svg> Modificar Password de Usuario</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
@@ -14,7 +17,7 @@
                             <use xlink:href="library/icons/bootstrap-icons.svg#lock-fill"/>
                         </svg>
                     </span>
-                    <input type="password" class="form-control" name="PasswordAc" placeholder="Password Actual" aria-label="Password" required />
+                    <input type="password" class="form-control" name="PasswordAc" placeholder="Password Actual" id="VerPassWord" aria-label="Password" required />
                 </div>
                 <div class="input-group flex-nowrap mt-2">
                     <span class="input-group-text" id="addon-wrapping">
@@ -22,15 +25,18 @@
                             <use xlink:href="library/icons/bootstrap-icons.svg#key-fill"/>
                         </svg>
                     </span>
-                    <input type="password" class="form-control" name="NewPassword" placeholder="Nuevo Password" aria-label="NPassword" required />
+                    <input type="password" class="form-control" name="NewPassword" placeholder="Nuevo Password" id="VerPassWord" aria-label="NPassword" required />
                 </div>
                 <div class="input-group flex-nowrap mt-2">
                     <span class="input-group-text" id="addon-wrapping">
                         <svg class="bi" width="15" height="15" fill="currentColor">
-                            <use xlink:href="library/icons/bootstrap-icons.svg#key-fill"/>
+                            <use xlink:href="library/icons/bootstrap-icons.svg#key-fill"/>Password
                         </svg>
                     </span>
-                    <input type="password" class="form-control" name="PasswordCon" placeholder="Confirma tu Password" aria-label="CPassword" required />
+                    <input type="password" class="form-control" name="PasswordCon" id="VerPassWord" placeholder="Confirma tu Password" aria-label="CPassword" required />
+                </div>
+                <div class="row mt-2">
+                
                 </div>
             </div>
             <div class="modal-footer">
@@ -41,3 +47,4 @@
         </div>
     </div>
 </div>
+

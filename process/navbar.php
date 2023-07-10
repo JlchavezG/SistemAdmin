@@ -141,13 +141,21 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-light">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
+                <h5 class="modal-title" id="exampleModalLabel">
+                        <svg class="bi" width="18" height="18" fill="currentColor">
+                            <use xlink:href="library/icons/bootstrap-icons.svg#shield-lock-fill" />
+                        </svg> Cerrar Sesión</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="container">
-                        <?php echo $Perfil['Nombre'] . " ¿Quieres cerrar la sesión?" ?>
+                <div class="row mt-1 text-center">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="img-thumbnail rounded" style="width: 150px; height: 150px; border-radius:50%;">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="container text-center">
+                        <br><?php echo $Perfil['Nombre'] . " ¿Quieres cerrar la sesión?" ?></br>
                     </div>
                 </div>
             </div>
