@@ -14,7 +14,7 @@
                         </a>
                     </div>
                     <div class="col">
-                    <a href="email:soporte@iscjoseluischavezg.mx" class="text-decoration-none">    
+                    <a href="mailto:soporte@iscjoseluischavezg.mx" class="text-decoration-none">    
                         <svg class="bi" width="25" height="25" fill="currentColor">
                             <use xlink:href="library/icons/bootstrap-icons.svg#envelope-paper-fill" />
                         </svg> Via Email
