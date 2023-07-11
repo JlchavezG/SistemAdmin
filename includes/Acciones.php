@@ -197,7 +197,7 @@ if(isset($_POST['MoPassword'])){
             $Actualizado = $ConectionBd->query($ActualizaPassword);
               if($Actualizado > 0){
                 $AlertPass.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                              <strong>Excelente! </strong> El password se modifico de manera exitosa dentro de la plataforma los cambios se daran al cerrar la sesión.
+                              <strong>Excelente! </strong> El password se modifico de manera exitosa dentro de la plataforma los cambios se daran al cerrar la sesión el nuevo password es: $NewPass.
                               <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                             </div>";   
               }
