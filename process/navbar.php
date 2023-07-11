@@ -14,7 +14,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="AppProgres.php">
                         <svg class="bi text-light" width="18" height="18" fill="currentColor">
                             <use xlink:href="library/icons/bootstrap-icons.svg#house-door-fill" />
                         </svg>
@@ -127,7 +127,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <span class="text-light">Versión 1.1</span>
+                            <span class="text-light">Versión 2.1</span>
                         </a>
                     </li>
                 </ul>
@@ -150,7 +150,7 @@
             <div class="modal-body">
                 <div class="row mt-1 text-center">
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="img-thumbnail rounded" style="width: 150px; height: 150px; border-radius:50%;">
+                        <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="img-thumbnail rounded rounded-circle" style="width: 150px; height: 150px; border-radius:50%;">
                     </div>
                 </div>
                 <div class="row mt-2">
