@@ -13,7 +13,7 @@
                 </a>
             </li>
             <li class="nav-item items">
-                <a href="#" class="nav-link">
+                <a href="UsuariosSistem.php" class="nav-link">
                     <svg class="bi text-light" width="20" height="20" fill="currentColor">
                         <use xlink:href="library/icons/bootstrap-icons.svg#people-fill" />
                     </svg>&nbsp;&nbsp;&nbsp;<span class="text-light">Usuarios</span>
