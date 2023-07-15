@@ -165,6 +165,13 @@ include "includes/ProLogin.php";
                         })
                 })()
             </script>
+            <script type='text/javascript'>
+                $(function(){
+                $(document).bind("contextmenu",function(e){
+                return false;
+                });
+            });
+            </script>
 </body>
 
 </html>
