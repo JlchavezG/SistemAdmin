@@ -11,11 +11,6 @@
                         <div class="input-group input-group-sm mb-">
                             <span class="input-group-text" id="inputGroup-sizing-sm">Buscar</span>
                             <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                            <button type="submit" class="bg-success rounded border-0">
-                                <svg class="bi text-light" width="20" height="20" fill="currentColor">
-                                    <use xlink:href="library/icons/bootstrap-icons.svg#search" />
-                                </svg>
-                            </button>
                         </div>
                         </form>
                     </div>
@@ -54,7 +49,7 @@
         </div>
     </div>
     <div class="row mt-3">
-        <div class="container">
+        <div class="container" id="Datos">
             <div class="bg-light rounded">
                 <div class="col-sm-12 col-md-12 col-lg-12 bg-light">
                     <div class="table-responsive">
