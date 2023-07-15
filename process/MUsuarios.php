@@ -55,7 +55,7 @@
     </div>
     <div class="row mt-3">
         <div class="container">
-            <div class="bg-light">
+            <div class="bg-light rounded">
                 <div class="col-sm-12 col-md-12 col-lg-12 bg-light">
                     <div class="table-responsive">
                         <table class="table table-hover">
