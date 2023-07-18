@@ -8,6 +8,18 @@ $TUsuarios = $EUsuario->num_rows;
 $CTUsuario = "SELECT * FROM TUsuario";
 $ECTUsuario = $ConectionBd->query($CTUsuario);
 $TTUsuario = $ECTUsuario->num_rows;
+// obtener el numero de usuarios tipo super usuario 
+$SuperU = "SELECT * FROM TUsuario WHERE Id_TUsuario = 1";
+$SuperUe = $ConectionBd->query($SuperU);
+$TSuperU = $SuperUe->num_rows;
+// obtener el numero de usuarios tipo administrativo
+$AdminU = "SELECT * FROM TUsuario WHERE Id_TUsuario = 2";
+$AdminUe = $ConectionBd->query($AdminU);
+$TAdminU = $AdminUe->num_rows;
+// obtener el numero de usuarios tipo final
+$FinalU = "SELECT * FROM TUsuario WHERE Id_TUsuario = 3";
+$FinalUe = $ConectionBd->query($FinalU);
+$FinalU = $FinalUe->num_rows;
 // obtener los usuarios en online
 $OnUser = "SELECT * FROM Usuario WHERE Online = 1";
 $COnUser = $ConectionBd->QUERY($OnUser);
