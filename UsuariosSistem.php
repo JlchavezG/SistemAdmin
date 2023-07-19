@@ -33,8 +33,10 @@ require "includes/Acciones.php"
  else if($Tmenu == $MUsuario){include "process/MenuUsuarios.php";}?>
 <!-- terminar el menu -->
 <?php include "process/MUsuarios.php" ?>
+<?php include "process/ModalSoporte.php"?>
 <script src="js/dark-mode.js"></script>
 <script src="js/pace.js"></script>
+<script src="js/live.js"></script>
 </body>
 
 </html>

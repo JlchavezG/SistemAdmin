@@ -231,6 +231,45 @@ if(isset($_POST['MoPassword'])){
             $AlertPass.="No hay datos que buscar";
     }
   }
+// consulta busqueda usuarios live 
+$datos = "";
+$queryLive = "SELECT * FROM Usuario ORDER BY Nombre ASC";
+if(isset($_POST['consulta'])){
+$buscar = $ConectionBd->real_escape_string($_POST['consulta']);
+$queryLive = "SELECT Nombre, ApellidoP, ApellidoM, Email, UserName FROM Usuario WHERE Nombre LIKE '%".$buscar."%' 
+OR  ApellidoP LIKE '%".$buscar."%' OR  ApellidoM LIKE '%".$buscar."%' OR  Email LIKE '%".$buscar."%' OR  UserName LIKE '%".$buscar."%'"; 
+}
+$resultado = $ConectionBd->query($queryLive);
+if($resultado->num_rows > 0){
+    $datos.="<table>
+                <thead>
+                    <tr>
+                        <td>Imagen</td>
+                        <td>Nombre</td>
+                        <td>Apellido Paterno</td>
+                        <td>Apellido Materno</td>
+                        <td>Telefono</td>
+                        <td>Email</td>
+                        <td>UserName</td>
+                    </tr>
+                </thead>
+                <tbody>";
+    while($row_datos = $resultado->fetch_assoc()){
+            $datos.=   "<tr>
+                           <td>".$row_datos['Nombre']."</td>
+                           <td>".$row_datos['ApellidoP']."</td>
+                           <td>".$row_datos['ApellidoM']."</td>
+                           <td>".$row_datos['Telefono']."</td>
+                           <td>".$row_datos['Email']."</td>
+                           <td>".$row_datos['UserName']."</td>     
+                        </tr>";
+    }
+    $datos.="</tbody>
+             </table>";
+}
+else{
+    $datos.= "No se encontraron datos";
+}
 
 
 ?>
