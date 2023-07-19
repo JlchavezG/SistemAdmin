@@ -231,8 +231,64 @@ if(isset($_POST['MoPassword'])){
             $AlertPass.="No hay datos que buscar";
     }
   }
+  
 // consulta busqueda usuarios live 
+   if(isset($_POST['buscar'])){
+   $On = 1; 
+   $Datos = $ConectionBd->real_escape_string($_POST['C_buscar']); 
+   $Busqueda = "SELECT * FROM Usuario WHERE Nombre LIKE '%$Datos%' OR ApellidoP LIKE '%$Datos%' OR 
+   ApellidoM LIKE '%$Datos%' OR Email LIKE '%$Datos%' OR UserName LIKE '%$Datos%'";
+   $BusquedaE = $ConectionBd->query($Busqueda);
+   if($BusquedaE ->num_rows > 0){
+      $datosM.="<div class='table-responsive container mt-2'>
+                <div class='col-sm-12 col-md-12 col-lg-12'> 
+                  <table class='table table-stripe table-hover'>
+                    <thead class='bg-light'>
+                      <tr>
+                        <th class='bg-light' scope='col'>Nombre</th>
+                        <th scope='col'>ApellidoPaterno</th>
+                        <th scope='col'>ApellidoMaterno</th>
+                        <th scope='col'>Telefono</th>
+                        <th scope='col'>Email</th>
+                        <th scope='col'>UserName</th>
+                        <th scope='col'>Fecha de Registro</th>
+                        <th scope='col'>Generar</th>
+                        <th scope='col'>Online</th>
 
+                      </tr>
+                    </thead>
+                    <tbody>";
+      while($LineaDatos = $BusquedaE->fetch_assoc()){
+        $datosM.="<tr>
+                    <td class='bg-light' scope='row'>".$LineaDatos['Nombre']."</td>
+                    <td class='bg-light' scope='row'>".$LineaDatos['ApellidoP']."</td>
+                    <td class='bg-light' scope='row'>".$LineaDatos['ApellidoM']."</td>
+                    <td class='bg-light' scope='row'>".$LineaDatos['Telefono']."</td>
+                    <td class='bg-light' scope='row'>".$LineaDatos['Email']."</td>
+                    <td class='bg-light' scope='row'>".$LineaDatos['UserName']."</td>
+                    <td class='bg-light' scope='row'>".$LineaDatos['FechaReg']."</td>
+                    <td class='bg-light' scope='row'>Excel</td>";
+                    if($LineaDatos['Online'] == $On){
+                      $IconOn = "<svg class='bi text-success' width='15' height='15' fill='currentColor'>
+                                    <use xlink:href='library/icons/bootstrap-icons.svg#circle-fill'/> 
+                                </svg>";
+                    }
+                    else{
+                      $IconOn = "<svg class='bi text-danger' width='15' height='15' fill='currentColor'>
+                                    <use xlink:href='library/icons/bootstrap-icons.svg#circle'/> 
+                                </svg>";
+                    }
+        $datosM.="<td class='bg-light' scope='row'>".$IconOn."</td>
+                  </tr>";
+      }              
+   }
+   else{
+      $datosM.="<div class='alert alert-light alert-dismissible fade show' role='alert'>
+                    <strong>No se Encontraron Coinsidencias en la busqueda</strong> Puedes buscar por Nombre, Apellidos, Email y Nombre de Usuario.
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>";
+   }
+  }
 
 
 ?>
