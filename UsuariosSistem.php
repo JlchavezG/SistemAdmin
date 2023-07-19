@@ -36,7 +36,6 @@ require "includes/Acciones.php"
 <?php include "process/ModalSoporte.php"?>
 <script src="js/dark-mode.js"></script>
 <script src="js/pace.js"></script>
-<script src="js/live.js"></script>
 </body>
 
 </html>
