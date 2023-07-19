@@ -24,6 +24,10 @@ $FinalU = $FinalUe->num_rows;
 $OnUser = "SELECT * FROM Usuario WHERE Online = 1";
 $COnUser = $ConectionBd->QUERY($OnUser);
 $TCOnUser = $COnUser->num_rows;
+// extraer el totas de usuarios activos 
+$UserAct = "SELECT * FROM Usuario WHERE EstatusUser = 1";
+$UserActE = $ConectionBd->query($UserAct);
+$TUserAct = $UserActE->num_rows;
 // obtener los registros toatales de materiales
 $CMateriales = "SELECT * FROM Materiales";
 $EMateriales = $ConectionBd->query($CMateriales);

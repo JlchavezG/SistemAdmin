@@ -76,17 +76,17 @@
                                         <li class="list-group-item bg-light">
                                             <svg class="bi text-success" width="20" height="20" fill="currentColor">
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#app-indicator"/> 
-                                            </svg><span>&nbsp; Usuarios Activos: </span>
+                                            </svg><span>&nbsp; Usuarios Activos: <span class="text-muted text-end fs-5"><?php echo $TUserAct; ?></span></span>
                                         </li>
                                         <li class="list-group-item bg-light">
                                             <svg class="bi text-primary" width="20" height="20" fill="currentColor">
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#app-indicator"/> 
-                                            </svg><span>&nbsp; Total de Usuarios: <?php echo $TUsuarios; ?></span>
+                                            </svg><span>&nbsp; Total de Usuarios:<span class="text-muted text-end fs-5"> <?php echo $TUsuarios; ?></span></span>
                                         </li>
                                         <li class="list-group-item bg-light">
                                             <svg class="bi text-danger" width="20" height="20" fill="currentColor">
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#app-indicator"/> 
-                                            </svg><span>&nbsp; Usuarios en linea: <?php echo $TCOnUser; ?></spa>
+                                            </svg><span>&nbsp; Usuarios en linea: <span class="text-muted text-end fs-5"><?php echo $TCOnUser; ?></span></spa>
                                         </li>
                                     </ul>
                                 </div>

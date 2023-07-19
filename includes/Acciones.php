@@ -245,6 +245,7 @@ if(isset($_POST['MoPassword'])){
                   <table class='table table-stripe table-hover'>
                     <thead class='bg-light'>
                       <tr>
+                        <th class='bg-light' scope='col'>Imagen</th>
                         <th class='bg-light' scope='col'>Nombre</th>
                         <th scope='col'>ApellidoPaterno</th>
                         <th scope='col'>ApellidoMaterno</th>
@@ -252,22 +253,22 @@ if(isset($_POST['MoPassword'])){
                         <th scope='col'>Email</th>
                         <th scope='col'>UserName</th>
                         <th scope='col'>Fecha de Registro</th>
-                        <th scope='col'>Generar</th>
                         <th scope='col'>Online</th>
+                        <th scope='col'>Opciones</th>
 
                       </tr>
                     </thead>
                     <tbody>";
       while($LineaDatos = $BusquedaE->fetch_assoc()){
         $datosM.="<tr>
+                    <td class='bg-light' scope='row'><img src='img/Users/".$LineaDatos['ImgUser']."' style='width: 30px; height: 30px;'></td>
                     <td class='bg-light' scope='row'>".$LineaDatos['Nombre']."</td>
                     <td class='bg-light' scope='row'>".$LineaDatos['ApellidoP']."</td>
                     <td class='bg-light' scope='row'>".$LineaDatos['ApellidoM']."</td>
                     <td class='bg-light' scope='row'>".$LineaDatos['Telefono']."</td>
                     <td class='bg-light' scope='row'>".$LineaDatos['Email']."</td>
                     <td class='bg-light' scope='row'>".$LineaDatos['UserName']."</td>
-                    <td class='bg-light' scope='row'>".$LineaDatos['FechaReg']."</td>
-                    <td class='bg-light' scope='row'>Excel</td>";
+                    <td class='bg-light' scope='row'>".$LineaDatos['FechaReg']."</td>";
                     if($LineaDatos['Online'] == $On){
                       $IconOn = "<svg class='bi text-success' width='15' height='15' fill='currentColor'>
                                     <use xlink:href='library/icons/bootstrap-icons.svg#circle-fill'/> 
@@ -279,6 +280,14 @@ if(isset($_POST['MoPassword'])){
                                 </svg>";
                     }
         $datosM.="<td class='bg-light' scope='row'>".$IconOn."</td>
+                  <td class='bg-light' scope='row'>
+                      <svg class='bi' width='15' height='15' fill='currentColor'>
+                        <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
+                      </svg> -
+                      <svg class='bi' width='15' height='15' fill='currentColor'>
+                        <use xlink:href='library/icons/bootstrap-icons.svg#trash3-fill'/> 
+                      </svg>
+                  </td>
                   </tr>";
       }              
    }
