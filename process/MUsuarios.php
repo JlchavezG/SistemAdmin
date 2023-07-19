@@ -95,7 +95,7 @@
                         <div class="row mt-3">
                             <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
                                 <div class="d-grid gap-2">
-                                    <a href="#" class="btn btn-outline-success rounded-pill py-1">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#NewUserModal" class="btn btn-outline-success rounded-pill py-1">
                                         <svg class="bi" width="20" height="20" fill="currentColor">
                                             <use xlink:href="library/icons/bootstrap-icons.svg#plus-circle-fill"/> 
                                         </svg><span>&nbsp; Nuevo Usuario</a>
@@ -115,6 +115,7 @@
         </div>
     </div>  
 </div>    
+<?php include "process/ModalNewUser.php";?>
 <script>
     (function () {
   'use strict'

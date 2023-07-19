@@ -242,7 +242,7 @@ if(isset($_POST['MoPassword'])){
    if($BusquedaE ->num_rows > 0){
       $datosM.="<div class='table-responsive container mt-2'>
                 <div class='col-sm-12 col-md-12 col-lg-12'> 
-                  <table class='table table-stripe table-hover'>
+                  <table class='table table-stripe'>
                     <thead class='bg-light'>
                       <tr>
                         <th class='bg-light' scope='col'>Imagen</th>
@@ -261,7 +261,7 @@ if(isset($_POST['MoPassword'])){
                     <tbody>";
       while($LineaDatos = $BusquedaE->fetch_assoc()){
         $datosM.="<tr>
-                    <td class='bg-light' scope='row'><img src='img/Users/".$LineaDatos['ImgUser']."' style='width: 30px; height: 30px;'></td>
+                    <td class='bg-light' scope='row'><img src='img/Users/".$LineaDatos['ImgUser']."'style='width: 30px; height: 30px;' class='rounded-circle'></td>
                     <td class='bg-light' scope='row'>".$LineaDatos['Nombre']."</td>
                     <td class='bg-light' scope='row'>".$LineaDatos['ApellidoP']."</td>
                     <td class='bg-light' scope='row'>".$LineaDatos['ApellidoM']."</td>
@@ -281,9 +281,11 @@ if(isset($_POST['MoPassword'])){
                     }
         $datosM.="<td class='bg-light' scope='row'>".$IconOn."</td>
                   <td class='bg-light' scope='row'>
+                      <a href='editar.php?Id_Usuario = ".$LineaDatos['Id_Usuario']."'>
                       <svg class='bi' width='15' height='15' fill='currentColor'>
                         <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
-                      </svg> -
+                      </svg>
+                      </a> -
                       <svg class='bi' width='15' height='15' fill='currentColor'>
                         <use xlink:href='library/icons/bootstrap-icons.svg#trash3-fill'/> 
                       </svg>
