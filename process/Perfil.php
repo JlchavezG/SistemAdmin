@@ -12,6 +12,7 @@ if (!file_exists($dir))
     $QrTelefono = $Perfil['Telefono'];
     $QrEmail = $Perfil['Email'];
     $QrPerfilU = $Perfil['NTUsuario'];
+    $QrFechaReg = $Perfil['FechaReg'];
     $QrContenido = 'BEGIN:VCARD' . "\n";
     $QrContenido .= 'FN:' . $QrNombre . " " . $QrApellidoP . $QrApellidoM . "\n";
     $QrContenido .= 'TEL;WORK;VOICE:' . $QrTelefono . "\n";
@@ -60,6 +61,11 @@ if (!file_exists($dir))
                                 <svg class="bi text-success" width="15" height="15" fill="currentColor">
                                     <use xlink:href="library/icons/bootstrap-icons.svg#person-vcard-fill" />
                                 </svg>&nbsp;&nbsp;Nickuser:&nbsp;<?php echo $Perfil['UserName']; ?>
+                            </li>
+                            <li class="list-group-item bg-light">
+                                <svg class="bi text-success" width="15" height="15" fill="currentColor">
+                                    <use xlink:href="library/icons/bootstrap-icons.svg#calendar" />
+                                </svg>&nbsp;&nbsp;Fecha de Registro:&nbsp;<?php echo $Perfil['FechaReg']; ?>
                             </li>
                         </ul>
                     </div>

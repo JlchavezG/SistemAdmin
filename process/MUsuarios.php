@@ -7,9 +7,10 @@
             <div class="b">
                 <div class="row py-2">
                     <div class="col-sm-12 col-md-10 col-lg-6 py-2 mt-3">
-                        <div class="input-group input-group-sm mb-">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Buscar</span>
-                            <input type="text" name="caja_busqueda" id="caja_busqueda" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        <div class="card shadow bg-light">
+                            <div class="row text-center">
+                                <span class="text-muted py-2">Usuarios</span>
+                            </div>    
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-10 col-lg-6">
