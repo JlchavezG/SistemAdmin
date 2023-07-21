@@ -4,7 +4,10 @@ require "includes/ConectBd.php";
 require "includes/configuracion.php";
 include "includes/consultas.php";
 require "library/phpqrcode/qrlib.php";
-require "includes/Acciones.php"
+require "includes/Acciones.php";
+if($Perfil['Id_TUsuario'] != 1){
+ header('location:AppProgres.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,7 +36,7 @@ require "includes/Acciones.php"
  else if($Tmenu == $MUsuario){include "process/MenuUsuarios.php";}?>
 <!-- terminar el menu -->
 <?php include "process/MUsuarios.php"; ?>
-<?php include "process/ModalSoporte.php";?>
+<?php include "process/ModalNewUser.php"; ?>  
 <script src="js/dark-mode.js"></script>
 <script src="js/pace.js"></script>
 </body>

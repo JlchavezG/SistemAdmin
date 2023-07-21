@@ -285,10 +285,7 @@ if(isset($_POST['MoPassword'])){
                       <svg class='bi' width='15' height='15' fill='currentColor'>
                         <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
                       </svg>
-                      </a> -
-                      <svg class='bi' width='15' height='15' fill='currentColor'>
-                        <use xlink:href='library/icons/bootstrap-icons.svg#trash3-fill'/> 
-                      </svg>
+                      </a>
                   </td>
                   </tr>";
       }              

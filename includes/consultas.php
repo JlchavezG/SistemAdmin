@@ -4,6 +4,10 @@ error_reporting(0);
 $CUsuuario = "SELECT * FROM Usuario";
 $EUsuario = $ConectionBd->query($CUsuuario);
 $TUsuarios = $EUsuario->num_rows;
+// obtener el numero de resgistros registrados en el año 2023
+$userReg = "SELECT * FROM Usuario WHERE (FechaReg) BETWEEN '2023-01-01' AND '2023-12-31'";
+$userRegE = $ConectionBd->query($userReg);
+$TuserReg = $userRegE->num_rows;
 // obtener el numero de registro dentro de tipos de usuario
 $CTUsuario = "SELECT * FROM TUsuario";
 $ECTUsuario = $ConectionBd->query($CTUsuario);
@@ -16,10 +20,18 @@ $TSuperU = $SuperUe->num_rows;
 $AdminU = "SELECT * FROM Usuario WHERE Id_TUsuario = 2";
 $AdminUe = $ConectionBd->query($AdminU);
 $TAdminU = $AdminUe->num_rows;
+// obtener el numero de usaurios docentes
+$DocenteUser = "SELECT * FROM Usuario WHERE Id_TUsuario = 3";
+$DocenteUserE = $ConectionBd->query($DocenteUser);
+$TDocenteUser = $DocenteUserE->num_rows; 
+// obtener el numero de usaurios alumnos
+$AlumnoUser = "SELECT * FROM Usuario WHERE Id_TUsuario = 4";
+$AlumnoUserE = $ConectionBd->query($DocenteUser);
+$TAlumnoUser = $DocenteUserE->num_rows; 
 // obtener el numero de usuarios tipo final
-$FinalU = "SELECT * FROM Usuario WHERE Id_TUsuario = 3";
+$FinalU = "SELECT * FROM Usuario WHERE Id_TUsuario = 3 and Id_TUsuario = 4";
 $FinalUe = $ConectionBd->query($FinalU);
-$FinalU = $FinalUe->num_rows;
+$TFinalU = $FinalUe->num_rows;
 // obtener los usuarios en online
 $OnUser = "SELECT * FROM Usuario WHERE Online = 1";
 $COnUser = $ConectionBd->QUERY($OnUser);
