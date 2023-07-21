@@ -232,7 +232,7 @@ if(isset($_POST['MoPassword'])){
     }
   }
   
-// consulta busqueda usuarios live 
+// consulta busqueda usuarios 
    if(isset($_POST['buscar'])){
    $On = 1; 
    $Datos = $ConectionBd->real_escape_string($_POST['C_buscar']); 
@@ -297,6 +297,24 @@ if(isset($_POST['MoPassword'])){
                 </div>";
    }
   }
-
+// registro nuevo usuario superUsuarios
+if(isset($_POST['btnRegistrar'])){
+$NewNombreR = $ConectionBd->real_escape_string($_POST['Nombre']);
+$NewApellidoPR = $ConectionBd->real_escape_string($_POST['ApellidoP']);
+$NewApellidoMR = $ConectionBd->real_escape_string($_POST['ApellidoM']);
+$NewTelefonoR = $ConectionBd->real_escape_string($_POST['Telefono']);
+$NewEmailR = $ConectionBd->real_escape_string($_POST['Email']);
+$NewPlantelR = $ConectionBd->real_escape_string($_POST['Plantel']);
+$NewTusuarioR = $ConectionBd->real_escape_string($_POST['Tusuario']);
+$NewUserNameR = $ConectionBd->real_escape_string($_POST['UserName']);
+$NewFechaR = date('Y-m-d');
+$NewPasswordR = $ConectionBd->real_escape_string($_POST['Password']);
+$NewOnlineR = 0;
+$NewEstatusR = 1;
+$NewImagenR = "imgUser1.png";
+echo $NewNombreR." ".$NewApellidoPR." ".$NewApellidoMR." ".$NewTelefonoR." ".$NewEmailR." ".
+$NewPlantelR." ".$NewTusuarioR." ".$NewUserNameR." ".$NewFechaR." ".$NewPasswordR." ".$NewOnlineR.
+" ".$NewEstatusR." ".$NewImagenR;
+}
 
 ?>
