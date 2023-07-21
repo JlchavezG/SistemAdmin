@@ -58,5 +58,6 @@ $EPlanteles = $ConectionBd->query($CPlanteles);
 $TPlanteles = $EPlanteles->num_rows;
 // fecha para dasboard
 $FechaD = date('d-m-Y');
+// obtener 
 
 ?>
