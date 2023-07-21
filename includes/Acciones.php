@@ -308,7 +308,7 @@ $NewPlantelR = $ConectionBd->real_escape_string($_POST['Plantel']);
 $NewTusuarioR = $ConectionBd->real_escape_string($_POST['Tusuario']);
 $NewUserNameR = $ConectionBd->real_escape_string($_POST['UserName']);
 $NewFechaR = date('Y-m-d');
-$NewPasswordR = $ConectionBd->real_escape_string($_POST['Password']);
+$NewPasswordR = $ConectionBd->real_escape_string(MD5($_POST['Password']));
 $NewOnlineR = 0;
 $NewEstatusR = 1;
 $NewImagenR = "imgUser1.png";
@@ -321,16 +321,31 @@ $UsernE = $ConectionBd->query($Usern);
 
 if($RemailE->num_rows > 0){
   $AccionUser.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                  <strong>Error al registrar Nuevo Usuario</strong> El Email ya se encuentra registrado en la plataforma verifica por favor.
+                  <strong>Error al registrar al Nuevo Usuario</strong> El Email ya se encuentra registrado en la plataforma verifica por favor.
                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                 </div>";
 }
 else if($UsernE->num_rows > 0){
   $AccionUser.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                  <strong>Error al registrar Nuevo Usuario</strong> El Nombre de Usuario ya se encuentra registrado en la plataforma verifica por favor.
+                  <strong>Error al registrar al Nuevo Usuario</strong> El Nombre del Usuario ya se encuentra registrado en la plataforma verifica por favor.
                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                 </div>";
 }
+else{
+  // consulta para registar nuevos usuarios 
+  $NewUserData = "INSERT INTO Usuario(Nombre,ApellidoP,ApellidoM,Telefono,Email,Id_Plantel,Id_TUsuario,UserName,FechaReg,Password,Online,
+  EstatusUser,ImgUser)VALUES('$NewNombreR','$NewApellidoPR','$NewApellidoMR','$NewTelefonoR','$NewEmailR','$NewPlantelR','$NewTusuarioR','$NewUserNameR','$NewFechaR','$NewPasswordR','$NewOnlineR','$NewEstatusR','$NewImagenR')";
+  $NewUserDataE = $ConectionBd->query($NewUserData);
+  if($NewUserDataE ->num_rows > 0){
+    $AccionUser.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    <strong>Registrar exitoso del Nuevo Usuario</strong> El Usuario ya se encuentra registrado en la plataforma para su uso.
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";
+                  header("refresh:5;UsuariosSistem.php");
+  }
+}
+
+
 
 
 }
