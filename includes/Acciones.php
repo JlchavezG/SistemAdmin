@@ -312,9 +312,27 @@ $NewPasswordR = $ConectionBd->real_escape_string($_POST['Password']);
 $NewOnlineR = 0;
 $NewEstatusR = 1;
 $NewImagenR = "imgUser1.png";
-echo $NewNombreR." ".$NewApellidoPR." ".$NewApellidoMR." ".$NewTelefonoR." ".$NewEmailR." ".
-$NewPlantelR." ".$NewTusuarioR." ".$NewUserNameR." ".$NewFechaR." ".$NewPasswordR." ".$NewOnlineR.
-" ".$NewEstatusR." ".$NewImagenR;
+// consulta para verificar si el email ya esta registrado en la plataforma
+$Remail = "SELECT Email FROM Usuario WHERE Email = '$NewEmailR'";
+$RemailE = $ConectionBd->query($Remail);
+// consulta para verificar si el userName ya esta registrado en la plataforma
+$Usern = "SELECT UserName FROM Usuario WHERE UserName = '$NewUserNameR'";
+$UsernE = $ConectionBd->query($Usern);
+
+if($RemailE->num_rows > 0){
+  $AccionUser.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                  <strong>Error al registrar Nuevo Usuario</strong> El Email ya se encuentra registrado en la plataforma verifica por favor.
+                  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>";
+}
+else if($UsernE->num_rows > 0){
+  $AccionUser.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                  <strong>Error al registrar Nuevo Usuario</strong> El Nombre de Usuario ya se encuentra registrado en la plataforma verifica por favor.
+                  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>";
+}
+
+
 }
 
 ?>

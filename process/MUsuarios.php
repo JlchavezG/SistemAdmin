@@ -2,6 +2,13 @@
     <div class="row mt-2 justify-content-center">
         <h2 class="text-center"><span>Modulo |</span><span class="text-success"> Usuarios</span> </h2>
     </div>
+    <div class="row mt-1 justify-content-center">
+        <div class="container">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <?php echo $AccionUser; ?>
+            </div>
+        </div>
+    </div>
     <div class="row mt-2 justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-12 mt-1">
             <div class="b">
