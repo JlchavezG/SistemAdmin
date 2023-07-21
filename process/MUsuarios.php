@@ -107,6 +107,12 @@
                                             <use xlink:href="library/icons/bootstrap-icons.svg#gear-wide-connected"/> 
                                         </svg><span>&nbsp; Opciones de Usuario</a>
                                 </div>
+                                <div class="d-grid gap-2 mt-2">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#ModalReporteUser" class="btn btn-outline-success rounded-pill py-1">
+                                        <svg class="bi" width="20" height="20" fill="currentColor">
+                                            <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-bar-graph-fill"/> 
+                                        </svg><span>&nbsp; Generar Reportes</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -123,6 +129,8 @@
     </div>  
 </div>  
 <?php include "process/ModalSoporte.php"; ?>
+<?php include "process/ModalUserReportes.php";?>
+<?php include "process/footer.php"; ?>
 
 <script>
     (function () {

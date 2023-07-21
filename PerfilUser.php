@@ -34,6 +34,7 @@ require "includes/Acciones.php"
  <?php include "process/Perfil.php"; ?>
 <!-- terminar el menu -->
 <?php include "process/ModalSoporte.php"; ?>
+<?php include "process/footer.php"; ?>
 <script src="js/dark-mode.js"></script>
 <script src="js/pace.js"></script>
 </body>

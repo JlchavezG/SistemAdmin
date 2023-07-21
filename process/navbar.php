@@ -160,8 +160,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <a href="includes/CerrarSesion.php" class="btn btn-sm btn-success">Cerrar Sesión</a>
+                <button type="button" class="btn btn-sm btn-outline-danger rounded-pill" data-bs-dismiss="modal">Cancelar</button>
+                <a href="includes/CerrarSesion.php" class="btn btn-sm btn-outline-success rounded-pill">Cerrar Sesión</a>
             </div>
         </div>
     </div>

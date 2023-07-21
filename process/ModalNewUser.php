@@ -12,7 +12,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">  
+      <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST" autocomplete="off" class="px-3 needs-validation" novalidate>  
         <div class="container">
             
             <div class="row mt-1">
@@ -68,24 +68,24 @@
                     <div class="row mt-1">
                       <div class="col-sm-12 col-md-12 col-lg-12">
                           <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="col-sm-12 col-md-12 col-lg-6">
                               <div class="form-floating">
                                 <select class="form-select" name="Plantel" id="Plantel" aria-label="Selecciona al plantel" required>
-                                    <option selected>Selecciona el plantel</option>
-                                    <option value="2">Naucalpan I</option>
-                                    <option value="3">Naucalpan II</option>
-                                    <option value="1">Tlanepantla</option>
+                                    <option value="">Selecciona el plantel</option>
+                                    <?php while($LineaPlantel = $EPlanteles->fetch_assoc()){ ?>
+                                    <option value="<?php echo $LineaPlantel['Id_Plantel']; ?>"><?php echo $LineaPlantel['NombrePlantel'] ?></option>
+                                    <?php } ?>
                                 </select>
                                 <label for="Planetl">Plantel Asignado</label>
                               </div>
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="form-floating">
                                 <select class="form-select" name="Tusuario" id="Tusuario" aria-label="Selecciona el tipo de usuario" required>
-                                    <option selected>Selecciona el tipo de usuario</option>
-                                    <option value="2">Super Usuario</option>
-                                    <option value="3">Administrativo</option>
-                                    <option value="1">Usuario Final</option>
+                                    <option value="">Selecciona el tipo de usuario</option>
+                                    <?php while($LineaTipo = $ECTUsuario->fetch_assoc()){?>
+                                    <option value="<?php echo $LineaTipo['Id_TUsuario'];?>"><?php echo $LineaTipo['NTUsuario'];?></option>
+                                    <?php } ?>
                                 </select>
                                 <label for="Planetl">Tipo de usuario Asignado</label>
                               </div>
@@ -123,10 +123,38 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-outline-success rounded-pill" data-bs-dismiss="modal">Cancelar</button>
-        <input type="submit" class="btn btn-sm btn-outline-danger rounded-pill" name="btnRegistrar" value="Registrar">
+        <button type="button" class="btn btn-sm btn-outline-danger rounded-pill" data-bs-dismiss="modal">Cancelar</button>
+        <input type="submit" class="btn btn-sm btn-outline-success rounded-pill" name="btnRegistrar" value="Registrar Nuevo Usuario">
       </div>
     </form>    
     </div>
   </div>
 </div>
+<script>
+                (function() {
+                    'use strict'
+
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.querySelectorAll('.needs-validation')
+
+                    // Loop over them and prevent submission
+                    Array.prototype.slice.call(forms)
+                        .forEach(function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (!form.checkValidity()) {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                }
+
+                                form.classList.add('was-validated')
+                            }, false)
+                        })
+                })()
+            </script>
+            <script type='text/javascript'>
+                $(function(){
+                $(document).bind("contextmenu",function(e){
+                return false;
+                });
+            });
+            </script>
