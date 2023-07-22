@@ -104,7 +104,7 @@
                                         </svg><span>&nbsp; Nuevo Usuario</a>
                                 </div>
                                 <div class="d-grid gap-2 mt-2">
-                                    <a href="#"  class="btn btn-outline-success rounded-pill py-1">
+                                    <a href="UsuariosOpciones.php"  class="btn btn-outline-success rounded-pill py-1">
                                         <svg class="bi" width="20" height="20" fill="currentColor">
                                             <use xlink:href="library/icons/bootstrap-icons.svg#gear-wide-connected"/> 
                                         </svg><span>&nbsp; Opciones de Usuario</a>
