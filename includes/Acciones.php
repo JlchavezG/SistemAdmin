@@ -336,12 +336,11 @@ else{
   $NewUserData = "INSERT INTO Usuario(Nombre,ApellidoP,ApellidoM,Telefono,Email,Id_Plantel,Id_TUsuario,UserName,FechaReg,Password,Online,
   EstatusUser,ImgUser)VALUES('$NewNombreR','$NewApellidoPR','$NewApellidoMR','$NewTelefonoR','$NewEmailR','$NewPlantelR','$NewTusuarioR','$NewUserNameR','$NewFechaR','$NewPasswordR','$NewOnlineR','$NewEstatusR','$NewImagenR')";
   $NewUserDataE = $ConectionBd->query($NewUserData);
-  if($NewUserDataE ->num_rows > 0){
+  if($NewUserDataE->num_rows > 0){
     $AccionUser.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
                     <strong>Registrar exitoso del Nuevo Usuario</strong> El Usuario ya se encuentra registrado en la plataforma para su uso.
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                   </div>";
-                  header("refresh:5;UsuariosSistem.php");
   }
 }
 

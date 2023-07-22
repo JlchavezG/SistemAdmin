@@ -25,7 +25,7 @@
                         <div class="card shadow bg-light">
                             <div class="row text-center">
                                 <span class="text-muted py-2">Grafica de Usuarios</span>
-                                <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
+                                <canvas id="myChart" style="position: relative; height:30vh; width:80vw"></canvas>
                             </div>    
                         </div>
                     </div>
@@ -34,29 +34,14 @@
                             <div class="col">
                                 <div class="card shadow bg-light">
                                         <div class="row text-center">
-                                            <span>Super Usuarios</span>
+                                            <span>Activos</span>
                                         </div>
                                     <div class="row text-center py-2">
                                         <div>
-                                            <svg class="bi" width="32" height="32" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#person-fill-gear"/> 
-                                            </svg>
-                                            <span class="text-success" style="font-size: 25px;"><?php echo $TSuperU; ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow bg-light">
-                                        <div class="row text-center">
-                                            <span>Usuarios Admin</span>
-                                        </div>
-                                    <div class="row text-center py-2">
-                                        <div>
-                                            <svg class="bi" width="32" height="32" fill="currentColor">
+                                            <svg class="bi text-success" width="32" height="32" fill="currentColor">
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#person-check"/> 
                                             </svg>
-                                            <span class="text-warning" style="font-size: 25px;"><?php echo $TAdminU; ?></span>
+                                            <span class="text-success" style="font-size: 25px;"><?php echo $TUserAct; ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -64,14 +49,29 @@
                             <div class="col">
                                 <div class="card shadow bg-light">
                                         <div class="row text-center">
-                                            <span>Usuarios Finales</span>
+                                            <span>Usuarios Online</span>
+                                        </div>
+                                    <div class="row text-center py-2">
+                                        <div>
+                                            <svg class="bi text-danger" width="32" height="32" fill="currentColor">
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#globe-americas"/> 
+                                            </svg>
+                                            <span class="text-warning" style="font-size: 25px;"><?php echo $TCOnUser; ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow bg-light">
+                                        <div class="row text-center">
+                                            <span>Total de Usuarios</span>
                                         </div>
                                     <div class="row text-center py-2">
                                         <div>
                                             <svg class="bi" width="32" height="32" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#person-fill"/> 
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#arrow-counterclockwise"/> 
                                             </svg>
-                                            <span class="text-secondary" style="font-size: 25px;"><?php echo $TFinalU ?></span>
+                                            <span class="text-secondary" style="font-size: 25px;"><?php echo $TUsuarios; ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -83,18 +83,13 @@
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item bg-light">
                                             <svg class="bi text-success" width="20" height="20" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#app-indicator"/> 
-                                            </svg><span>&nbsp; Usuarios Activos: <span class="text-muted text-end fs-5"><?php echo $TUserAct; ?></span></span>
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-spreadsheet"/> 
+                                            </svg><span>&nbsp; Generar Reporte en Excel </span>
                                         </li>
                                         <li class="list-group-item bg-light">
                                             <svg class="bi text-primary" width="20" height="20" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#app-indicator"/> 
-                                            </svg><span>&nbsp; Total de Usuarios:<span class="text-muted text-end fs-5"> <?php echo $TUsuarios; ?></span></span>
-                                        </li>
-                                        <li class="list-group-item bg-light">
-                                            <svg class="bi text-danger" width="20" height="20" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#app-indicator"/> 
-                                            </svg><span>&nbsp; Usuarios en linea: <span class="text-muted text-end fs-5"><?php echo $TCOnUser; ?></span></spa>
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-pdf-fill"/> 
+                                            </svg><span>&nbsp; Generar Reporte en PDF </span>
                                         </li>
                                     </ul>
                                 </div>
@@ -113,12 +108,6 @@
                                         <svg class="bi" width="20" height="20" fill="currentColor">
                                             <use xlink:href="library/icons/bootstrap-icons.svg#gear-wide-connected"/> 
                                         </svg><span>&nbsp; Opciones de Usuario</a>
-                                </div>
-                                <div class="d-grid gap-2 mt-2">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#ModalReporteUser" class="btn btn-outline-success rounded-pill py-1">
-                                        <svg class="bi" width="20" height="20" fill="currentColor">
-                                            <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-bar-graph-fill"/> 
-                                        </svg><span>&nbsp; Generar Reportes</a>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +158,7 @@ var myChart = new Chart(ctx, {
         labels: ['Total de Usuarios', 'SuperUsuarios', 'Administrativos', 'Docentes', 'Alumnos', 'Usuarios 2023'],
         datasets: [{
             label: 'Usuarios Registrados',
-            data: [<?php echo $TUsuarios ?>, <?php echo $TSuperU ?>, <?php echo $TAdminU ?>, <?php echo $TDocenteUser ?>, <?php echo $TAlumnoUser ?>, <?php echo $TuserReg ?>],
+            data: [<?php echo $TUsuarios ?>, <?php echo $TSuperU ?>, <?php echo $TAdminU ?>, <?php echo $TDocenteUser ?>, <?php echo $TAlumnoUserUser ?>, <?php echo $TuserReg ?>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

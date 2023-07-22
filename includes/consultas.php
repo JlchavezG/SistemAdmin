@@ -24,14 +24,10 @@ $TAdminU = $AdminUe->num_rows;
 $DocenteUser = "SELECT * FROM Usuario WHERE Id_TUsuario = 3";
 $DocenteUserE = $ConectionBd->query($DocenteUser);
 $TDocenteUser = $DocenteUserE->num_rows; 
-// obtener el numero de usaurios alumnos
+// obtener el numero de usuarios de tipo alumno 
 $AlumnoUser = "SELECT * FROM Usuario WHERE Id_TUsuario = 4";
-$AlumnoUserE = $ConectionBd->query($DocenteUser);
-$TAlumnoUser = $DocenteUserE->num_rows; 
-// obtener el numero de usuarios tipo final
-$FinalU = "SELECT * FROM Usuario WHERE Id_TUsuario = 3 and Id_TUsuario = 4";
-$FinalUe = $ConectionBd->query($FinalU);
-$TFinalU = $FinalUe->num_rows;
+$AlumnoUserE = $ConectionBd->query($AlumnoUser);
+$TAlumnoUserUser = $AlumnoUserE->num_rows; 
 // obtener los usuarios en online
 $OnUser = "SELECT * FROM Usuario WHERE Online = 1";
 $COnUser = $ConectionBd->QUERY($OnUser);
