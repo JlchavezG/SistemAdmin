@@ -344,9 +344,14 @@ else{
                   </div>";
   }
 }
+}
 
-
-
+// realizar consulta para generar reporte de suarios registrados entre las fechas solicitadas
+if(isset($_POST['btnBuscarF'])){
+$Fecha1 = $ConectionBd->real_escape_string($_POST['Fecha1']);
+$Fecha2 = $ConectionBd->real_escape_string($_POST['Fecha2']);
+$FechaRep = "SELECT * FROM Usuario WHERE (FechaReg) BETWEEN '$Fecha1' AND '$Fecha2'";
+$FechaRepE = $ConectionBd->query($FechaRep);
 
 }
 

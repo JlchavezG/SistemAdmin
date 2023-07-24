@@ -87,9 +87,11 @@
                                             </svg><span>&nbsp; Generar Reporte en Excel </span>
                                         </li>
                                         <li class="list-group-item bg-light">
+                                            <a href="process/ReporteUsuario.php" class="text-decoration-none">
                                             <svg class="bi text-primary" width="20" height="20" fill="currentColor">
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-pdf-fill"/> 
                                             </svg><span>&nbsp; Generar Reporte en PDF </span>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
