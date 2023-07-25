@@ -10,18 +10,13 @@ ob_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>Reporte Usuarios</title>
 </head>
 <body>
-    <div class="container mt-4">
-        <div class="row mt-3">
-            <span class="text-center text-muted">SistemAdmin | IscjlchavezG</span>
-        </div>
         <div class="row mt-3 justify-content-center">
             <div class="col-sm-10 col-md-10 col-lg-10">
                 <div class="row">
                     <div class="col-sm-4 col-md-4 col-lg-4">
-                        <img src="http//<?php echo $_SERVER['HTTP_HOST'] ?>/sistemadmin/img/Users/551186.jpeg" alt="Logotipo" class="img-fluid" style="width:150px;">
+                        <img src="../img/New_Logo_Gris_2023.png" alt="Logotipo" class="img-fluid" style="width:150px;">
                     </div>
                     <div class="col-sm-8 col-md-8 col-lg-8">
                             <div class="card shadow py-2">
@@ -37,17 +32,17 @@ ob_start();
                             </div>
                     </div>
                 </div>
+    </div>            
                 <div class="row mt-4">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="row mt-2">
                             <div class="card shadow">
                                 <div class="justify-content-center">
-                                <div class="table-responsive container py-2">
-                        <div class="table table-sm table-striped">
-                        <table class="table">
+                                <div class="">
+                        <div class="table">
+                        <table class="table table-bordered table-sm">
                                 <thead class="bg-light">
                                     <tr>
-                                        <th scope="col">Imagen</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">ApellidoP</th>
                                         <th scope="col">ApellidoM</th>
@@ -65,7 +60,6 @@ ob_start();
                                 <tbody>
                                 <tr>
                                     <?php while($row = $EjecutaUserG->fetch_assoc()) { ?>
-                                    <th scope="row" class=""><img src="../img/Users/<?php echo $row['ImgUser']; ?>" style="width:40px; height:40px;" class="rounded-pill"></th>
                                     <td scope="row" class="align-middle"><?php echo $row['Nombre']; ?></td>
                                     <td scope="row" class="align-middle"><?php echo $row['ApellidoP']; ?></td>
                                     <td scope="row" class="align-middle"><?php echo $row['ApellidoM']; ?></td>
@@ -97,23 +91,28 @@ ob_start();
                 </div>
             </div>
         </div>
-    </div>
+</div>
+<div class="container mt-4">
+    <div class="row mt-3">
+            <span class="text-center text-muted">SistemAdmin | IscjlchavezG</span>
+     </div>
 </div>
 </body>
 </html>
 <?php 
 $html = ob_get_clean();
+ echo $html;
 require_once("../library/dompdf/autoload.inc.php");
 use Dompdf\Dompdf;
 $dompdf = new Dompdf();
 $options = $dompdf->getOptions();
 $options->set(array('isRemoteEnabled' => true));
 $dompdf->setOptions($options);
-
 $dompdf->loadHtml($html);
+$dompdf->setPaper('A4','Landscape');
 //$dompdf->setPaper('latter');
-$dompdf->setPaper('A4','landscape');
-$dompdf->render();
-$dompdf->stream("reporte_usuarios_.pdf",array("attachment" => false));
 
+
+$dompdf->render();
+$dompdf->stream("Reporte_Usuarios_sistemas.pdf", array("Attachment" => false));
 ?>

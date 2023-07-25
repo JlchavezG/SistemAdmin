@@ -46,7 +46,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <?php while($row = $EjecutaUserG->fetch_assoc()) { ?>
+                                    <?php while($row = $EjecutaUserG->fetch_assoc()) { ?>   
                                     <th scope="row" class="bg-light"><img src="img/Users/<?php echo $row['ImgUser']; ?>" style="width:40px; height:40px;" class="rounded-pill"></th>
                                     <td scope="row" class="align-middle bg-light"><?php echo $row['Nombre']; ?></td>
                                     <td scope="row" class="align-middle bg-light"><?php echo $row['ApellidoP']; ?></td>
@@ -70,9 +70,11 @@
                                     <td scope="row" class="align-middle bg-light"><?php echo $IconOn; ?></td>
                                     <td scope="row" class="align-middle bg-light"><?php echo $row['DEstatusUser']; ?></td>
                                     <td scope="row" class="align-middle bg-light">
+                                        <a href="?Id_Usuario=<?php echo $row['Id_Usuario']; ?>" data-bs-toggle="modal" data-bs-target="#MoUser" class="text-decoration-none" >
                                         <svg class='bi text-success' width='15' height='15' fill='currentColor'>
                                             <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
-                                        </svg> - 
+                                        </svg>
+                                        </a>  -
                                         <svg class='bi text-success' width='15' height='15' fill='currentColor'>
                                             <use xlink:href='library/icons/bootstrap-icons.svg#trash3-fill'/> 
                                         </svg>
@@ -106,5 +108,9 @@
         </div>
     </div>
 </div>
+<?php 
+
+?>
+<?php include "process/modalModificarUsuario.php"; ?>
 <?php include "process/ModalSoporte.php"; ?>
 <?php include "process/footer.php"; ?>
