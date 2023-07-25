@@ -35,12 +35,7 @@ if($Perfil['Id_TUsuario'] != 1){
  else if($Tmenu == $MAdmin){include "process/MenuAdmin.php";}
  else if($Tmenu == $MUDocente){include "process/MenuUsuarios.php";}
  else if($Tmenu == $MAlumno){include "process/MenuAlumnos.php";}?>
- <?php 
- if($Tmenu == $Msistemas){include "process/EscritorioSistem.php";}
- else if($Tmenu == $MAdmin){include "process/EscritorioAdmin.php";}
- else if($Tmenu == $MUDocente){include "process/EscritorioDocente.php";}
- else if($Tmenu == $MAlumno){include "process/EscritorioAlumno.php";}
- ?>
+ 
 <!-- terminar el menu -->
 <?php include "process/MUsuarios.php"; ?>
 <?php include "process/ModalNewUser.php"; ?>  
