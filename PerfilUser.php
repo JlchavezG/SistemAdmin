@@ -30,7 +30,8 @@ require "includes/Acciones.php"
 <?php 
  if($Tmenu == $Msistemas){include "process/MenuSistem.php";}
  else if($Tmenu == $MAdmin){include "process/MenuAdmin.php";}
- else if($Tmenu == $MUsuario){include "process/MenuUsuarios.php";}?>
+ else if($Tmenu == $MUDocente){include "process/MenuUsuarios.php";}
+ else if($Tmenu == $MAlumno){include "process/MenuAlumnos.php";}?>
  <?php include "process/Perfil.php"; ?>
 <!-- terminar el menu -->
 <?php include "process/ModalSoporte.php"; ?>

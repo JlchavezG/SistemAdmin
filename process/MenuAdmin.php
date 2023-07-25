@@ -6,7 +6,7 @@
     <div class="offcanvas-body">
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item items">
-                <a href="#" class="nav-link">
+                <a href="AppProgres.php" class="nav-link">
                     <svg class="bi text-light" width="20" height="20" fill="currentColor">
                         <use xlink:href="library/icons/bootstrap-icons.svg#speedometer" />
                     </svg>&nbsp;&nbsp;&nbsp;<span class="text-light">DeshBoard</span>
@@ -55,7 +55,7 @@
                 </a>
             </li>
             <li class="nav-item items">
-                <a href="#" class="nav-link">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#CSesionModal" class="nav-link">
                     <svg class="bi text-light" width="20" height="20" fill="currentColor">
                         <use xlink:href="library/icons/bootstrap-icons.svg#power" />
                     </svg>&nbsp;&nbsp;&nbsp;<span class="text-light">Cerrar Sesión</span>
