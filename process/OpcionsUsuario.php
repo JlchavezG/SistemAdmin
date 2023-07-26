@@ -75,7 +75,7 @@
                                             <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
                                         </svg>
                                         </a>  -
-                                        <a onclick="return confirm('¿Deceas Eliminar al usuario?');" href="../includes/eliminarUsuario.php?Id_Usuario=<?php echo $row['Id_Usuario']; ?>">
+                                        <a onclick="return confirm('¿Deceas Eliminar al usuario?');" href="includes/EliminarUser.php?Id_Usuario=<?php echo $row['Id_Usuario']; ?>">
                                         <svg class='bi text-success' width='15' height='15' fill='currentColor'>
                                             <use xlink:href='library/icons/bootstrap-icons.svg#trash3-fill'/> 
                                         </svg>
