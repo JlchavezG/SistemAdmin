@@ -1,6 +1,12 @@
 <div class="container">
     <div class="row mt-2">
-        <div class="col-sm-6 col-md-6 col-lg-6">
+        <div class="col-sm-6 col-md-6 col-lg-6 mt-4">
+            <a href="UsuariosSistem.php" class="text-decoration-none">
+            <svg class='bi text-success' width='25' height='25' fill='currentColor'>
+                <use xlink:href='library/icons/bootstrap-icons.svg#arrow-left-circle-fill'/> 
+            </svg>
+            </a>
+            <span>Regresar a Usuarios</span>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
@@ -11,7 +17,7 @@
                 <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
                     <input type="date" name="Fecha2" id="Fecha2" class="form-control" required />
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
+                <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
                     <input type="submit" name="btnBuscarF" value="Generar Reporte" class="btn btn-sm btn-outline-success rounded-pill"/>
                 </div>
             </div>

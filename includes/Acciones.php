@@ -319,7 +319,6 @@ $RemailE = $ConectionBd->query($Remail);
 // consulta para verificar si el userName ya esta registrado en la plataforma
 $Usern = "SELECT UserName FROM Usuario WHERE UserName = '$NewUserNameR'";
 $UsernE = $ConectionBd->query($Usern);
-
 if($RemailE->num_rows > 0){
   $AccionUser.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                   <strong>Error al registrar al Nuevo Usuario</strong> El Email ya se encuentra registrado en la plataforma verifica por favor.
@@ -332,17 +331,18 @@ else if($UsernE->num_rows > 0){
                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                 </div>";
 }
-else{
+else {
   // consulta para registar nuevos usuarios 
   $NewUserData = "INSERT INTO Usuario(Nombre,ApellidoP,ApellidoM,Telefono,Email,Id_Plantel,Id_TUsuario,UserName,FechaReg,Password,Online,
   EstatusUser,ImgUser)VALUES('$NewNombreR','$NewApellidoPR','$NewApellidoMR','$NewTelefonoR','$NewEmailR','$NewPlantelR','$NewTusuarioR','$NewUserNameR','$NewFechaR','$NewPasswordR','$NewOnlineR','$NewEstatusR','$NewImagenR')";
   $NewUserDataE = $ConectionBd->query($NewUserData);
   if($NewUserDataE->num_rows > 0){
     $AccionUser.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                    <strong>Registrar exitoso del Nuevo Usuario</strong> El Usuario ya se encuentra registrado en la plataforma para su uso.
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                      <strong>Excelente el Nuevo Usuario se registro con exito</strong> ElUsuario ya se encuentra registrado en la plataforma verifica por favor.
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                   </div>";
   }
+
 }
 }
 
