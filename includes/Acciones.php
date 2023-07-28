@@ -337,7 +337,7 @@ else {
   EstatusUser,ImgUser)VALUES('$NewNombreR','$NewApellidoPR','$NewApellidoMR','$NewTelefonoR','$NewEmailR','$NewPlantelR','$NewTusuarioR','$NewUserNameR','$NewFechaR','$NewPasswordR','$NewOnlineR','$NewEstatusR','$NewImagenR')";
   $NewUserDataE = $ConectionBd->query($NewUserData);
   if($NewUserDataE->num_rows > 0){
-    $AccionUser.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
+    $AccionNewU.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
                       <strong>Excelente el Nuevo Usuario se registro con exito</strong> ElUsuario ya se encuentra registrado en la plataforma verifica por favor.
                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                   </div>";
