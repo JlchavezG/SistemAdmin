@@ -240,9 +240,9 @@ if(isset($_POST['MoPassword'])){
    ApellidoM LIKE '%$Datos%' OR Email LIKE '%$Datos%' OR UserName LIKE '%$Datos%'";
    $BusquedaE = $ConectionBd->query($Busqueda);
    if($BusquedaE ->num_rows > 0){
-      $datosM.="<div class='table-responsive container mt-2'>
+      $datosM.="<div class='table-responsive container mt-2 mb-3'>
                 <div class='col-sm-12 col-md-12 col-lg-12'> 
-                  <table class='table table-stripe'>
+                  <table class='table'>
                     <thead class='bg-light'>
                       <tr>
                         <th class='bg-light' scope='col'>Imagen</th>
@@ -255,7 +255,6 @@ if(isset($_POST['MoPassword'])){
                         <th scope='col'>Fecha de Registro</th>
                         <th scope='col'>Online</th>
                         <th scope='col'>Opciones</th>
-
                       </tr>
                     </thead>
                     <tbody>";
@@ -282,9 +281,9 @@ if(isset($_POST['MoPassword'])){
         $datosM.="<td class='bg-light' scope='row'>".$IconOn."</td>
                   <td class='bg-light' scope='row'>
                       <a href='editar.php?Id_Usuario = ".$LineaDatos['Id_Usuario']."'>
-                      <svg class='bi' width='15' height='15' fill='currentColor'>
-                        <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
-                      </svg>
+                          <svg class='bi' width='15' height='15' fill='currentColor'>
+                            <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
+                          </svg>
                       </a>
                   </td>
                   </tr>";

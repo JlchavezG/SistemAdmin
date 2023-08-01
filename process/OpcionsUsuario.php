@@ -1,37 +1,43 @@
 <div class="container">
     <div class="row mt-2">
-        <div class="col-sm-6 col-md-6 col-lg-6 mt-4">
-            <a href="UsuariosSistem.php" class="text-decoration-none">
-            <svg class='bi text-success' width='25' height='25' fill='currentColor'>
-                <use xlink:href='library/icons/bootstrap-icons.svg#arrow-left-circle-fill'/> 
-            </svg>
-            </a>
-            <span>Regresar a Usuarios</span>
+                <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
+                    <a href="UsuariosSistem.php" class="text-decoration-none">
+                        <svg class='bi text-success' width='25' height='25' fill='currentColor'>
+                            <use xlink:href='library/icons/bootstrap-icons.svg#arrow-left-circle-fill'/> 
+                        </svg>
+                    </a>
+                    <span>Regresar a Usuarios</span>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 mt-1"></div>
+    </div> 
+    <div class="row mt-1">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="needs-validation" novalidate method="POST"/>
+                <div class="row mt-2">
+                    <div class="input-group mb-1">
+                        <input type="text" class="form-control" name="C_buscar" placeholder="Usuario a buscar" aria-label="Busqueda" aria-describedby="button-addon2" required>
+                        <button class="btn btn-outline-success" type="submit" id="buscar" name="buscar">Buscar</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <div class="row mt-1">
-                <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
-                    <input type="date" name="Fecha1" id="Fecha1" class="form-control" required />
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
-                    <input type="date" name="Fecha2" id="Fecha2" class="form-control" required />
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
-                    <input type="submit" name="btnBuscarF" value="Generar Reporte" class="btn btn-sm btn-outline-success rounded-pill"/>
+    </div>  
+    <div class="row mt-2 justify-content-center mb-2">
+        <div class="container">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="py-3" id="datos">
+                    <?php echo $datosM;?>
                 </div>
             </div>
-        </form>    
-        
         </div>
-    </div>
+    </div>    
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="row mt-3 py-2">
                 <div class="card shadow bg-light">
                     <div class="table-responsive container py-2">
                         <div class="table table-sm table-striped">
-                        <table class="table">
+                            <table class="table">
                                 <thead class="bg-light">
                                     <tr>
                                         <th scope="col">Imagen</th>
@@ -47,22 +53,21 @@
                                         <th scope="col">Online</th>
                                         <th scope="col">Estatus</th>
                                         <th scope="col">Opciones</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <?php while($row = $EjecutaUserG->fetch_assoc()) { ?>   
-                                    <th scope="row" class="bg-light"><img src="img/Users/<?php echo $row['ImgUser']; ?>" style="width:40px; height:40px;" class="rounded-pill"></th>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['Nombre']; ?></td>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['ApellidoP']; ?></td>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['ApellidoM']; ?></td>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['Telefono']; ?></td>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['Email']; ?></td>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['NombrePlantel']; ?></td>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['NTUsuario']; ?></td>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['UserName']; ?></td>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['FechaReg']; ?></td>
+                                    <tr>
+                                        <?php while($row = $EjecutaUserG->fetch_assoc()) { ?>   
+                                        <th scope="row" class="bg-light"><img src="img/Users/<?php echo $row['ImgUser']; ?>" style="width:40px; height:40px;" class="rounded-pill"></th>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['Nombre']; ?></td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['ApellidoP']; ?></td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['ApellidoM']; ?></td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['Telefono']; ?></td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['Email']; ?></td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['NombrePlantel']; ?></td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['NTUsuario']; ?></td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['UserName']; ?></td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['FechaReg']; ?></td>
                                         <?php $On = 1; if($row['Online'] == $On){
                                             $IconOn = "<svg class='bi text-success' width='15' height='15' fill='currentColor'>
                                                         <use xlink:href='library/icons/bootstrap-icons.svg#circle-fill'/> 
@@ -73,31 +78,30 @@
                                                         <use xlink:href='library/icons/bootstrap-icons.svg#circle'/> 
                                                     </svg>";
                                             } ?>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $IconOn; ?></td>
-                                    <td scope="row" class="align-middle bg-light"><?php echo $row['DEstatusUser']; ?></td>
-                                    <td scope="row" class="align-middle bg-light">
-                                        <a href="?Id_Usuario=<?php echo $row['Id_Usuario']; ?>" data-bs-toggle="modal" data-bs-target="#MoUser" class="text-decoration-none" >
-                                        <svg class='bi text-success' width='15' height='15' fill='currentColor'>
-                                            <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
-                                        </svg>
-                                        </a>  -
-                                        <a onclick="return confirm('¿Deceas Eliminar al usuario?');" href="includes/EliminarUser.php?Id_Usuario=<?php echo $row['Id_Usuario']; ?>">
-                                        <svg class='bi text-success' width='15' height='15' fill='currentColor'>
-                                            <use xlink:href='library/icons/bootstrap-icons.svg#trash3-fill'/> 
-                                        </svg>
-                                        </a>
-                                    </td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $IconOn; ?></td>
+                                        <td scope="row" class="align-middle bg-light"><?php echo $row['DEstatusUser']; ?></td>
+                                        <td scope="row" class="align-middle bg-light">
+                                            <a href="?Id_Usuario=<?php echo $row['Id_Usuario']; ?>" data-bs-toggle="modal" data-bs-target="#MoUser" class="text-decoration-none" >
+                                                <svg class='bi text-success' width='15' height='15' fill='currentColor'>
+                                                    <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
+                                                </svg>
+                                            </a>  -
+                                            <a onclick="return confirm('¿Deceas Eliminar al usuario?');" href="includes/EliminarUser.php?Id_Usuario=<?php echo $row['Id_Usuario']; ?>">
+                                                <svg class='bi text-success' width='15' height='15' fill='currentColor'>
+                                                    <use xlink:href='library/icons/bootstrap-icons.svg#trash3-fill'/> 
+                                                </svg>
+                                            </a>
+                                        </td>
                                     </tr>  
                                     <?php } ?>
                                 </tbody>
-                                
-                        </table>        
+                            </table>        
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-2 justify-content-center">
+        <div class="row mt-2 py-2 justify-content-center">
             <div class="col-sm-10 col-md-10 col-lg-10">
                 <nav aria-label="Paginacion">
                     <ul class="pagination justify-content-center">
@@ -114,11 +118,19 @@
                 </nav>
             </div>
         </div>
-    </div>
-</div>
-<?php 
+   
 
-?>
+
+
+
+    </div>
+    
+
+
+
+
+</div>   
+<?php include "process/footer.php"; ?>    
 <?php include "process/modalModificarUsuario.php"; ?>
 <?php include "process/ModalSoporte.php"; ?>
-<?php include "process/footer.php"; ?>
+

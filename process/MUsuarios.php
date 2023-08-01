@@ -14,14 +14,7 @@
             <div class="b">
                 <div class="row py-2">
                     <div class="col-sm-12 col-md-12 col-lg-6 py-2 mt-1">
-                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="needs-validation" novalidate method="POST"/>
-                        <div class="row">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="C_buscar" placeholder="Usuario a buscar" aria-label="Busqueda" aria-describedby="button-addon2" required>
-                                <button class="btn btn-outline-success" type="submit" id="buscar" name="buscar">Buscar</button>
-                            </div>
-                        </div>
-                        </form>
+                        
                         <div class="card shadow bg-light">
                             <div class="row text-center">
                                 <span class="text-muted py-2">Grafica de Usuarios</span>
@@ -78,6 +71,21 @@
                             </div>
                         </div>
                         <div class="row mt-2">
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                                <div class="row mt-1">
+                                    <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
+                                        <input type="date" name="Fecha1" id="Fecha1" class="form-control" required />
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
+                                        <input type="date" name="Fecha2" id="Fecha2" class="form-control" required />
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
+                                        <input type="submit" name="btnBuscarF" value="Generar Reporte" class="btn btn-sm btn-outline-success rounded-pill"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row mt-2">
                             <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
                                 <div class="card shadow bg-light">
                                     <ul class="list-group list-group-flush">
@@ -118,18 +126,11 @@
             </div>
         </div>
     </div> 
-    <div class="row mt-3 text-center ">
-        <div class="col-sm-12 col-md-12 col-lg-12 mt-1">
-            <div class="card shadow bg-light py-3" id="datos">
-                    <?php echo $datosM;?>
-            </div>
-        </div>
-    </div>  
+      
 </div>  
 <?php include "process/ModalSoporte.php"; ?>
 <?php include "process/ModalUserReportes.php";?>
 <?php include "process/footer.php"; ?>
-
 <script>
     (function () {
   'use strict'
