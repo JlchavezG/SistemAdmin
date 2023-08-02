@@ -77,7 +77,7 @@ if (!file_exists($dir))
                 <div class="row mt-4 text-center justify-content-center">
                     <div class="col-sm-1 col-md-1 col-lg-1 rounded  text-light me-1">
                         <div class="row mt-1 py-2">
-                            <a href="#" id="printButton" class="text-decoration-none">
+                            <a href="javascript:print();" id="printButton" class="text-decoration-none">
                             <svg class="bi text-success" width="20" height="20" fill="currentColor">
                                 <use xlink:href="library/icons/bootstrap-icons.svg#printer-fill" />
                             </svg>
@@ -118,6 +118,11 @@ if (!file_exists($dir))
         </div>
     </div>
 </div>
+<script>
+    function print()
+        window.open("../includes/PrintPerfil.php");
+        
+</script>
 <?php include "process/ModalPerfil.php"; ?>
 <?php include "process/ModalImagenPerfil.php";?>
 <?php include "process/PasswordlModal.php"; ?>
