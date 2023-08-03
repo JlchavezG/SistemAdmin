@@ -121,7 +121,6 @@ if (!file_exists($dir))
 <script>
     function print()
         window.open("../includes/PrintPerfil.php");
-        
 </script>
 <?php include "process/ModalPerfil.php"; ?>
 <?php include "process/ModalImagenPerfil.php";?>

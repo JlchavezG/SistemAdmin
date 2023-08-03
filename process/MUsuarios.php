@@ -18,7 +18,7 @@
                         <div class="card shadow bg-light">
                             <div class="row text-center">
                                 <span class="text-muted py-2">Grafica de Usuarios</span>
-                                <canvas id="myChart" style="position: relative; height:30vh; width:80vw"></canvas>
+                                <canvas id="myChart" style="position: relative; height:35vh; width:80vw"></canvas>
                             </div>    
                         </div>
                     </div>
@@ -80,26 +80,34 @@
                                         <input type="date" name="Fecha2" id="Fecha2" class="form-control" required />
                                     </div>
                                     <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
-                                        <input type="submit" name="btnBuscarF" value="Generar Reporte" class="btn btn-sm btn-outline-success rounded-pill"/>
+                                        <div class="d-grid gap-2">
+                                            <input type="submit" name="btnBuscarF" value="Generar Reporte por fechas" class="btn btn-sm btn-outline-success rounded-pill"/>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="row mt-2">
+                            <span class="text-center fw-light">Generación de Reportes</span>
                             <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
                                 <div class="card shadow bg-light">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item bg-light">
                                             <svg class="bi text-success" width="20" height="20" fill="currentColor">
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-spreadsheet"/> 
-                                            </svg><span>&nbsp; Generar Reporte en Excel </span>
+                                            </svg>
+                                            <span>
+                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Reporte General en Excel</a> 
+                                            </span>
                                         </li>
                                         <li class="list-group-item bg-light">
-                                            <a href="process/ReporteUsuario.php" class="text-decoration-none">
-                                            <svg class="bi text-primary" width="20" height="20" fill="currentColor">
+                                            <svg class="bi text-success" width="20" height="20" fill="currentColor">
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-pdf-fill"/> 
-                                            </svg><span>&nbsp; Generar Reporte en PDF </span>
-                                            </a>
+                                            </svg>
+                                            <span>
+                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Reporte General en PDF </a> 
+                                            </span>
+                                           
                                         </li>
                                     </ul>
                                 </div>
@@ -107,18 +115,28 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
-                                <div class="d-grid gap-2">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#NewUserModal" class="btn btn-outline-success rounded-pill py-1">
-                                        <svg class="bi" width="20" height="20" fill="currentColor">
-                                            <use xlink:href="library/icons/bootstrap-icons.svg#plus-circle-fill"/> 
-                                        </svg><span>&nbsp; Nuevo Usuario</a>
+                            <div class="card shadow bg-light">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-light">
+                                            <svg class="bi text-success" width="20" height="20" fill="currentColor">
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-spreadsheet"/> 
+                                            </svg>
+                                            <span>
+                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Reporte General en Excel</a> 
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item bg-light">
+                                            <svg class="bi text-success" width="20" height="20" fill="currentColor">
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-pdf-fill"/> 
+                                            </svg>
+                                            <span>
+                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Reporte General en PDF </a> 
+                                            </span>
+                                           
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="d-grid gap-2 mt-2">
-                                    <a href="UsuariosOpciones.php"  class="btn btn-outline-success rounded-pill py-1">
-                                        <svg class="bi" width="20" height="20" fill="currentColor">
-                                            <use xlink:href="library/icons/bootstrap-icons.svg#gear-wide-connected"/> 
-                                        </svg><span>&nbsp; Opciones de Usuario</a>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -192,3 +210,21 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
+
+
+
+
+<div class="d-grid gap-2">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#NewUserModal" class="btn btn-outline-success rounded-pill py-1">
+                                        <svg class="bi" width="20" height="20" fill="currentColor">
+                                            <use xlink:href="library/icons/bootstrap-icons.svg#plus-circle-fill"/> 
+                                        </svg><span>&nbsp; Nuevo Usuario</a>
+                                </div>
+
+
+                                <div class="d-grid gap-2 mt-2">
+                                    <a href="UsuariosOpciones.php"  class="btn btn-outline-success rounded-pill py-1">
+                                        <svg class="bi" width="20" height="20" fill="currentColor">
+                                            <use xlink:href="library/icons/bootstrap-icons.svg#gear-wide-connected"/> 
+                                        </svg><span>&nbsp; Opciones de Usuario</a>
+                                </div>
