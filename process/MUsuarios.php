@@ -89,7 +89,7 @@
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-pdf-fill"/> 
                                             </svg>
                                             <span>
-                                                <a href="javascript:Busqueda();" class="text-decoration-none text-muted">&nbsp; Busqueda de Usuario </a> 
+                                                <a href="" class="text-decoration-none text-muted">&nbsp; Busqueda de Usuario </a> 
                                             </span>
                                         </li>
                                     </ul>
