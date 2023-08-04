@@ -57,7 +57,7 @@
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-pdf-fill"/> 
                                             </svg>
                                             <span>
-                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Reporte General en PDF </a> 
+                                                <a href="includes/RUsuario_pdf.php" target="_blank" class="text-decoration-none text-muted">&nbsp; Reporte General en PDF </a> 
                                             </span>
                                         </li>
                                     </ul>
