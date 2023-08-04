@@ -14,63 +14,16 @@
             <div class="b">
                 <div class="row py-2">
                     <div class="col-sm-12 col-md-12 col-lg-6 py-2 mt-1">
-                        
                         <div class="card shadow bg-light">
                             <div class="row text-center">
                                 <span class="text-muted py-2">Grafica de Usuarios</span>
-                                <canvas id="myChart" style="position: relative; height:35vh; width:80vw"></canvas>
+                                <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
                             </div>    
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-6">
-                        <div class="row py-2">
-                            <div class="col">
-                                <div class="card shadow bg-light">
-                                        <div class="row text-center">
-                                            <span>Activos</span>
-                                        </div>
-                                    <div class="row text-center py-2">
-                                        <div>
-                                            <svg class="bi text-success" width="32" height="32" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#person-check"/> 
-                                            </svg>
-                                            <span class="text-success" style="font-size: 25px;"><?php echo $TUserAct; ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow bg-light">
-                                        <div class="row text-center">
-                                            <span>Usuarios Online</span>
-                                        </div>
-                                    <div class="row text-center py-2">
-                                        <div>
-                                            <svg class="bi text-danger" width="32" height="32" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#globe-americas"/> 
-                                            </svg>
-                                            <span class="text-warning" style="font-size: 25px;"><?php echo $TCOnUser; ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card shadow bg-light">
-                                        <div class="row text-center">
-                                            <span>Total de Usuarios</span>
-                                        </div>
-                                    <div class="row text-center py-2">
-                                        <div>
-                                            <svg class="bi" width="32" height="32" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#arrow-counterclockwise"/> 
-                                            </svg>
-                                            <span class="text-secondary" style="font-size: 25px;"><?php echo $TUsuarios; ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row mt-2">
+                        <span class="text-center fw-light">Generación de Reportes</span>
                             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                                 <div class="row mt-1">
                                     <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
@@ -88,7 +41,6 @@
                             </form>
                         </div>
                         <div class="row mt-2">
-                            <span class="text-center fw-light">Generación de Reportes</span>
                             <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
                                 <div class="card shadow bg-light">
                                     <ul class="list-group list-group-flush">
@@ -107,7 +59,6 @@
                                             <span>
                                                 <a href="#" class="text-decoration-none text-muted">&nbsp; Reporte General en PDF </a> 
                                             </span>
-                                           
                                         </li>
                                     </ul>
                                 </div>
@@ -119,10 +70,18 @@
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item bg-light">
                                             <svg class="bi text-success" width="20" height="20" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-spreadsheet"/> 
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#plus-circle-fill"/> 
                                             </svg>
                                             <span>
-                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Reporte General en Excel</a> 
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#NewUserModal" class="text-decoration-none text-muted">&nbsp; Nuevo Usuario</a> 
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item bg-light">
+                                            <svg class="bi text-success" width="20" height="20" fill="currentColor">
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#gear-wide-connected"/> 
+                                            </svg>
+                                            <span>
+                                                <a href="UsuariosOpciones.php" class="text-decoration-none text-muted">&nbsp; Opciones de Usuario </a> 
                                             </span>
                                         </li>
                                         <li class="list-group-item bg-light">
@@ -130,13 +89,11 @@
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-pdf-fill"/> 
                                             </svg>
                                             <span>
-                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Reporte General en PDF </a> 
+                                                <a href="javascript:Busqueda();" class="text-decoration-none text-muted">&nbsp; Busqueda de Usuario </a> 
                                             </span>
-                                           
                                         </li>
                                     </ul>
                                 </div>
-                               
                             </div>
                         </div>
                     </div>
@@ -144,12 +101,80 @@
             </div>
         </div>
     </div> 
-      
-</div>  
+    <div class="row mt-2">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="row py-2 mt-2">
+                    <div class="col">
+                        <div class="card shadow bg-light">
+                            <div class="row text-center">
+                                <span>Activos</span>
+                            </div>
+                            <div class="row text-center py-2">
+                                <div>
+                                    <svg class="bi text-success" width="32" height="32" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#person-check"/> 
+                                    </svg>
+                                    <span class="text-success" style="font-size: 25px;"><?php echo $TUserAct; ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow bg-light">
+                            <div class="row text-center">
+                                <span>Usuarios Online</span>
+                            </div>
+                            <div class="row text-center py-2">
+                                <div>
+                                    <svg class="bi text-danger" width="32" height="32" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#globe-americas"/> 
+                                    </svg>
+                                    <span class="text-warning" style="font-size: 25px;"><?php echo $TCOnUser; ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow bg-light">
+                            <div class="row text-center">
+                                <span>Total de Usuarios</span>
+                            </div>
+                            <div class="row text-center py-2">
+                                <div>
+                                    <svg class="bi text-muted" width="32" height="32" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#hand-index-fill"/> 
+                                    </svg>
+                                    <span class="text-secondary" style="font-size: 25px;"><?php echo $TUsuarios; ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card shadow bg-light">
+                            <div class="row text-center">
+                                <span>Notificaciones</span>
+                            </div>
+                            <div class="row text-center py-2">
+                                <div>
+                                    <svg class="bi text-warning" width="32" height="32" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#bell-fill"/> 
+                                    </svg>
+                                    <span class="text-secondary" style="font-size: 25px;"><?php  ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>    
 <?php include "process/ModalSoporte.php"; ?>
 <?php include "process/ModalUserReportes.php";?>
 <?php include "process/footer.php"; ?>
 <script>
+
     (function () {
   'use strict'
 
@@ -210,21 +235,3 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
-
-
-
-
-<div class="d-grid gap-2">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#NewUserModal" class="btn btn-outline-success rounded-pill py-1">
-                                        <svg class="bi" width="20" height="20" fill="currentColor">
-                                            <use xlink:href="library/icons/bootstrap-icons.svg#plus-circle-fill"/> 
-                                        </svg><span>&nbsp; Nuevo Usuario</a>
-                                </div>
-
-
-                                <div class="d-grid gap-2 mt-2">
-                                    <a href="UsuariosOpciones.php"  class="btn btn-outline-success rounded-pill py-1">
-                                        <svg class="bi" width="20" height="20" fill="currentColor">
-                                            <use xlink:href="library/icons/bootstrap-icons.svg#gear-wide-connected"/> 
-                                        </svg><span>&nbsp; Opciones de Usuario</a>
-                                </div>
