@@ -26,6 +26,10 @@ include "includes/ProLogin.php";
 
             </div>
             <div class="row py-1">
+                <div id="estado" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span> Actualmente tu conexión a internet es estable</span> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 <div class="col"></div>
                 <div class="col"></div>
                 <div class="col">
@@ -171,6 +175,26 @@ include "includes/ProLogin.php";
                 return false;
                 });
             });
+            </script>
+            <script>
+                var verificarconexion = function() {
+    var estado = document.getElementById('estado');
+ 
+    if ( navigator.onLine && estado.classList.contains('alert-danger') ) {
+        estado.innerHTML = 'Estas Conectado a Internet !';
+        estado.classList.remove('alert-danger');
+        estado.classList.add('alert-success');
+    }
+    if ( ! navigator.onLine && estado.classList.contains('alert-success') ) {
+        estado.innerHTML = 'Estas Desconectado de Internet !';
+        estado.classList.remove('alert-success');
+        estado.classList.add('alert-danger'); 
+    }
+};
+ 
+window.addEventListener('online', verificarconexion);
+window.addEventListener('offline', verificarconexion);
+ 
             </script>
 </body>
 
