@@ -16,6 +16,7 @@ TU.Id_TUsuario, TU.NTUsuario, ES.Id_EstatusUser, ES.DEstatusUser FROM Usuario U 
 Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario = TU.Id_TUsuario 
 INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser WHERE UserName = '$usuario' ORDER BY NombrePlantel ASC"; 
 $verificar = $ConectionBd->query($UserIngresa);
+
 $Perfil = $verificar->fetch_array();
 // configurar la zona horaria de nuestro servidor
 ini_Set('date.timezone','America/Mexico_City');
