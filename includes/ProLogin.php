@@ -20,6 +20,7 @@ if (isset($_POST['BtnLogin'])) {
     if ($usuario == $userok && $password == $passwordok) {
       $_SESSION['loguin'] = TRUE;
       $_SESSION['Usuario'] = $usuario;
+      
       header("location:AppProgres.php");
     } else {
       $alerta .= "<div class='alert alert-danger alert-dismissible fade show shadow' role='alert'>
