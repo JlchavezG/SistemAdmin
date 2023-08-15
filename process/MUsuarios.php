@@ -22,25 +22,9 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-6">
+                        
                         <div class="row mt-2">
-                        <span class="text-center fw-light">Generación de Reportes</span>
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                                <div class="row mt-1">
-                                    <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
-                                        <input type="date" name="Fecha1" id="Fecha1" class="form-control" required />
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
-                                        <input type="date" name="Fecha2" id="Fecha2" class="form-control" required />
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
-                                        <div class="d-grid gap-2">
-                                            <input type="submit" name="btnBuscarF" value="Generar Reporte por fechas" class="btn btn-sm btn-outline-success rounded-pill"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="row mt-2">
+                            <span class="text-center fw-light">Generación de Reportes</span>
                             <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
                                 <div class="card shadow bg-light">
                                     <ul class="list-group list-group-flush">
@@ -63,6 +47,23 @@
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row mt-2">
+                            <form action="includes/Rusuario_Fechas.php" method="POST">
+                                <div class="row mt-1">
+                                    <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
+                                        <input type="date" name="Fecha1" id="Fecha1" class="form-control" required />
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
+                                        <input type="date" name="Fecha2" id="Fecha2" class="form-control" required />
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
+                                        <div class="d-grid gap-2">
+                                            <input type="submit" name="btnBuscarF" value="Generar Reporte por fechas" class="btn btn-sm btn-outline-success rounded-pill"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <div class="row mt-3">
                             <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
