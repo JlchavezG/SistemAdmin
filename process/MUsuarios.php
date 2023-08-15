@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <form action="includes/Rusuario_Fechas.php" method="POST">
+                            <form action="includes/Rusuario_Fechas.php" target="_blank" method="POST">
                                 <div class="row mt-1">
                                     <div class="col-sm-12 col-md-4 col-lg-4 mt-1">
                                         <input type="date" name="Fecha1" id="Fecha1" class="form-control" required />

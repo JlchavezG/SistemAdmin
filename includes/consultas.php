@@ -63,4 +63,5 @@ Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario 
 INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser"; 
 $EjecutaUserG = $ConectionBd->query($UsuariosG);
 
+
 ?>
