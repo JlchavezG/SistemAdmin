@@ -33,7 +33,7 @@
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-spreadsheet"/> 
                                             </svg>
                                             <span>
-                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Reporte General en Excel</a> 
+                                                <a href="includes/RUsuario_Excel.php" class="text-decoration-none text-muted">&nbsp; Reporte General en Excel</a> 
                                             </span>
                                         </li>
                                         <li class="list-group-item bg-light">
