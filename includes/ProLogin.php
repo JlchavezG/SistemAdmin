@@ -21,7 +21,7 @@ if (isset($_POST['BtnLogin'])) {
       $_SESSION['loguin'] = TRUE;
       $_SESSION['Usuario'] = $usuario;
       
-      header("location:AppProgres.php");
+      header("location:AppProgres");
     } else {
       $alerta .= "<div class='alert alert-danger alert-dismissible fade show shadow' role='alert'>
                            <svg class='bi text-danger' width='20' height='20' role='img' aria-label='Tools'>
@@ -32,6 +32,6 @@ if (isset($_POST['BtnLogin'])) {
                         </div>";
     }
   } else {
-    header("location:index.php");
+    header("location:index");
   }
 }
