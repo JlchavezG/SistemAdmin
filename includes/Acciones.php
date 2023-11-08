@@ -252,7 +252,7 @@ if(isset($_POST['MoPassword'])){
                         <th scope='col'>Telefono</th>
                         <th scope='col'>Email</th>
                         <th scope='col'>UserName</th>
-                        <th scope='col'>Fecha de Registro</th>
+                        <th scope='col'>FechadeRegistro</th>
                         <th scope='col'>Online</th>
                         <th scope='col'>Opcione</th>
                       </tr>
@@ -280,16 +280,16 @@ if(isset($_POST['MoPassword'])){
                     }
         $datosM.="<td class='bg-light text-center' scope='row'>".$IconOn."</td>
                   <td class='bg-light' scope='row'>
-                      <a href='editar.php?Id_Usuario = ".$LineaDatos['Id_Usuario']."' class='text-success text-decoration-none'>
+                      <a href='editar.php?Id_Usuario=".$LineaDatos['Id_Usuario']."' class='text-success text-decoration-none'>
                           <svg class='bi' width='15' height='15' fill='currentColor'>
                             <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
                           </svg>
                       </a> - 
-                      <a href='Busqueda_ElininarUser.php?Id_Usuario = ".$LineaDatos['Id_Usuario']."' class='text-success text-decoration-none'>
+                      <a href='includes/Busqueda_EliminarUser.php?Id_Usuario=".$LineaDatos['Id_Usuario']."' class='text-success text-decoration-none'>
                           <svg class='bi' width='15' height='15' fill='currentColor'>
                               <use xlink:href='library/icons/bootstrap-icons.svg#trash-fill'/> 
                           </svg>
-                       </a>
+                      </a>
                   </td>
                   </tr>";
                 
