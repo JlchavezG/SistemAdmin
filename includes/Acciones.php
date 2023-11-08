@@ -254,13 +254,13 @@ if(isset($_POST['MoPassword'])){
                         <th scope='col'>UserName</th>
                         <th scope='col'>Fecha de Registro</th>
                         <th scope='col'>Online</th>
-                        <th scope='col'>Opciones</th>
+                        <th scope='col'>Opcione</th>
                       </tr>
                     </thead>
                     <tbody>";
       while($LineaDatos = $BusquedaE->fetch_assoc()){
         $datosM.="<tr>
-                    <td class='bg-light' scope='row'><img src='img/Users/".$LineaDatos['ImgUser']."'style='width: 30px; height: 30px;' class='rounded-circle'></td>
+                    <td class='bg-light text-center' scope='row'><img src='img/Users/".$LineaDatos['ImgUser']."'style='width: 30px; height: 30px;' class='rounded-circle'></td>
                     <td class='bg-light' scope='row'>".$LineaDatos['Nombre']."</td>
                     <td class='bg-light' scope='row'>".$LineaDatos['ApellidoP']."</td>
                     <td class='bg-light' scope='row'>".$LineaDatos['ApellidoM']."</td>
@@ -278,20 +278,25 @@ if(isset($_POST['MoPassword'])){
                                     <use xlink:href='library/icons/bootstrap-icons.svg#circle'/> 
                                 </svg>";
                     }
-        $datosM.="<td class='bg-light' scope='row'>".$IconOn."</td>
+        $datosM.="<td class='bg-light text-center' scope='row'>".$IconOn."</td>
                   <td class='bg-light' scope='row'>
-                      <a href='editar.php?Id_Usuario = ".$LineaDatos['Id_Usuario']."'>
+                      <a href='editar.php?Id_Usuario = ".$LineaDatos['Id_Usuario']."' class='text-success text-decoration-none'>
                           <svg class='bi' width='15' height='15' fill='currentColor'>
                             <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
                           </svg>
-                      </a>
+                      </a> - 
+                      <a href='Busqueda_ElininarUser.php?Id_Usuario = ".$LineaDatos['Id_Usuario']."' class='text-success text-decoration-none'>
+                          <svg class='bi' width='15' height='15' fill='currentColor'>
+                              <use xlink:href='library/icons/bootstrap-icons.svg#trash-fill'/> 
+                          </svg>
+                       </a>
                   </td>
                   </tr>";
                 
       }              
    }
    else{
-      $datosM.="<div class='alert alert-light alert-dismissible fade show' role='alert'>
+      $datosM.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                     <strong>No se Encontraron Coinsidencias en la busqueda</strong> Puedes buscar por Nombre, Apellidos, Email y Nombre de Usuario.
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                 </div>";

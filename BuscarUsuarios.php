@@ -36,7 +36,7 @@ if($Perfil['Id_TUsuario'] != 1){
  else if($Tmenu == $MUDocente){include "process/MenuUsuarios.php";}
  else if($Tmenu == $MAlumno){include "process/MenuAlumnos.php";}?>
 <!-- terminar el menu -->
-<?php include "process/OpcionsUsuario.php"; ?>  
+<?php include "process/BuscarUsuario.php"; ?>  
 <script src="js/dark-mode.js"></script>
 <script src="js/pace.js"></script>
 </body>

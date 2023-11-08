@@ -79,10 +79,10 @@
                                         </li>
                                         <li class="list-group-item bg-light">
                                             <svg class="bi text-success" width="20" height="20" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#gear-wide-connected"/> 
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#search"/> 
                                             </svg>
                                             <span>
-                                                <a href="UsuariosOpciones.php" class="text-decoration-none text-muted">&nbsp; Opciones de Usuario </a> 
+                                                <a href="BuscarUsuarios.php" class="text-decoration-none text-muted">&nbsp; Buscar Usuarios </a> 
                                             </span>
                                         </li>
                                         <li class="list-group-item bg-light">

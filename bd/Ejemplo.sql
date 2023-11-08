@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-05-2023 a las 14:22:55
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 24-10-2023 a las 17:15:43
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `Ejemplo`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Carreras`
+--
+
+CREATE TABLE `Carreras` (
+  `Id_Carrera` int(11) NOT NULL,
+  `NombreCarrera` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `Carreras`
+--
+
+INSERT INTO `Carreras` (`Id_Carrera`, `NombreCarrera`) VALUES
+(1, 'Informática'),
+(2, 'Turismo'),
+(3, 'Alimentos y bebidas'),
+(4, 'Contabilidad');
 
 -- --------------------------------------------------------
 
@@ -115,7 +136,22 @@ CREATE TABLE `EstatusUser` (
 INSERT INTO `EstatusUser` (`Id_EstatusUser`, `DEstatusUser`) VALUES
 (1, 'Activo'),
 (2, 'Restringido'),
-(3, 'Sin Permisos');
+(3, 'Suspendido');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Historial`
+--
+
+CREATE TABLE `Historial` (
+  `Id_Historial` int(11) NOT NULL,
+  `FechaIng` date NOT NULL,
+  `Id_Usuario` int(11) NOT NULL,
+  `FechaSal` date NOT NULL,
+  `Accion` varchar(55) NOT NULL,
+  `Hora` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -157,16 +193,18 @@ CREATE TABLE `Kardex` (
 CREATE TABLE `Laboratorios` (
   `Id_Laboratorio` int(11) NOT NULL,
   `NombreLaboratorio` varchar(55) NOT NULL,
-  `Id_Plantel` int(11) NOT NULL
+  `Id_Plantel` int(11) NOT NULL,
+  `Id_carrera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `Laboratorios`
 --
 
-INSERT INTO `Laboratorios` (`Id_Laboratorio`, `NombreLaboratorio`, `Id_Plantel`) VALUES
-(1, 'EdificioA lab1', 1),
-(2, 'Edificio B Lab1', 1);
+INSERT INTO `Laboratorios` (`Id_Laboratorio`, `NombreLaboratorio`, `Id_Plantel`, `Id_carrera`) VALUES
+(1, 'Laboratotio A', 1, 1),
+(2, 'Laboratotio B', 1, 1),
+(3, 'Laboratorio C', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -202,23 +240,37 @@ CREATE TABLE `Materiales` (
   `Id_Marca` int(11) NOT NULL,
   `PrecioMaterial` float NOT NULL,
   `Id_Categoria` int(11) NOT NULL,
-  `ImagenMat` varchar(255) NOT NULL
+  `ImagenMat` varchar(255) NOT NULL,
+  `CodigoBMaterial` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `Materiales`
 --
 
-INSERT INTO `Materiales` (`Id_Material`, `NombreMat`, `DescripcionMat`, `Id_UnidadM`, `Id_Marca`, `PrecioMaterial`, `Id_Categoria`, `ImagenMat`) VALUES
-(1, 'Mandolinas corta patatas', 'es una de las herramientas más usadas en la cocina, además de ser un buen juego de cuchillos facilita el corte de las patatas y todo se debe a sus cuchillas completamente intercambiables permitiendo un corte muy profesional y sobre todo de gran uniformidad.', 1, 1, 632.09, 2, 'Mandolina.jpg'),
-(2, 'Tablas de cocina para cortar alimentos', 'Las tablas de corte para alimentos han pasado de ser un simple utensilio de cocina a uno absolutamente indispensable para todos cuantos cocinan, por esas excelentes innovadoras características que le han ido incorporando conforme ha evolucionado la preparación de diversas recetas.', 1, 1, 501.13, 3, 'Tabla.jpg'),
-(3, 'Sifones de cocina para montar natas y espumas', 'El sifón de espumas es un recipiente metálico con diversas capacidades entre 250ml y los 1000ml, su tapa es de rosca por donde sale una boquilla que se acciona mediante una palanca; también tiene un compartimiento por donde se coloca la carga del gas.', 1, 2, 429, 2, 'Sifon.jpg '),
-(4, 'Aros de emplatar', 'Los aros de emplatar o aros de repostería como también se les llama en muchos lugares, fueron creados orientados específicamente a quienes se dedican de manera profesional a la gastronomía para que con ellos pudiesen presentar sus platos tan perfectamente apilados conforme quisieran quedaran, de manera fácil y rápida.', 1, 3, 241.91, 2, 'Aro.png'),
-(5, 'Lenguas de silicona', 'Al adquirir un utensilio de cocina no solo buscamos que elaborar los alimentos sea más fácil o con un mejor sabor, sino también el cuidado de las herramientas de cocina, principalmente si de sartenes se trata, pues las capacidades antiadherentes de estos se gastan no solo por el paso del tiempo, sino también por el uso de utensilios agresivos que rayan su superficie.', 1, 1, 125, 3, 'Lengua.jpg'),
-(6, 'Aceiteras de cocina', 'La aceitera es un utensilio de cocina que se utiliza para servir aceite y evitar que se desperdicie. la más común es la jarra de vidrio pequeña, y las que están fabricadas en acero inoxidable de fondo plano con asa se usa para aliñar.', 1, 1, 385.05, 2, 'Aceitera.png'),
-(7, 'Molinillo de pimienta y cafe', 'Los molinillos de pimienta no solo se usan para la pimienta sino que también es excelente para moler la sal marina, anteriormente se utilizaban los saleros o pimenteros los cuales funcionaban con los condimentos ya molidos lo que hacía que estos perdieran el sabor.', 1, 2, 216.19, 2, 'Molinos.jpg'),
-(8, 'Sacacorchos', 'Todos tenemos momentos especiales en nuestra vida, algunos de ellos son tan importantes que merecen el descorche de una buena botella de vino. Y además de la botella, algo que por varias razones no puede faltar es contar con un respectivo sacacorchos.', 1, 3, 209.99, 2, 'corchos.png'),
-(9, 'Bascula de cocina plana', 'La báscula de cocina es un herramienta básica en todo hogar, no solo porque nos permite medir la cantidad de un ingrediente o alimento en cuestión, sino porque, con el paso del tiempo, nos ayuda a comprender el estándar de consumo familiar, haciéndonos posible conocer cómo y cuánto cocinar para que todos en la familia coman sin que sobre nada y, con ello optimizamos la elaboración de alimentos en el día a día, esto evitando desperdicios y minimizando el gasto desmedido de ingredientes', 1, 2, 289, 2, 'bascula.jpg');
+INSERT INTO `Materiales` (`Id_Material`, `NombreMat`, `DescripcionMat`, `Id_UnidadM`, `Id_Marca`, `PrecioMaterial`, `Id_Categoria`, `ImagenMat`, `CodigoBMaterial`) VALUES
+(1, 'Mandolinas corta patatas', 'es una de las herramientas más usadas en la cocina, además de ser un buen juego de cuchillos facilita el corte de las patatas y todo se debe a sus cuchillas completamente intercambiables permitiendo un corte muy profesional y sobre todo de gran uniformidad.', 1, 1, 632.09, 2, 'Mandolina.jpg', ''),
+(2, 'Tablas de cocina para cortar alimentos', 'Las tablas de corte para alimentos han pasado de ser un simple utensilio de cocina a uno absolutamente indispensable para todos cuantos cocinan, por esas excelentes innovadoras características que le han ido incorporando conforme ha evolucionado la preparación de diversas recetas.', 1, 1, 501.13, 3, 'Tabla.jpg', ''),
+(3, 'Sifones de cocina para montar natas y espumas', 'El sifón de espumas es un recipiente metálico con diversas capacidades entre 250ml y los 1000ml, su tapa es de rosca por donde sale una boquilla que se acciona mediante una palanca; también tiene un compartimiento por donde se coloca la carga del gas.', 1, 2, 429, 2, 'Sifon.jpg ', ''),
+(4, 'Aros de emplatar', 'Los aros de emplatar o aros de repostería como también se les llama en muchos lugares, fueron creados orientados específicamente a quienes se dedican de manera profesional a la gastronomía para que con ellos pudiesen presentar sus platos tan perfectamente apilados conforme quisieran quedaran, de manera fácil y rápida.', 1, 3, 241.91, 2, 'Aro.png', ''),
+(5, 'Lenguas de silicona', 'Al adquirir un utensilio de cocina no solo buscamos que elaborar los alimentos sea más fácil o con un mejor sabor, sino también el cuidado de las herramientas de cocina, principalmente si de sartenes se trata, pues las capacidades antiadherentes de estos se gastan no solo por el paso del tiempo, sino también por el uso de utensilios agresivos que rayan su superficie.', 1, 1, 125, 3, 'Lengua.jpg', ''),
+(6, 'Aceiteras de cocina', 'La aceitera es un utensilio de cocina que se utiliza para servir aceite y evitar que se desperdicie. la más común es la jarra de vidrio pequeña, y las que están fabricadas en acero inoxidable de fondo plano con asa se usa para aliñar.', 1, 1, 385.05, 2, 'Aceitera.png', ''),
+(7, 'Molinillo de pimienta y cafe', 'Los molinillos de pimienta no solo se usan para la pimienta sino que también es excelente para moler la sal marina, anteriormente se utilizaban los saleros o pimenteros los cuales funcionaban con los condimentos ya molidos lo que hacía que estos perdieran el sabor.', 1, 2, 216.19, 2, 'Molinos.jpg', ''),
+(8, 'Sacacorchos', 'Todos tenemos momentos especiales en nuestra vida, algunos de ellos son tan importantes que merecen el descorche de una buena botella de vino. Y además de la botella, algo que por varias razones no puede faltar es contar con un respectivo sacacorchos.', 1, 3, 209.99, 2, 'corchos.png', ''),
+(9, 'Bascula de cocina plana', 'La báscula de cocina es un herramienta básica en todo hogar, no solo porque nos permite medir la cantidad de un ingrediente o alimento en cuestión, sino porque, con el paso del tiempo, nos ayuda a comprender el estándar de consumo familiar, haciéndonos posible conocer cómo y cuánto cocinar para que todos en la familia coman sin que sobre nada y, con ello optimizamos la elaboración de alimentos en el día a día, esto evitando desperdicios y minimizando el gasto desmedido de ingredientes', 1, 2, 289, 2, 'bascula.jpg', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Mensajes`
+--
+
+CREATE TABLE `Mensajes` (
+  `Id_Mensaje` int(11) NOT NULL,
+  `Id_Tnotificacion` int(11) NOT NULL,
+  `TextMensaje` text NOT NULL,
+  `Id_EstatusMensaje` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -320,7 +372,28 @@ CREATE TABLE `TEntrada` (
 
 INSERT INTO `TEntrada` (`Id_TEntrada`, `NombreTEntrada`) VALUES
 (1, 'Compra'),
-(2, 'Donación');
+(2, 'Donación'),
+(3, 'Asignación');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `TipoNofificacion`
+--
+
+CREATE TABLE `TipoNofificacion` (
+  `Id_TipoNot` int(11) NOT NULL,
+  `NomNotificacion` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `TipoNofificacion`
+--
+
+INSERT INTO `TipoNofificacion` (`Id_TipoNot`, `NomNotificacion`) VALUES
+(1, 'Mensaje Masivo'),
+(2, 'Mensaje Privado'),
+(3, 'Notificación');
 
 -- --------------------------------------------------------
 
@@ -341,7 +414,8 @@ CREATE TABLE `TUsuario` (
 INSERT INTO `TUsuario` (`Id_TUsuario`, `NTUsuario`, `DescripcionT`) VALUES
 (1, 'SuperUsuario', 'Usuario Especializado encargado del sistema'),
 (2, 'AdminUsuario', 'Usuario Tecnico Administrativo del sistema'),
-(3, 'UsuarioFinal', 'Usuario del sistema con restricciones');
+(3, 'Docente', 'Usuario del sistema con restricciones'),
+(4, 'Alumno', 'Usuarios Finales con restricciones y modo de consulta');
 
 -- --------------------------------------------------------
 
@@ -379,23 +453,34 @@ CREATE TABLE `Usuario` (
   `Id_Plantel` int(11) NOT NULL,
   `Id_TUsuario` int(11) NOT NULL,
   `UserName` varchar(55) NOT NULL,
+  `FechaReg` date NOT NULL,
   `Password` varchar(55) NOT NULL,
-  `ImgUsuario` varchar(55) NOT NULL,
   `Online` int(11) NOT NULL,
-  `EstatusUser` int(11) NOT NULL
+  `EstatusUser` int(11) NOT NULL,
+  `ImgUser` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `Usuario`
 --
 
-INSERT INTO `Usuario` (`Id_Usuario`, `Nombre`, `ApellidoP`, `ApellidoM`, `Telefono`, `Email`, `Id_Plantel`, `Id_TUsuario`, `UserName`, `Password`, `ImgUsuario`, `Online`, `EstatusUser`) VALUES
-(1, 'Jose Luis', 'Chavez', 'Gomez', '55-55-55-55-55', 'contacto@iscjoseluischavezg.mx', 1, 1, 'JlchavezG', '827ccb0eea8a706c4c34a16891f84e7b', 'img1.png', 0, 1),
-(2, 'David', 'Santiago', 'Carlos', '56-12-34-65-78', 'david@gconalepmex.edu.mx', 3, 2, 'DavidS', '01cfcd4f6b8770febfb40cb906715822', 'img3-png', 0, 1);
+INSERT INTO `Usuario` (`Id_Usuario`, `Nombre`, `ApellidoP`, `ApellidoM`, `Telefono`, `Email`, `Id_Plantel`, `Id_TUsuario`, `UserName`, `FechaReg`, `Password`, `Online`, `EstatusUser`, `ImgUser`) VALUES
+(1, 'José Luis', 'Chávez', 'Gómez', '5581546200', 'luis.chavez_183d@conalepmex.edu.mx', 1, 1, 'JlchavezG', '2023-02-10', '01cfcd4f6b8770febfb40cb906715822', 1, 1, '877041.jpeg'),
+(2, 'David', 'Santiago', 'Carlos', '56123465783', 'david@gconalepmex.edu.mx', 3, 2, 'DavidS', '2023-04-19', '01cfcd4f6b8770febfb40cb906715822', 0, 1, 'imgUser1.png'),
+(3, 'Ricardo', 'Sanchez', 'Chavez', '5543213456', 'ricardo@conalepmex.edu.mx', 1, 4, 'Ricardo', '2023-07-21', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1, 'imgUser1.png'),
+(5, 'Ramon ', 'Garrido', 'Gomez', '5678909845', 'rgarrido@conalepmex.edu.mx', 2, 3, 'RamonG', '2023-07-26', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1, 'imgUser1.png'),
+(7, 'Daniela', 'Guzman', 'Diaz', '5534567809', 'daniel12@conalepmex.edu.mx', 1, 4, 'Daniela', '2023-07-26', '827ccb0eea8a706c4c34a16891f84e7b', 0, 1, 'imgUser1.png'),
+(9, 'Alberto', 'Perea', 'Guerrero', '5576215470', 'pereavalentin13@gmail.com', 1, 4, 'Beto', '2023-10-24', '9f3f1fad40de2a412fd933b14da8b0fa', 0, 1, 'imgUser1.png');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `Carreras`
+--
+ALTER TABLE `Carreras`
+  ADD PRIMARY KEY (`Id_Carrera`);
 
 --
 -- Indices de la tabla `CategoriaMaterial`
@@ -429,6 +514,13 @@ ALTER TABLE `EstatusUser`
   ADD PRIMARY KEY (`Id_EstatusUser`);
 
 --
+-- Indices de la tabla `Historial`
+--
+ALTER TABLE `Historial`
+  ADD PRIMARY KEY (`Id_Historial`),
+  ADD KEY `Id_Usuario` (`Id_Usuario`);
+
+--
 -- Indices de la tabla `Inventario`
 --
 ALTER TABLE `Inventario`
@@ -446,7 +538,8 @@ ALTER TABLE `Kardex`
 --
 ALTER TABLE `Laboratorios`
   ADD PRIMARY KEY (`Id_Laboratorio`),
-  ADD KEY `Id_Plantel` (`Id_Plantel`);
+  ADD KEY `Id_Plantel` (`Id_Plantel`),
+  ADD KEY `Id_carrera` (`Id_carrera`);
 
 --
 -- Indices de la tabla `Marcas`
@@ -462,6 +555,14 @@ ALTER TABLE `Materiales`
   ADD KEY `Id_Marca` (`Id_Marca`),
   ADD KEY `Id_UnidadM` (`Id_UnidadM`),
   ADD KEY `Id_Categoria` (`Id_Categoria`);
+
+--
+-- Indices de la tabla `Mensajes`
+--
+ALTER TABLE `Mensajes`
+  ADD PRIMARY KEY (`Id_Mensaje`),
+  ADD KEY `Id_Tnotificacion` (`Id_Tnotificacion`),
+  ADD KEY `Id_EstatusMensaje` (`Id_EstatusMensaje`);
 
 --
 -- Indices de la tabla `Municipios`
@@ -501,6 +602,12 @@ ALTER TABLE `TEntrada`
   ADD PRIMARY KEY (`Id_TEntrada`);
 
 --
+-- Indices de la tabla `TipoNofificacion`
+--
+ALTER TABLE `TipoNofificacion`
+  ADD PRIMARY KEY (`Id_TipoNot`);
+
+--
 -- Indices de la tabla `TUsuario`
 --
 ALTER TABLE `TUsuario`
@@ -524,6 +631,12 @@ ALTER TABLE `Usuario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `Carreras`
+--
+ALTER TABLE `Carreras`
+  MODIFY `Id_Carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `CategoriaMaterial`
@@ -556,6 +669,12 @@ ALTER TABLE `EstatusUser`
   MODIFY `Id_EstatusUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `Historial`
+--
+ALTER TABLE `Historial`
+  MODIFY `Id_Historial` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `Inventario`
 --
 ALTER TABLE `Inventario`
@@ -571,7 +690,7 @@ ALTER TABLE `Kardex`
 -- AUTO_INCREMENT de la tabla `Laboratorios`
 --
 ALTER TABLE `Laboratorios`
-  MODIFY `Id_Laboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_Laboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `Marcas`
@@ -584,6 +703,12 @@ ALTER TABLE `Marcas`
 --
 ALTER TABLE `Materiales`
   MODIFY `Id_Material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `Mensajes`
+--
+ALTER TABLE `Mensajes`
+  MODIFY `Id_Mensaje` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `Municipios`
@@ -613,13 +738,19 @@ ALTER TABLE `SolicitudMaterial`
 -- AUTO_INCREMENT de la tabla `TEntrada`
 --
 ALTER TABLE `TEntrada`
-  MODIFY `Id_TEntrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_TEntrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `TipoNofificacion`
+--
+ALTER TABLE `TipoNofificacion`
+  MODIFY `Id_TipoNot` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `TUsuario`
 --
 ALTER TABLE `TUsuario`
-  MODIFY `Id_TUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_TUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `UnidadMedida`
@@ -631,7 +762,7 @@ ALTER TABLE `UnidadMedida`
 -- AUTO_INCREMENT de la tabla `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
@@ -644,6 +775,12 @@ ALTER TABLE `EntradaMaterial`
   ADD CONSTRAINT `entradamaterial_ibfk_1` FOREIGN KEY (`Id_TEntrada`) REFERENCES `TEntrada` (`Id_TEntrada`);
 
 --
+-- Filtros para la tabla `Historial`
+--
+ALTER TABLE `Historial`
+  ADD CONSTRAINT `historial_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `Usuario` (`Id_Usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `Kardex`
 --
 ALTER TABLE `Kardex`
@@ -653,7 +790,8 @@ ALTER TABLE `Kardex`
 -- Filtros para la tabla `Laboratorios`
 --
 ALTER TABLE `Laboratorios`
-  ADD CONSTRAINT `laboratorios_ibfk_1` FOREIGN KEY (`Id_Plantel`) REFERENCES `Plantel` (`Id_Plantel`);
+  ADD CONSTRAINT `laboratorios_ibfk_1` FOREIGN KEY (`Id_Plantel`) REFERENCES `Plantel` (`Id_Plantel`),
+  ADD CONSTRAINT `laboratorios_ibfk_2` FOREIGN KEY (`Id_carrera`) REFERENCES `Carreras` (`Id_Carrera`);
 
 --
 -- Filtros para la tabla `Materiales`
@@ -662,6 +800,12 @@ ALTER TABLE `Materiales`
   ADD CONSTRAINT `materiales_ibfk_1` FOREIGN KEY (`Id_Marca`) REFERENCES `Marcas` (`Id_Marca`),
   ADD CONSTRAINT `materiales_ibfk_2` FOREIGN KEY (`Id_UnidadM`) REFERENCES `UnidadMedida` (`Id_UnidadM`),
   ADD CONSTRAINT `materiales_ibfk_3` FOREIGN KEY (`Id_Categoria`) REFERENCES `CategoriaMaterial` (`Id_Categoria`);
+
+--
+-- Filtros para la tabla `Mensajes`
+--
+ALTER TABLE `Mensajes`
+  ADD CONSTRAINT `mensajes_ibfk_1` FOREIGN KEY (`Id_Tnotificacion`) REFERENCES `TipoNofificacion` (`Id_TipoNot`);
 
 --
 -- Filtros para la tabla `Municipios`
