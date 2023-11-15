@@ -4,6 +4,7 @@ error_reporting(0);
 $CUsuuario = "SELECT * FROM Usuario";
 $EUsuario = $ConectionBd->query($CUsuuario);
 $TUsuarios = $EUsuario->num_rows;
+$On = 1;
 // obtener el numero de resgistros registrados en el año 2023
 $userReg = "SELECT * FROM Usuario WHERE (FechaReg) BETWEEN '2022-01-01' AND '2023-12-31'";
 $userRegE = $ConectionBd->query($userReg);

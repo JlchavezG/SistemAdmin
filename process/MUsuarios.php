@@ -1,11 +1,14 @@
+<?php 
+ include "../includes/Acciones.php";
+?>
 <div class="container mt-3">
     <div class="row mt-2 justify-content-center">
+        <?php echo $AccionUser; ?>
         <h2 class="text-center"><span>Modulo |</span><span class="text-success"> Usuarios</span> </h2>
     </div>
     <div class="row mt-1 justify-content-center">
         <div class="container">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                <?php echo $AccionUser; ?>
             </div>
         </div>
     </div>
@@ -87,10 +90,10 @@
                                         </li>
                                         <li class="list-group-item bg-light">
                                             <svg class="bi text-success" width="20" height="20" fill="currentColor">
-                                                <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-pdf-fill"/> 
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#menu-app"/> 
                                             </svg>
                                             <span>
-                                                <a href="" class="text-decoration-none text-muted">&nbsp; Busqueda de Usuario </a> 
+                                                <a href="OptionUser.php" class="text-decoration-none text-muted">&nbsp; Opciones de Usuario </a> 
                                             </span>
                                         </li>
                                     </ul>

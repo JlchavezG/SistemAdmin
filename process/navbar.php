@@ -79,7 +79,7 @@
                             <svg class="bi text-light" width="18" height="18" fill="currentColor">
                                 <use xlink:href="library/icons/bootstrap-icons.svg#bell-fill" />
                             </svg>
-                            <!-- <span class="position-absolute top-1 start-1 translate-middle badge rounded-pill bg-danger">1</span> -->
+                            <span class="position-absolute top-1 start-1 translate-middle badge rounded-pill bg-danger">1</span> 
                         </a>
                     </li>
                     <li class="nav-item dropdown">
