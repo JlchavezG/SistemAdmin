@@ -46,13 +46,21 @@ $CSolicitudes = "SELECT * FROM SolicitudMaterial";
 $ESolicitud = $ConectionBd->query($CSolicitudes);
 $TSolicitudes = $ESolicitud->num_rows;
 // obtener el numero de registros en Laboratorios
-$CLaboratorios = "SELECT * FROM Laboratorios";
+$CLaboratorios = "SELECT * FROM Laboratorios ORDER BY NombreLaboratorio ASC";
 $ELaboratorios = $ConectionBd->query($CLaboratorios);
 $TLaboratorios = $ELaboratorios->num_rows;
 // obtener el numero de registros en Planteles
-$CPlanteles = "SELECT * FROM Plantel";
+$CPlanteles = "SELECT * FROM Plantel ORDER BY NombrePlantel ASC";
 $EPlanteles = $ConectionBd->query($CPlanteles);
 $TPlanteles = $EPlanteles->num_rows;
+// obtener numero de carreras dentro del sistema 
+$CCarreras = "SELECT * FROM Carreras ORDER BY NombreCarrera ASC";
+$ECarreras = $ConectionBd->query($CCarreras);
+$TCarreras = $ECarreras->num_rows;
+// consulta cruzada de laboratorios 
+$InnerLab = "SELECT L.Id_Laboratorio, L.NombreLaboratorio, L.Id_Plantel , L.Id_carrera, PL.Id_Plantel, PL.NombrePlantel, CA.Id_Carrera, CA.NombreCarrera 
+FROM Laboratorios L INNER JOIN Plantel PL ON L.Id_Plantel = PL.Id_Plantel INNER JOIN Carreras CA ON L.Id_carrera = CA.Id_Carrera";
+$EInnerLab = $ConectionBd->query($InnerLab);
 // fecha para dasboard
 $FechaD = date('d-m-Y');
 // obtener todos los datos de los usuarios con inner join de la plataforma

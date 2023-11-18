@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item items">
-                <a href="#" class="nav-link">
+                <a href="NewLab.php" class="nav-link">
                     <svg class="bi text-light" width="20" height="20" fill="currentColor">
                         <use xlink:href="library/icons/bootstrap-icons.svg#building-exclamation" />
                     </svg>&nbsp;&nbsp;&nbsp;<span class="text-light">Laboratorios</span>
