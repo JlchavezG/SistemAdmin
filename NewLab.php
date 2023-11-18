@@ -5,36 +5,7 @@ require "includes/configuracion.php";
 include "includes/consultas.php";
 require "library/phpqrcode/qrlib.php";
 require "includes/Acciones.php";
-if (isset($_POST['btn_newlab'])) {
-    $NomLab = $ConectionBd->real_escape_string($_POST['NomLab']);
-    $IPlantel = $ConectionBd->real_escape_string($_POST['Plantel']);
-    $ILab = $ConectionBd->real_escape_string($_POST['Laboratorio']);
-    // generar la validación y consulta del registro 
-    // consulta para verificar si ya existe un laboratorio 
-  $v = "SELECT * FROM Laboratorios WHERE NombreLaboratorio = '$NomLab' or Id_Plantel = $IPlantel";
-  $Ev = $ConectionBd->query($v);
-  if($Ev > 0){
-    $MensjeLab.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                    <strong>Error! </strong> El Laboratorio a registrar ya existe dentro del plantel.
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                </div>";
-  }
-  else{
-    // consulta para insertardatos en tabla laboratorios 
-    $Ei = "INSERT INTO Laboratorios(NombreLaboratorio, Id_Plantel, Id_Carrera)VALUES('$NomLab','$IPlantel','$ILab')";
-    $EEi = $ConectionBd->query($Ei);
-    if($EEi > 0){
-        $MensjeLab.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                        <strong>Execelnte! </strong> El Laboratorio a regstrar se ha registrado satisfactoriamente dentro del plantel.
-                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                    </div>";
-                    header("refresh:3;NewLab.php");            
-    }
-  }
 
-
-
-}
 
 ?>
 <!DOCTYPE html>
@@ -77,10 +48,10 @@ if (isset($_POST['btn_newlab'])) {
                 <div class="row">
                     <?php echo $MensjeLab; ?>
                 </div>
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="needs-validation" novalidate">
                     <div class="row d-flex justify-content-center">
                         <div class="col-sm-12-col-md-12 col-lg-12">
-                            <input type="text" name="NomLab" id="NomLab" placeholder="Nombre de laboratorio" class="form-control">
+                            <input type="text" name="NomLab" id="NomLab" placeholder="Nombre de laboratorio" class="form-control" required>
                         </div>
                     </div>
             </div>
@@ -88,7 +59,7 @@ if (isset($_POST['btn_newlab'])) {
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="row d-flex justify-content-center mt-2">
                 <div class="col-sm-6-col-md-6 col-lg-6">
-                    <select name="Plantel" id="Planetel" class="form-select">
+                    <select name="Plantel" id="Planetel" class="form-select" required>
                         <option value="">Selecciona un plantel</option>
                         <?php while ($LineaPlantel = $EPlanteles->fetch_assoc()) { ?>
                             <option value="<?php echo $LineaPlantel['Id_Plantel'] ?>"><?php echo $LineaPlantel['NombrePlantel']; ?></option>
@@ -97,7 +68,7 @@ if (isset($_POST['btn_newlab'])) {
 
                 </div>
                 <div class="col-sm-6-col-md-6 col-lg-6">
-                    <select name="Carrera" id="Carrera" class="form-select">
+                    <select name="Carrera" id="Carrera" class="form-select" required>
                         <option value="">Selecciona una carrera</option>
                         <?php while ($LineaCarrera = $ECarreras->fetch_assoc()) { ?>
                             <option value="<?php echo $LineaCarrera['Id_Carrera'] ?>"><?php echo $LineaCarrera['NombreCarrera']; ?></option>
@@ -118,7 +89,7 @@ if (isset($_POST['btn_newlab'])) {
             <div class="col text-end">
                 <svg class="bi" width="15" height="15" fill="currentColor">
                     <use xlink:href='library/icons/bootstrap-icons.svg#printer-fill' />
-                </svg> Imprimir | 
+                </svg> Imprimir |
                 <svg class="bi" width="15" height="15" fill="currentColor">
                     <use xlink:href='library/icons/bootstrap-icons.svg#filetype-pdf' />
                 </svg> Generar PDF |
@@ -168,6 +139,27 @@ if (isset($_POST['btn_newlab'])) {
     <?php include "process/footer.php"; ?>
     <script src="js/dark-mode.js"></script>
     <script src="js/pace.js"></script>
+    <script>
+        (function() {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
 </body>
 
 </html>

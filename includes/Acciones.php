@@ -349,7 +349,27 @@ else {
 
 }
 }
+// regisstro de laboratorios en el sistemas
+if (isset($_POST['btn_newlab'])) {
+  $NomLab = $ConectionBd->real_escape_string($_POST['NomLab']);
+  $IPlantel = $ConectionBd->real_escape_string($_POST['Plantel']);
+  $ICarr = $ConectionBd->real_escape_string($_POST['Carrera']);
+  // consulta para verificar si ya existe el laboraorio en plantel 
+  $InLab = "INSERT INTO Laboratorios(NombreLaboratorio,Id_Plantel,Id_carrera)VALUES('$NomLab','$IPlantel','$ICarr')";
+  $EInlab = $ConectionBd->query($InLab);
+  if($EInlab > 0){
+    $MensjeLab.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                      <strong>Excelente el Nuevo Laboratorio se registro con exito </strong> en la plataforma.
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>";
+                header("refresh:3;NewLab.php"); 
 
+  }
+
+
+
+
+}
 // realizar consulta para generar reporte de suarios registrados entre las fechas solicitadas
 if(isset($_POST['btnBuscarF'])){
 $Fecha1 = $ConectionBd->real_escape_string($_POST['Fecha1']);
