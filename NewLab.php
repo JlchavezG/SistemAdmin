@@ -5,12 +5,32 @@ require "includes/configuracion.php";
 include "includes/consultas.php";
 require "library/phpqrcode/qrlib.php";
 require "includes/Acciones.php";
-if(isset($_POST['btn_newlab'])){
-$NomLab = $ConectionBd->real_escape_string($_POST['NomLab']);
-$IPlantel = $ConectionBd->real_escape_string($_POST['Plantel']);
-$ILab = $ConectionBd->real_escape_string($_POST['Laboratorio']);
-// generar la validación y consulta del registro 
-
+if (isset($_POST['btn_newlab'])) {
+    $NomLab = $ConectionBd->real_escape_string($_POST['NomLab']);
+    $IPlantel = $ConectionBd->real_escape_string($_POST['Plantel']);
+    $ILab = $ConectionBd->real_escape_string($_POST['Laboratorio']);
+    // generar la validación y consulta del registro 
+    // consulta para verificar si ya existe un laboratorio 
+  $v = "SELECT * FROM Laboratorios WHERE NombreLaboratorio = '$NomLab' or Id_Plantel = $IPlantel";
+  $Ev = $ConectionBd->query($v);
+  if($Ev > 0){
+    $MensjeLab.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                    <strong>Error! </strong> El Laboratorio a registrar ya existe dentro del plantel.
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>";
+  }
+  else{
+    // consulta para insertardatos en tabla laboratorios 
+    $Ei = "INSERT INTO Laboratorios(NombreLaboratorio, Id_Plantel, Id_Carrera)VALUES('$NomLab','$IPlantel','$ILab')";
+    $EEi = $ConectionBd->query($Ei);
+    if($EEi > 0){
+        $MensjeLab.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                        <strong>Execelnte! </strong> El Laboratorio a regstrar se ha registrado satisfactoriamente dentro del plantel.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    </div>";
+                    header("refresh:3;NewLab.php");            
+    }
+  }
 
 
 
@@ -54,6 +74,9 @@ $ILab = $ConectionBd->real_escape_string($_POST['Laboratorio']);
         </div>
         <div class="row mt-4">
             <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <?php echo $MensjeLab; ?>
+                </div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <div class="row d-flex justify-content-center">
                         <div class="col-sm-12-col-md-12 col-lg-12">
@@ -91,9 +114,23 @@ $ILab = $ConectionBd->real_escape_string($_POST['Laboratorio']);
         </form>
         <hr>
         <div class="row mt-2">
+            <div class="col"></div>
+            <div class="col text-end">
+                <svg class="bi" width="15" height="15" fill="currentColor">
+                    <use xlink:href='library/icons/bootstrap-icons.svg#printer-fill' />
+                </svg> Imprimir | 
+                <svg class="bi" width="15" height="15" fill="currentColor">
+                    <use xlink:href='library/icons/bootstrap-icons.svg#filetype-pdf' />
+                </svg> Generar PDF |
+                <svg class="bi" width="15" height="15" fill="currentColor">
+                    <use xlink:href='library/icons/bootstrap-icons.svg#file-spreadsheet-fill' />
+                </svg> Generar Excel
+            </div>
+        </div>
+        <div class="row mt-2">
             <div class="col-sm-12-col-md-12 col-lg-12">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table ">
                         <thead class="bg-light">
                             <tr>
                                 <th scope="col">Nombre de laboratorio</th>
@@ -103,13 +140,24 @@ $ILab = $ConectionBd->real_escape_string($_POST['Laboratorio']);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while($rowLabs = $EInnerLab->fetch_assoc()){ ?>
-                             <tr class="bg-light">
-                               <th scope="row"><?php echo $rowLabs['NombreLaboratorio']; ?></th>
-                               <th scope="row"><?php echo $rowLabs['NombrePlantel']; ?></th> 
-                               <th scope="row"><?php echo $rowLabs['NombreCarrera']; ?></th>        
-                             </tr>
-                            <?php } ?> 
+                            <?php while ($rowLabs = $EInnerLab->fetch_assoc()) { ?>
+                                <tr class="bg-light">
+                                    <th scope="row"><?php echo $rowLabs['NombreLaboratorio']; ?></th>
+                                    <th scope="row"><?php echo $rowLabs['NombrePlantel']; ?></th>
+                                    <th scope="row"><?php echo $rowLabs['NombreCarrera']; ?></th>
+                                    <th class='bg-light' scope='row'>
+                                        <a href="" class="text-success text-decoration-none">
+                                            <svg class="bi" width="15" height="15" fill="currentColor">
+                                                <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill' />
+                                            </svg>
+                                        </a> -
+                                        <a href="" class="text-success text-decoration-none">
+                                            <svg class="bi" width="15" height="15" fill="currentColor">
+                                                <use xlink:href='library/icons/bootstrap-icons.svg#trash-fill' />
+                                            </svg>
+                                        </a>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
