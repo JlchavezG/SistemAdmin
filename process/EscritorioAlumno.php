@@ -1,10 +1,10 @@
-<div class="container justify-content-center">    
+<div class="container justify-content-center">
     <div class="row py-2 px-2 mt-3 text-center mt-3">
         <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="border-bottom rounded-top border-1 border-success bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6"><?php echo $Perfil['Nombre']." ".$Perfil['ApellidoP']." ".$Perfil['ApellidoM'] ?></span>
+                        <span class="fw-light fs-6"><?php echo $Perfil['Nombre'] . " " . $Perfil['ApellidoP'] . " " . $Perfil['ApellidoM'] ?></span>
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -51,9 +51,9 @@
                 <div class="row mt-2">
                     <div class="col mb-2">
                         <span class="fw-light fs-6">
-                          <form name="form_reloj" class="bg-light">
-                            <input type="text" name="reloj" size="10" class="border-0 px-2 bg-light">
-                          </form>
+                            <form name="form_reloj" class="bg-light">
+                                <input type="text" name="reloj" size="10" class="border-0 px-2 bg-light">
+                            </form>
                         </span>
                     </div>
                     <div class="col mb-2">
@@ -78,19 +78,19 @@
                 </div>
             </div>
         </div>
-    <div class="row py-2 px-2 mt-3 text-center mt-3">
-        <div class="container justify-content-center">
-            1
+        <div class="row py-2 px-2 mt-3 text-center mt-3">
+            <div class="container justify-content-center">
+                1
+            </div>
         </div>
+
+
+
+
+
+
+
+
+
+
     </div>
-
-
-
-
-
-
-
-
-
-
-</div>

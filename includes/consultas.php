@@ -61,6 +61,7 @@ $TCarreras = $ECarreras->num_rows;
 $InnerLab = "SELECT L.Id_Laboratorio, L.NombreLaboratorio, L.Id_Plantel , L.Id_carrera, PL.Id_Plantel, PL.NombrePlantel, CA.Id_Carrera, CA.NombreCarrera 
 FROM Laboratorios L INNER JOIN Plantel PL ON L.Id_Plantel = PL.Id_Plantel INNER JOIN Carreras CA ON L.Id_carrera = CA.Id_Carrera";
 $EInnerLab = $ConectionBd->query($InnerLab);
+$Tlabs = $EInnerLab->num_rows;
 // fecha para dasboard
 $FechaD = date('d-m-Y');
 // obtener todos los datos de los usuarios con inner join de la plataforma

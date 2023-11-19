@@ -90,12 +90,16 @@ require "includes/Acciones.php";
                 <svg class="bi" width="15" height="15" fill="currentColor">
                     <use xlink:href='library/icons/bootstrap-icons.svg#printer-fill' />
                 </svg> Imprimir |
+                <a href="includes/RLaboratorios_pdf.php" target="_blank" class="text-decoration-none text-success">
                 <svg class="bi" width="15" height="15" fill="currentColor">
                     <use xlink:href='library/icons/bootstrap-icons.svg#filetype-pdf' />
                 </svg> Generar PDF |
-                <svg class="bi" width="15" height="15" fill="currentColor">
-                    <use xlink:href='library/icons/bootstrap-icons.svg#file-spreadsheet-fill' />
-                </svg> Generar Excel
+                </a>
+                <a href="includes/RLab_Excel.php" class="text-decoration-none text-success">
+                    <svg class="bi" width="15" height="15" fill="currentColor">
+                        <use xlink:href='library/icons/bootstrap-icons.svg#file-spreadsheet-fill' />
+                    </svg> Generar Excel
+                </a>
             </div>
         </div>
         <div class="row mt-2">
@@ -117,16 +121,17 @@ require "includes/Acciones.php";
                                     <th scope="row"><?php echo $rowLabs['NombrePlantel']; ?></th>
                                     <th scope="row"><?php echo $rowLabs['NombreCarrera']; ?></th>
                                     <th class='bg-light' scope='row'>
-                                        <a href="EditarLab.php?Id_Laboratorio=<?php echo $rowLabs['Id_Laboratorio'];?>" class="text-success text-decoration-none">
+                                        <a href="EditarLab.php?Id_Laboratorio=<?php echo $rowLabs['Id_Laboratorio']; ?>" class="text-success text-decoration-none">
                                             <svg class="bi" width="15" height="15" fill="currentColor">
                                                 <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill' />
                                             </svg>
                                         </a> -
-                                        <a href="..includes/eliminar_lab.php?Id_Laboratorio=<?php echo $rowLabs['Id_Laboratorio'];?>" class="text-success text-decoration-none">
+                                        <a href="..includes/eliminar_lab.php?Id_Laboratorio=<?php echo $rowLabs['Id_Laboratorio']; ?>" class="text-success text-decoration-none">
                                             <svg class="bi" width="15" height="15" fill="currentColor">
                                                 <use xlink:href='library/icons/bootstrap-icons.svg#trash-fill' />
                                             </svg>
                                         </a>
+                                    </th>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -135,46 +140,25 @@ require "includes/Acciones.php";
             </div>
         </div>
         <div class="row mt-2">
-        <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
     <?php include "process/ModalSoporte.php"; ?>
     <?php include "process/footer.php"; ?>
     <script src="js/dark-mode.js"></script>
     <script src="js/pace.js"></script>
-    <script>
-        (function() {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })()
-    </script>
 </body>
 
 </html>

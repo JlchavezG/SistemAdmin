@@ -36,7 +36,7 @@
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#file-earmark-spreadsheet"/> 
                                             </svg>
                                             <span>
-                                                <a href="includes/RUsuario_Excel.php" class="text-decoration-none text-muted">&nbsp; Reporte General en Excel</a> 
+                                                <a href="includes/RUsuario_Excel" class="text-decoration-none text-muted">&nbsp; Reporte General en Excel</a> 
                                             </span>
                                         </li>
                                         <li class="list-group-item bg-light">
@@ -85,7 +85,7 @@
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#search"/> 
                                             </svg>
                                             <span>
-                                                <a href="BuscarUsuarios.php" class="text-decoration-none text-muted">&nbsp; Buscar Usuarios </a> 
+                                                <a href="BuscarUsuarios" class="text-decoration-none text-muted">&nbsp; Buscar Usuarios </a> 
                                             </span>
                                         </li>
                                         <li class="list-group-item bg-light">
@@ -93,7 +93,7 @@
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#menu-app"/> 
                                             </svg>
                                             <span>
-                                                <a href="OptionUser.php" class="text-decoration-none text-muted">&nbsp; Opciones de Usuario </a> 
+                                                <a href="OptionUser" class="text-decoration-none text-muted">&nbsp; Opciones de Usuario </a> 
                                             </span>
                                         </li>
                                     </ul>

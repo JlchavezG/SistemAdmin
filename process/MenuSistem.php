@@ -6,14 +6,14 @@
     <div class="offcanvas-body">
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item items">
-                <a href="AppProgres.php" class="nav-link">
+                <a href="AppProgres" class="nav-link">
                     <svg class="bi text-light" width="20" height="20" fill="currentColor">
                         <use xlink:href="library/icons/bootstrap-icons.svg#speedometer" />
                     </svg>&nbsp;&nbsp;&nbsp;<span class="text-light">DeshBoard</span>
                 </a>
             </li>
             <li class="nav-item items">
-                <a href="UsuariosSistem.php" class="nav-link">
+                <a href="UsuariosSistem" class="nav-link">
                     <svg class="bi text-light" width="20" height="20" fill="currentColor">
                         <use xlink:href="library/icons/bootstrap-icons.svg#people-fill" />
                     </svg>&nbsp;&nbsp;&nbsp;<span class="text-light">Usuarios</span>
@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item items">
-                <a href="NewLab.php" class="nav-link">
+                <a href="NewLab" class="nav-link">
                     <svg class="bi text-light" width="20" height="20" fill="currentColor">
                         <use xlink:href="library/icons/bootstrap-icons.svg#building-exclamation" />
                     </svg>&nbsp;&nbsp;&nbsp;<span class="text-light">Laboratorios</span>

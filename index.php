@@ -1,7 +1,16 @@
 <?php
 include "includes/ConectBd.php";
 include "includes/ProLogin.php";
-
+// configurar la zona horaria de nuestro servidor
+ini_Set('date.timezone', 'America/Mexico_City');
+$hora_actual = date('H');
+if ($hora_actual >= 5 && $hora_actual < 12) {
+    $saludo = '¡Buenos días!';
+} elseif ($hora_actual >= 12 && $hora_actual < 18) {
+    $saludo = '¡Buenas tardes!';
+} else {
+    $saludo = '¡Buenas noches!';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,6 +28,11 @@ include "includes/ProLogin.php";
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 col-lg-6 px-2 mt-3">
             <h3 class="mb-4 text-center mt-3 display-6">Inicio de sesión</h3>
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                    <span class="text-muted fs-5 display-5">Hola&nbsp; </span><span class="text-success fs-5 display-5"><?php echo " " . $saludo; ?></span>
+                </div>
+            </div>
             <div class="row mt-1 text-center">
                 <div class="col container ">
                     <img src="img/New_Logo_Gris_2023.png" alt="logoIscjlchavez" style="width: 200px;" class="img-fluid" id="img1">
@@ -27,7 +41,7 @@ include "includes/ProLogin.php";
             </div>
             <div class="row py-1">
                 <div id="estado" class="alert alert-success alert-dismissible fade show" role="alert">
-                    <span> Actualmente tu conexión a internet es estable</span> 
+                    <span> Actualmente tu conexión a internet es estable</span>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <div class="col"></div>
@@ -73,10 +87,15 @@ include "includes/ProLogin.php";
                         </div>
                     </div>
                     <div class="col">
-                        <a href="RecuperarPass.php" class="link-success link-offset-2 link-underline-opacity-25 text-decoration-none link-underline-opacity-100-hover">
+                        <a href="RecuperarPass" class="link-success link-offset-2 link-underline-opacity-25 text-decoration-none link-underline-opacity-100-hover">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="library/icons/bootstrap-icons.svg#key-fill" />
                             </svg>&nbsp;&nbsp;¿Perdiste tu Password?
+                        </a> |
+                        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" class="link-success link-offset-2 link-underline-opacity-25 text-decoration-none link-underline-opacity-100-hover">
+                            <svg class="bi" width="20" height="20" fill="currentColor">
+                                <use xlink:href="library/icons/bootstrap-icons.svg#exclamation-circle" />
+                            </svg> Ayuda
                         </a>
                     </div>
                 </div>
@@ -135,6 +154,31 @@ include "includes/ProLogin.php";
             <div class="row justify-content-center">
                 <div class="col-sm-6 col-md-6 col-lg-6 text-center mt-4"><span class="text-success text-wrap fs-6">SistemAdmin | iscjoseluischavezg.mx Developer@2023 </span></div>
             </div>
+            <!-- ayuda -->
+            <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="text-center text-success fs-5 display-6">Ayuda en login</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div>
+                        <ul class="list-group list-group-flush bg-light">
+                            <li class="list-group-item bg-light"><span class="text-success">1.- Ingresa tu usuario y password asignados</span></li>
+                            <li class="list-group-item bg-light"><span class="text-success">2.- Da click en ingresar e ingresa al sistema segun tu tipo de usuario.</span></li>
+                            <li class="list-group-item bg-light"><span class="text-success">3.- Si perdiste tu password da click en la opción recuperar password.</span></li>
+                            <li class="list-group-item bg-light"><span class="text-success">4.- Ingresa tu nombre de usuario y email registrado en la plataforma.</span></li>
+                            <li class="list-group-item bg-light"><span class="text-success">5.- Si los datos ingresados son correctos podras cambiar tu password.</li>
+                            <li class="list-group-item bg-light"><span class="text-success">6.- Inicia sesión normalmente con el usuario y nuevo password.</li>
+                            <li class="list-group-item bg-light"><span class="text-success">7.- Si no puedes ingresar contacta a nuestro equipo de soporte dando
+                                <a href="mailto:soporte@iscjoseluischavezg.mx" class="text-decoration-none"> 
+                                    clic aqui.
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- termina ayuda -->
             <?php include "process/ModalSoporte.php"; ?>
             <?php include "process/ModalRecuperar.php"; ?>
 
@@ -170,31 +214,30 @@ include "includes/ProLogin.php";
                 })()
             </script>
             <script type='text/javascript'>
-                $(function(){
-                $(document).bind("contextmenu",function(e){
-                return false;
+                $(function() {
+                    $(document).bind("contextmenu", function(e) {
+                        return false;
+                    });
                 });
-            });
             </script>
             <script>
                 var verificarconexion = function() {
-    var estado = document.getElementById('estado');
- 
-    if ( navigator.onLine && estado.classList.contains('alert-danger') ) {
-        estado.innerHTML = 'Estas Conectado a Internet !';
-        estado.classList.remove('alert-danger');
-        estado.classList.add('alert-success');
-    }
-    if ( ! navigator.onLine && estado.classList.contains('alert-success') ) {
-        estado.innerHTML = 'Estas Desconectado de Internet !';
-        estado.classList.remove('alert-success');
-        estado.classList.add('alert-danger'); 
-    }
-};
- 
-window.addEventListener('online', verificarconexion);
-window.addEventListener('offline', verificarconexion);
- 
+                    var estado = document.getElementById('estado');
+
+                    if (navigator.onLine && estado.classList.contains('alert-danger')) {
+                        estado.innerHTML = 'Estas Conectado a Internet !';
+                        estado.classList.remove('alert-danger');
+                        estado.classList.add('alert-success');
+                    }
+                    if (!navigator.onLine && estado.classList.contains('alert-success')) {
+                        estado.innerHTML = 'Estas Desconectado de Internet !';
+                        estado.classList.remove('alert-success');
+                        estado.classList.add('alert-danger');
+                    }
+                };
+
+                window.addEventListener('online', verificarconexion);
+                window.addEventListener('offline', verificarconexion);
             </script>
 </body>
 

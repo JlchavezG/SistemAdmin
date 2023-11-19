@@ -89,7 +89,7 @@
                         </a>
                         <ul class="dropdown-menu bg-success" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a class="dropdown-item items" href="PerfilUser.php">
+                                <a class="dropdown-item items" href="PerfilUser">
                                     <svg class="bi text-light" width="15" height="15" fill="currentColor">
                                         <use xlink:href="library/icons/bootstrap-icons.svg#person-circle" />
                                     </svg>&nbsp;&nbsp;<span class="text-light">Perfil</span>
@@ -161,7 +161,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-outline-danger rounded-pill" data-bs-dismiss="modal">Cancelar</button>
-                <a href="includes/CerrarSesion.php" class="btn btn-sm btn-outline-success rounded-pill">Cerrar Sesión</a>
+                <a href="includes/CerrarSesion" class="btn btn-sm btn-outline-success rounded-pill">Cerrar Sesión</a>
             </div>
         </div>
     </div>

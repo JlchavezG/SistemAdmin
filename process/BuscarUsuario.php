@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
-            <a href="UsuariosSistem.php" class="text-decoration-none">
+            <a href="UsuariosSistem" class="text-decoration-none">
                 <svg class='bi text-success' width='25' height='25' fill='currentColor'>
                     <use xlink:href='library/icons/bootstrap-icons.svg#arrow-left-circle-fill' />
                 </svg>
