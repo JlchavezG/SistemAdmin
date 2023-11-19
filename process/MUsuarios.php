@@ -4,7 +4,7 @@
 <div class="container mt-3">
     <div class="row mt-2 justify-content-center">
         <?php echo $AccionUser; ?>
-        <h2 class="text-center"><span>Modulo |</span><span class="text-success"> Usuarios</span> </h2>
+        <h3 class="text-center display-6 fs-5">Modulo Usuarios <span class="text-success"> Sistemas</span></h3>
     </div>
     <div class="row mt-1 justify-content-center">
         <div class="container">

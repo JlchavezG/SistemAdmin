@@ -365,6 +365,12 @@ if (isset($_POST['btn_newlab'])) {
                 header("refresh:3;NewLab.php"); 
 
   }
+  else{
+    $MensjeLab.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                      <strong>Error al registrar el nuevo laboratorio </strong> No se pudo registrar el laboratorio en la plataforma.
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";
+  }
 
 
 
