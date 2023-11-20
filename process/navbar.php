@@ -85,7 +85,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="img/Users/<?php echo $Perfil['ImgUser']; ?>" class="rounded-circle" style="width: 30px; height: 30px;">
-                        <span class="text-light"> Bienvenido: <?php echo $Perfil['Nombre']; ?></span>
+                        <span class="text-light"><?php echo $saludo." ".$Perfil['Nombre']; ?></span>
                         </a>
                         <ul class="dropdown-menu bg-success" aria-labelledby="navbarDropdownMenuLink">
                             <li>

@@ -1,4 +1,7 @@
 <div class="container">
+    <div class="row mt-4">
+    <h3 class="text-center display-6 fs-5">Buscar Usuarios <span class="text-success"> Sistemas</span></h3>
+    </div>
     <div class="row mt-5">
         <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
             <a href="UsuariosSistem" class="text-decoration-none">

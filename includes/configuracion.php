@@ -28,11 +28,11 @@ $Accion2 = "Salida de la plataforma";
 // realizar saludo segun el horario en el servidor 
 $hora_actual = date('H');
 if ($hora_actual >= 5 && $hora_actual < 12) {
-    $saludo = '¡Buenos días!';
+    $saludo = 'Buenos días';
 } elseif ($hora_actual >= 12 && $hora_actual < 18) {
-    $saludo = '¡Buenas tardes!';
+    $saludo = 'Buenas tardes';
 } else {
-    $saludo = '¡Buenas noches!';
+    $saludo = 'Buenas noches';
 }
 // consulta para extraer los datos del usuario conectado  actualizando el campo Online a 1
 $consulta = "SELECT * FROM Usuario WHERE UserName = '$usuario'";
