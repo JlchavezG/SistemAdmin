@@ -87,7 +87,7 @@ $MUsuariosE = $EMUsuarios->fetch_assoc();
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <select name="EId_TUsuario" id="EId_TUsuario" class="form-select">
                         <option value="<?php echo $MUsuariosE['Id_TUsuario']; ?>"><?php echo $MUsuariosE['NTUsuario']; ?></option>
-                        <?php while ($LineaTipo = $ECTUsuario->fetch_assoc()) { ?>
+                        <?php while($LineaTipo = $ECTUsuario->fetch_assoc()) { ?>
                               <option value="<?php echo $LineaTipo['Id_TUsuario']; ?>"><?php echo $LineaTipo['NTUsuario']; ?></option>
                         <?php } ?>
                     </select>
@@ -97,11 +97,17 @@ $MUsuariosE = $EMUsuarios->fetch_assoc();
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <select name="EEstatusUser" id="EEstatusUser" class="form-select">
                         <option value="<?php echo $MUsuariosE['EstatusUser']; ?>"><?php echo $MUsuariosE['DEstatusUser']; ?></option>
-                        
+                        <?php while($LineaEstatus = $EstatusUserE->fetch_assoc()){ ?>
+                              <option value="<?php echo $LineaEstatus['Id_EstatusUser']; ?>"><?php echo $LineaEstatus['DEstatusUser']; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
             </div>
-            
+            <div class="row mt-2 d-flex justify-content-center">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+texto
+                </div>
+            </div>
         </div>
     </div>
     </form>

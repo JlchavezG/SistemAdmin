@@ -62,6 +62,13 @@ $InnerLab = "SELECT L.Id_Laboratorio, L.NombreLaboratorio, L.Id_Plantel , L.Id_c
 FROM Laboratorios L INNER JOIN Plantel PL ON L.Id_Plantel = PL.Id_Plantel INNER JOIN Carreras CA ON L.Id_carrera = CA.Id_Carrera";
 $EInnerLab = $ConectionBd->query($InnerLab);
 $Tlabs = $EInnerLab->num_rows;
+// consulta para extraer datos estatus user 
+$EstatusUser = "SELECT * FROM EstatusUser ORDER BY DEstatusUser";
+$EstatusUserE = $ConectionBd->query($EstatusUser);
+
+
+
+
 // fecha para dasboard
 $FechaD = date('d-m-Y');
 // obtener todos los datos de los usuarios con inner join de la plataforma
