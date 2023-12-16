@@ -280,7 +280,7 @@ if(isset($_POST['MoPassword'])){
                     }
         $datosM.="<td class='bg-light text-center' scope='row'>".$IconOn."</td>
                   <td class='bg-light' scope='row'>
-                      <a href='EditarUser.php?Id_Usuario=".$LineaDatos['Id_Usuario']."' class='text-success text-decoration-none'>
+                      <a href='EditarUser?Id_Usuario=".$LineaDatos['Id_Usuario']."' class='text-success text-decoration-none'>
                           <svg class='bi' width='15' height='15' fill='currentColor'>
                             <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
                           </svg>
