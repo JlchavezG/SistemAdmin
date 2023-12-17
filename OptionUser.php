@@ -131,15 +131,15 @@ require "includes/Acciones.php";
          </div>
     </div>
     <?php include "process/footer.php"; ?>
-            <script type='text/javascript'>
-                $(function() {
-                    $(document).bind("contextmenu", function(e) {
-                        return false;
-                    });
-                });
-            </script>
-            <script src="js/dark-mode.js"></script>
-            <script src="js/pace.js"></script>
+    <script type='text/javascript'>
+        $(function() {
+        $(document).bind("contextmenu", function(e) {
+            return false;
+        });
+        });
+    </script>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/pace.js"></script>
 </body>
 
 </html>
