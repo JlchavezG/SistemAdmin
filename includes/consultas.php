@@ -84,13 +84,14 @@ $EjecutaUserG = $ConectionBd->query($UsuariosG);
 
 // consultas para desarrollar paginacion en usuarios 
 // variable para determinar el nuemero de usuarios por paginacion 
-$usuario_Paginas = 10;
+$usuario_Paginas = 3;
 // contar usuarios dentro de la base de datos 
 $totalUserPag = $EjecutaUserG->num_rows;
 // dividir numero dse uasuarios por paginas
-$paginaU = $totalUserPag / 5;
+$paginaU = $totalUserPag / $usuario_Paginas;
 // redondear numero de usuarios por pagina
 $paginaU = ceil($paginaU);
+echo $paginaU;
 
 
 ?>
