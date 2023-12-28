@@ -71,6 +71,7 @@ $EstatusUserE = $ConectionBd->query($EstatusUser);
 
 // fecha para dasboard
 $FechaD = date('d-m-Y');
+
 // obtener todos los datos de los usuarios con inner join de la plataforma
 $UsuariosG = "SELECT U.Id_Usuario, U.Nombre, U.ApellidoP, U.ApellidoM, U.Telefono, U.Email,
 U.Id_Plantel, U.Id_TUsuario, U.UserName, U.FechaReg ,U.Password, U.Online, U.EstatusUser,
@@ -79,6 +80,17 @@ TU.Id_TUsuario, TU.NTUsuario, ES.Id_EstatusUser, ES.DEstatusUser FROM Usuario U 
 Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario = TU.Id_TUsuario 
 INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser"; 
 $EjecutaUserG = $ConectionBd->query($UsuariosG);
+
+
+// consultas para desarrollar paginacion en usuarios 
+// variable para determinar el nuemero de usuarios por paginacion 
+$usuario_Paginas = 10;
+// contar usuarios dentro de la base de datos 
+$totalUserPag = $EjecutaUserG->num_rows;
+// dividir numero dse uasuarios por paginas
+$paginaU = $totalUserPag / 5;
+// redondear numero de usuarios por pagina
+$paginaU = ceil($paginaU);
 
 
 ?>

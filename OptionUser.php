@@ -4,6 +4,15 @@ require "includes/ConectBd.php";
 require "includes/configuracion.php";
 include "includes/consultas.php";
 require "includes/Acciones.php";
+// consultas para desarrollar paginacion en usuarios 
+// variable para determinar el nuemero de usuarios por paginacion 
+$usuario_Paginas = 10;
+// contar usuarios dentro de la base de datos 
+$totalUserPag = $EjecutaUserG->num_rows;
+// dividir numero dse uasuarios por paginas
+$paginaU = $totalUserPag / 5;
+// redondear numero de usuarios por pagina
+$paginaU = ceil($paginaU);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -112,19 +121,15 @@ require "includes/Acciones.php";
              <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                    <li class="page-item">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
                    </li>
+                   <?php for($i=0; $i<$$paginaU;$i++):?>
                    <li class="page-item">
                     <a class="page-link" href="#">1</a>
                    </li>
+                   <?php endfor ?>
                    <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                   </li>
-                   <li class="page-item">
-                    <a class="page-link" href="#">3</a>
-                   </li>
-                   <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a class="page-link" href="#">Siguiente</a>
                    </li>
                 </ul>
             </nav>
