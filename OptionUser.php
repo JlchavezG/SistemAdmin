@@ -4,12 +4,33 @@ require "includes/ConectBd.php";
 require "includes/configuracion.php";
 include "includes/consultas.php";
 require "includes/Acciones.php";
+// variable para determinar el nuemero de usuarios por paginacion 
+$TPagina = 5;
+// determinar el numero de registros de usuarios dentro de la bd
+$TusuariosBd = $EjecutaUserG->num_rows;
+// dividir el paginador por los usuarios x pagina con usuarios totales
+$paginas = $TusuariosBd / $TPagina;
+// redondear hacia arriba la divicion
+$paginas = ceil($paginas);
+// calcular el numero de pagina segun los registros de la bd 
+$iniciar = ($_GET['pagina']-1) * $TPagina;
+
 // validamos si no se presenta un metodo get iniciamos en el contador 1 
 if(!$_GET){
  header('location:OptionUser?pagina=1');
 }
-$iniciar = ($_GET['pagina']-1) * $usuario_x_Pagina ;
-echo $iniciar;
+if($_GET['pagina'] > $paginas || $_GET['pagina'] <= 0){
+ header('location:OptionUser?pagina=1');
+}
+// consultas para desarrollar paginacion en usuarios 
+// obtener todos los datos de los usuarios con iner join con el limite de usuario por pagina
+$UsuariosPag = "SELECT U.Id_Usuario, U.Nombre, U.ApellidoP, U.ApellidoM, U.Telefono, U.Email,
+U.Id_Plantel, U.Id_TUsuario, U.UserName, U.FechaReg ,U.Password, U.Online, U.EstatusUser,
+U.ImgUser, P.Id_Plantel, P.NombrePlantel, P.DireccionPlantel, P.EmailPlantel, 
+TU.Id_TUsuario, TU.NTUsuario, ES.Id_EstatusUser, ES.DEstatusUser FROM Usuario U INNER JOIN
+Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario = TU.Id_TUsuario 
+INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser ORDER BY U.Nombre ASC LIMIT ".$iniciar.",".$TPagina;
+$EjUsuarios = $ConectionBd->query($UsuariosPag);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -46,7 +67,7 @@ echo $iniciar;
     <!-- terminar el menu -->
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="row mt-1">
+            <div class="row mt-3">
                <div class="text-star mt-2">
                 <a href="UsuariosSistem" class="text-decoration-none text-success">
                  <svg class='bi text-success' width='20' height='20' fill='currentColor'>

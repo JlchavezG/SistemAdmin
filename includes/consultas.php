@@ -65,13 +65,8 @@ $Tlabs = $EInnerLab->num_rows;
 // consulta para extraer datos estatus user 
 $EstatusUser = "SELECT * FROM EstatusUser ORDER BY DEstatusUser";
 $EstatusUserE = $ConectionBd->query($EstatusUser);
-
-
-
-
 // fecha para dasboard
 $FechaD = date('d-m-Y');
-
 // obtener todos los datos de los usuarios con inner join de la plataforma
 $UsuariosG = "SELECT U.Id_Usuario, U.Nombre, U.ApellidoP, U.ApellidoM, U.Telefono, U.Email,
 U.Id_Plantel, U.Id_TUsuario, U.UserName, U.FechaReg ,U.Password, U.Online, U.EstatusUser,
@@ -82,21 +77,5 @@ INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser";
 $EjecutaUserG = $ConectionBd->query($UsuariosG);
 
 
-// consultas para desarrollar paginacion en usuarios 
-// variable para determinar el nuemero de usuarios por paginacion 
-$usuario_x_Pagina = 2;
-// determinar el numero de registros de usuarios dentro de la bd
-$TusuariosBd = $EjecutaUserG->num_rows;
-// dividir el paginador por los usuarios x pagina con usuarios totales
-$paginas = $TusuariosBd / $usuario_x_Pagina;
-// redondear hacia arriba la divicion
-$paginas = ceil($paginas);
-// obtener todos los datos de los usuarios con iner join con el limite de usuario por pagina
-$UsuariosPag = "SELECT U.Id_Usuario, U.Nombre, U.ApellidoP, U.ApellidoM, U.Telefono, U.Email,
-U.Id_Plantel, U.Id_TUsuario, U.UserName, U.FechaReg ,U.Password, U.Online, U.EstatusUser,
-U.ImgUser, P.Id_Plantel, P.NombrePlantel, P.DireccionPlantel, P.EmailPlantel, 
-TU.Id_TUsuario, TU.NTUsuario, ES.Id_EstatusUser, ES.DEstatusUser FROM Usuario U INNER JOIN
-Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario = TU.Id_TUsuario 
-INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser LIMIT 0,2";
-$EjUsuarios = $ConectionBd->query($UsuariosPag);
+
 ?>
