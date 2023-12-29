@@ -4,6 +4,12 @@ require "includes/ConectBd.php";
 require "includes/configuracion.php";
 include "includes/consultas.php";
 require "includes/Acciones.php";
+// validamos si no se presenta un metodo get iniciamos en el contador 1 
+if(!$_GET){
+ header('location:OptionUser?pagina=1');
+}
+$iniciar = ($_GET['pagina']-1) * $usuario_x_Pagina ;
+echo $iniciar;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,7 +74,7 @@ require "includes/Acciones.php";
                         </thead>
                         <tbody>
                             <div class="container">
-                                <?php while ($LineaDatos = $EUsuario->fetch_assoc()) { ?>
+                                <?php while ($LineaDatos = $EjUsuarios->fetch_assoc()) { ?>
                                     <tr>
                                         <td class='bg-light text-center' scope='row'><img src="img/Users/<?php echo $LineaDatos['ImgUser']; ?>" style="width: 30px; height: 30px;" class="rounded-circle"></td>
                                         <td class='bg-light' scope='row'><?php echo $LineaDatos['Nombre']; ?></td>
@@ -111,19 +117,24 @@ require "includes/Acciones.php";
          <div class="row mt-2">
              <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                   <li class="page-item">
-                      <a class="page-link" href="OptionUser?=<?php echo $_GET['pagina']-1;?>" tabindex="-1" aria-disabled="true">Anterior</a>
+                   <!-- detectamos la pagina anterior con un get y asignamos la clase disabled al paginador -->
+                   <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
+                      <a class="page-link" href="OptionUser?pagina=<?php echo $_GET['pagina']-1; ?>" tabindex="-1" aria-disabled="true">
+                        Anterior
+                      </a>
                    </li>
                    <!-- se crea ciclo for para obtener el numero paginacion -->
-                   <?php for($i=0; $i<$paginaU;$i++):?>
-                   <li class="page-item <?php echo $_GET['pagina']== $i+1 ? 'active' : ''?>">
-                    <a class="page-link" href="OptionUser?pagina=<?php echo $i+1; ?>">
-                        <?php echo $i+1; ?>
+                   <?php for($i = 0; $i<$paginas; $i++):?>
+                   <li class="page-item <?php echo $_GET['pagina'] == $i+1 ? 'active' : '' ?>">
+                    <a class="page-link" href="OptionUser?pagina=<?php echo $i+1;  ?>">
+                        <?php echo $i+1;  ?>
                     </a>
                    </li>
-                   <?php endfor?>
-                   <li class="page-item <?php echo $_GET['pagina'] >= $paginaU ? 'disabled' : '' ?>">
-                    <a class="page-link" href="OptionUser?=<?php echo $_GET['pagina']+1;?>">Siguiente</a>
+                   <!-- termina ciclo for -->
+                   <?php endfor ?>
+                   <!-- detectamos la pagina para siguiente con un get y asignamos la clase disabled al paginador -->
+                   <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>">
+                    <a class="page-link" href="OptionUser?pagina=<?php echo $_GET['pagina']+1; ?>">Siguiente</a>
                    </li>
                 </ul>
             </nav>

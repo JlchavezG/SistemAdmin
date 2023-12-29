@@ -84,14 +84,19 @@ $EjecutaUserG = $ConectionBd->query($UsuariosG);
 
 // consultas para desarrollar paginacion en usuarios 
 // variable para determinar el nuemero de usuarios por paginacion 
-$usuario_Paginas = 3;
-// contar usuarios dentro de la base de datos 
-$totalUserPag = $EjecutaUserG->num_rows;
-// dividir numero dse uasuarios por paginas
-$paginaU = $totalUserPag / $usuario_Paginas;
-// redondear numero de usuarios por pagina
-$paginaU = ceil($paginaU);
-echo $paginaU;
-
-
+$usuario_x_Pagina = 2;
+// determinar el numero de registros de usuarios dentro de la bd
+$TusuariosBd = $EjecutaUserG->num_rows;
+// dividir el paginador por los usuarios x pagina con usuarios totales
+$paginas = $TusuariosBd / $usuario_x_Pagina;
+// redondear hacia arriba la divicion
+$paginas = ceil($paginas);
+// obtener todos los datos de los usuarios con iner join con el limite de usuario por pagina
+$UsuariosPag = "SELECT U.Id_Usuario, U.Nombre, U.ApellidoP, U.ApellidoM, U.Telefono, U.Email,
+U.Id_Plantel, U.Id_TUsuario, U.UserName, U.FechaReg ,U.Password, U.Online, U.EstatusUser,
+U.ImgUser, P.Id_Plantel, P.NombrePlantel, P.DireccionPlantel, P.EmailPlantel, 
+TU.Id_TUsuario, TU.NTUsuario, ES.Id_EstatusUser, ES.DEstatusUser FROM Usuario U INNER JOIN
+Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario = TU.Id_TUsuario 
+INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser LIMIT 0,2";
+$EjUsuarios = $ConectionBd->query($UsuariosPag);
 ?>
