@@ -75,8 +75,22 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
                  </svg> <span>Regresar a Usuarios</span>
                  </a>
                </div>
+               <div class="row mt-2">
+                 <span class="text-end">
+                    <a href="javascript:imprSelec('Usuarios')" class="text-decoration-none">
+                        <svg class='bi text-success' width='20' height='20' fill='currentColor'>
+                             <use xlink:href='library/icons/bootstrap-icons.svg#printer-fill'/> 
+                        </svg>
+                    </a> Imprimir |
+                    <a href="#" class="text-decoration-none">
+                        <svg class='bi text-success' width='20' height='20' fill='currentColor'>
+                             <use xlink:href='library/icons/bootstrap-icons.svg#filetype-pdf'/> 
+                        </svg>
+                    </a> Generar PDF |
+                 </span>
+               </div>
             </div>
-            <div class='table-responsive container mt-3 mb-3'>
+            <div class='table-responsive container mt-3 mb-3' id="Usuarios">
                 <div class='col-sm-12 col-md-12 col-lg-12 mt-3'>
                     <table class='table'>
                         <thead class='bg-light'>
@@ -168,6 +182,16 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
             return false;
         });
         });
+    </script>
+    <script>
+        function imprSelec(Usuarios){
+            var ficha=document.getElementById(Usuarios);
+            var ventimp=window.open(' ','popimpr');
+            ventimp.document.write(ficha.innerHTML);
+            ventimp.document.close();
+            ventimp.print();
+            ventimp.close();
+        }
     </script>
     <script src="js/dark-mode.js"></script>
     <script src="js/pace.js"></script>
