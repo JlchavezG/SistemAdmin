@@ -46,7 +46,7 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
     <link rel="stylesheet" type="text/css" href="css/Config.css">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.7.0.min.js"></script>
-    <title>Perfil de Usuario | SistemAdmin</title>
+    <title>Opciones de usuarios | SistemAdmin</title>
 </head>
 <!-- navbar-->
 
@@ -81,12 +81,7 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
                         <svg class='bi text-success' width='20' height='20' fill='currentColor'>
                              <use xlink:href='library/icons/bootstrap-icons.svg#printer-fill'/> 
                         </svg>
-                    </a> Imprimir |
-                    <a href="#" class="text-decoration-none">
-                        <svg class='bi text-success' width='20' height='20' fill='currentColor'>
-                             <use xlink:href='library/icons/bootstrap-icons.svg#filetype-pdf'/> 
-                        </svg>
-                    </a> Generar PDF |
+                    </a> Imprimir 
                  </span>
                </div>
             </div>
@@ -101,10 +96,13 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
                                 <th scope='col'>ApellidoMaterno</th>
                                 <th scope='col'>Telefono</th>
                                 <th scope='col'>Email</th>
+                                <th scope='col'>Plantel_Inscrito</th>
+                                <th scope='col'>TipodeUsuario</th>
                                 <th scope='col'>UserName</th>
                                 <th scope='col'>FechadeRegistro</th>
                                 <th scope='col'>Online</th>
-                                <th scope='col'>Opcione</th>
+                                <th scope='col'>Estatus</th>
+                                <th scope='col'>Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -117,6 +115,8 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
                                         <td class='bg-light' scope='row'><?php echo $LineaDatos['ApellidoM']; ?></td>
                                         <td class='bg-light' scope='row'><?php echo $LineaDatos['Telefono']; ?></td>
                                         <td class='bg-light' scope='row'><?php echo $LineaDatos['Email']; ?></td>
+                                        <td class='bg-light' scope='row'><?php echo $LineaDatos['NombrePlantel']; ?></td>
+                                        <td class='bg-light' scope='row'><?php echo $LineaDatos['NTUsuario']; ?></td>
                                         <td class='bg-light' scope='row'><?php echo $LineaDatos['UserName']; ?></td>
                                         <td class='bg-light' scope='row'><?php echo $LineaDatos['FechaReg']; ?></td>
                                         <?php if ($LineaDatos['Online'] == $On) {
@@ -129,6 +129,7 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
                                                        </svg>";
                                         } ?>
                                         <td class="bg-light text-center" scope="row"> <?php echo $IconOn; ?></td>
+                                        <td class='bg-light' scope='row'><?php echo $LineaDatos['DEstatusUser']; ?></td>
                                         <td class="bg-light" scope="row">
                                             <a href='EditarUser?Id_Usuario=<?php echo $LineaDatos['Id_Usuario']; ?>"' class='text-success text-decoration-none'>
                                                 <svg class='bi' width='15' height='15' fill='currentColor'>

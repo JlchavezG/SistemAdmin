@@ -106,7 +106,7 @@ $MUsuariosE = $EMUsuarios->fetch_assoc();
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="d-grid gap-2">
-                     <input type="submit" value="Actualizar" class="btn btn-sm btn-outline-success rounded-pill">
+                     <input type="submit" value="Actualizar" class="btn btn-sm btn-outline-success rounded-pill" name="btnActualizarUser">
                     </div>
                 </div>
             </div>
