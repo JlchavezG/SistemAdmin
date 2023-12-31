@@ -131,7 +131,7 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
                                         <td class="bg-light text-center" scope="row"> <?php echo $IconOn; ?></td>
                                         <td class='bg-light' scope='row'><?php echo $LineaDatos['DEstatusUser']; ?></td>
                                         <td class="bg-light" scope="row">
-                                            <a href='EditarUser?Id_Usuario=<?php echo $LineaDatos['Id_Usuario']; ?>"' class='text-success text-decoration-none'>
+                                            <a href='EditarUser?Id_Usuario=<?php echo $LineaDatos['Id_Usuario']; ?>' class='text-success text-decoration-none'>
                                                 <svg class='bi' width='15' height='15' fill='currentColor'>
                                                     <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill' />
                                                 </svg>

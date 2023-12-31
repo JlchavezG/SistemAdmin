@@ -3,16 +3,8 @@ error_reporting(0);
 require "includes/ConectBd.php";
 require "includes/configuracion.php";
 include "includes/consultas.php";
-$IdMUser = $_GET['Id_Usuario'];
-// consulta para extraer los datos del usuario a editar 
-$MUsuarios = "SELECT U.Id_Usuario, U.Nombre, U.ApellidoP, U.ApellidoM, U.Telefono, U.Email,
-U.Id_Plantel, U.Id_TUsuario, U.UserName, U.FechaReg ,U.Password, U.Online, U.EstatusUser,
-U.ImgUser, P.Id_Plantel, P.NombrePlantel, P.DireccionPlantel, P.EmailPlantel, 
-TU.Id_TUsuario, TU.NTUsuario, ES.Id_EstatusUser, ES.DEstatusUser FROM Usuario U INNER JOIN
-Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario = TU.Id_TUsuario 
-INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser WHERE Id_Usuario = '$IdMUser'";
-$EMUsuarios = $ConectionBd->query($MUsuarios); 
-$MUsuariosE = $EMUsuarios->fetch_assoc();
+include "includes/Acciones.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -46,6 +38,15 @@ $MUsuariosE = $EMUsuarios->fetch_assoc();
         <h3 class="text-center display-6 fs-5">Modulo Editar Usuario <span class="text-success"> Sistemas</span></h3>
     </div>
     <hr>
+    <div class="row mt-4">
+       <span class="text-success">
+        <a href="OptionUser" class="text-decoration-none">
+          <svg class="bi text-success" width="22" height="22" fill="currentColor">
+            <use xlink:href="library/icons/bootstrap-icons.svg#arrow-left-circle" />
+          </svg>
+        </a>  Regresar a Opciones de Usuario
+       </span>
+    </div>
     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
     <div class="row mt-2 d-flex justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-12">
@@ -54,6 +55,7 @@ $MUsuariosE = $EMUsuarios->fetch_assoc();
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6-col-lg-6">
+                <input type="hidden" name="idUserAct" value="<?php echo $MUsuariosE['Id_Usuario']; ?>" disabled>
                 <input type="text" name="ENombre" id="ENombre" placeholder="Ingresa tu nombre" class="form-control" value="<?php echo $MUsuariosE['Nombre']; ?>">
                 </div>
             </div>

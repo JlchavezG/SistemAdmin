@@ -384,5 +384,38 @@ $FechaRep = "SELECT * FROM Usuario WHERE (FechaReg) BETWEEN '$Fecha1' AND '$Fech
 $FechaRepE = $ConectionBd->query($FechaRep);
 
 }
+// recuperar usaurios para la consulta de actualizar usuarios en sistemas
+$IdMUser = $_GET['Id_Usuario'];
+// consulta para extraer los datos del usuario a editar 
+$MUsuarios = "SELECT U.Id_Usuario, U.Nombre, U.ApellidoP, U.ApellidoM, U.Telefono, U.Email,
+U.Id_Plantel, U.Id_TUsuario, U.UserName, U.FechaReg ,U.Password, U.Online, U.EstatusUser,
+U.ImgUser, P.Id_Plantel, P.NombrePlantel, P.DireccionPlantel, P.EmailPlantel, 
+TU.Id_TUsuario, TU.NTUsuario, ES.Id_EstatusUser, ES.DEstatusUser FROM Usuario U INNER JOIN
+Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario = TU.Id_TUsuario 
+INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser WHERE Id_Usuario = '$IdMUser'";
+$EMUsuarios = $ConectionBd->query($MUsuarios); 
+$MUsuariosE = $EMUsuarios->fetch_assoc();
+
+// actualizar usuario apartado sistemas
+if(isset($_POST['btnActualizarUser'])){
+$IdActUser = $ConectionBd->real_escape_string($_POST['idUserAct']); 
+$ActNombre = $ConectionBd->real_escape_string($_POST['ENombre']);
+$ActApellidoP = $ConectionBd->real_escape_string($_POST['EApellidoP']);
+$ActApellidoM = $ConectionBd->real_escape_string($_POST['EApellidoM']);
+$ActTelefono = $ConectionBd->real_escape_string($_POST['ETelefono']);
+$ActEmail = $ConectionBd->real_escape_string($_POST['EEmail']);
+$ActIdPlantel = $ConectionBd->real_escape_string($_POST['EPlantel']);
+$ActIdTuser = $ConectionBd->real_escape_string($_POST['EId_TUsuario']);
+$ActStatus = $ConectionBd->real_escape_string($_POST['EEstatusUser']);
+// consulta para actualizar el usuario de sistemas
+$actTuser = "UPDATE Usuario SET Nombre = '$ActNombre', ApellidoP = '$ActApellidoP', ApellidoM = '$ActApellidoM',
+Telefono = '$ActTelefono', Email = '$ActEmail', Id_Plantel = '$ActIdPlantel', Id_TUsuario = '$ActIdTuser', EstatusUser = '$ActStatus' 
+WHERE Id_Usuario = '$IdActUser'";
+$EjAc = $ConectionBd->query($actTuser);
+if($EjAc > 0){
+  header("location:OptionUser");
+}
+}
+
 
 ?>
