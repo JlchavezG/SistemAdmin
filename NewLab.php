@@ -5,8 +5,26 @@ require "includes/configuracion.php";
 include "includes/consultas.php";
 require "library/phpqrcode/qrlib.php";
 require "includes/Acciones.php";
+// total de paginas
+$TPagina = 5;
+// dividir el paginador por los usuarios x pagina con usuarios totales
+$paginas = $Tlabs / $TPagina;
+$paginas = ceil($paginas);
+// calcular el numero de pagina segun los registros de la bd 
+$iniciar = ($_GET['pagina']-1) * $TPagina;
+// consulta para extraer los datos de laboratorios con pagina
+$PagLab = "SELECT L.Id_Laboratorio, L.NombreLaboratorio, L.Id_Plantel , L.Id_carrera, PL.Id_Plantel, PL.NombrePlantel, CA.Id_Carrera, CA.NombreCarrera 
+FROM Laboratorios L INNER JOIN Plantel PL ON L.Id_Plantel = PL.Id_Plantel INNER JOIN Carreras CA ON L.Id_carrera = CA.Id_Carrera ORDER BY PL.Id_Plantel ASC";
+$EjePagLab = $ConectionBd->query($PagLab);
 
 
+// validamos si no se presenta un metodo get iniciamos en el contador 1 
+if(!$_GET){
+    header('location:NewLab?pagina=1');
+   }
+   if($_GET['pagina'] > $paginas || $_GET['pagina'] <= 0){
+    header('location:NewLab?pagina=1');
+   }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,7 +133,7 @@ require "includes/Acciones.php";
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while ($rowLabs = $EInnerLab->fetch_assoc()) { ?>
+                            <?php while ($rowLabs = $EjePagLab->fetch_assoc()) { ?>
                                 <tr class="bg-light">
                                     <th scope="row"><?php echo $rowLabs['NombreLaboratorio']; ?></th>
                                     <th scope="row"><?php echo $rowLabs['NombrePlantel']; ?></th>
@@ -142,15 +160,24 @@ require "includes/Acciones.php";
         <div class="row mt-2">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
+                    <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
+                      <a class="page-link" href="NewLab?pagina=<?php echo $_GET['pagina']-1; ?>" tabindex="-1" aria-disabled="true">
+                        Anterior
+                      </a>
+                   </li>
+                   <!-- se crea ciclo for para obtener el numero paginacion -->
+                   <?php for($i = 0; $i<$paginas; $i++):?>
+                   <li class="page-item <?php echo $_GET['pagina'] == $i+1 ? 'active' : '' ?>">
+                    <a class="page-link" href="NewLab?pagina=<?php echo $i+1;  ?>">
+                        <?php echo $i+1;  ?>
+                    </a>
+                   </li>
+                   <!-- termina ciclo for -->
+                   <?php endfor ?>
+                    <!-- detectamos la pagina para siguiente con un get y asignamos la clase disabled al paginador -->
+                   <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>">
+                    <a class="page-link" href="NewLab?pagina=<?php echo $_GET['pagina']+1; ?>">Siguiente</a>
+                   </li>
                 </ul>
             </nav>
         </div>
@@ -159,6 +186,23 @@ require "includes/Acciones.php";
     <?php include "process/footer.php"; ?>
     <script src="js/dark-mode.js"></script>
     <script src="js/pace.js"></script>
+    <script type='text/javascript'>
+        $(function() {
+        $(document).bind("contextmenu", function(e) {
+            return false;
+        });
+        });
+    </script>
+    <script>
+        function imprSelec(Usuarios){
+            var ficha=document.getElementById(Usuarios);
+            var ventimp=window.open(' ','popimpr');
+            ventimp.document.write(ficha.innerHTML);
+            ventimp.document.close();
+            ventimp.print();
+            ventimp.close();
+        }
+    </script>
 </body>
 
 </html>

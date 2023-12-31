@@ -47,7 +47,12 @@ include "includes/Acciones.php";
         </a>  Regresar a Opciones de Usuario
        </span>
     </div>
-    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+    <div class="row mt-2">
+        <?php echo $AlertActUser; ?>
+        <?php if($eJ > 0){$Clase = true;}
+         ?>
+    </div>
+    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" class="needs-validation <?php echo $Clase ? 'd-none': '' ?>" novalidate>
     <div class="row mt-2 d-flex justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="row d-flex justify-content-center">
@@ -55,29 +60,29 @@ include "includes/Acciones.php";
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6-col-lg-6">
-                <input type="hidden" name="idUserAct" value="<?php echo $MUsuariosE['Id_Usuario']; ?>" disabled>
-                <input type="text" name="ENombre" id="ENombre" placeholder="Ingresa tu nombre" class="form-control" value="<?php echo $MUsuariosE['Nombre']; ?>">
+                <input type="hidden" name="idUserAct" value="<?php echo $MUsuariosE['Id_Usuario']; ?>">
+                <input type="text" name="ENombre" id="ENombre" placeholder="Ingresa tu nombre" class="form-control" value="<?php echo $MUsuariosE['Nombre']; ?>" required>
                 </div>
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-3 col-md-3 col-lg-3 mt-2">
-                <input type="text" name="EApellidoP" id="EApellidoP" placeholder="Apellido Paterno" class="form-control" value="<?php echo $MUsuariosE['ApellidoP']; ?>">
+                <input type="text" name="EApellidoP" id="EApellidoP" placeholder="Apellido Paterno" class="form-control" value="<?php echo $MUsuariosE['ApellidoP']; ?>" required>
                 </div>
                 <div class="col-sm-3 col-md-3 col-lg-3 mt-2">
-                <input type="text" name="EApellidoM" id="EApellidoM" placeholder="Apellido Materno" class="form-control" value="<?php echo $MUsuariosE['ApellidoM']; ?>">
+                <input type="text" name="EApellidoM" id="EApellidoM" placeholder="Apellido Materno" class="form-control" value="<?php echo $MUsuariosE['ApellidoM']; ?>" required>
                 </div>
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-3 col-md-3 col-lg-3">
-                <input type="tel" name="ETelefono" id="ETelefono" placeholder="Telefono" class="form-control" value="<?php echo $MUsuariosE['Telefono']; ?>">
+                <input type="tel" name="ETelefono" id="ETelefono" placeholder="Telefono" class="form-control" value="<?php echo $MUsuariosE['Telefono']; ?>" required>
                 </div>
                 <div class="col-sm-3 col-md-3 col-lg-3">
-                <input type="text" name="EEmail" id="EEmail" placeholder="Email" class="form-control" value="<?php echo $MUsuariosE['Email']; ?>">
+                <input type="email" name="EEmail" id="EEmail" placeholder="Email" class="form-control" value="<?php echo $MUsuariosE['Email']; ?>" required>
                 </div>
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <select name="EPlantel" id="EPlantel" class="form-select">
+                    <select name="EPlantel" id="EPlantel" class="form-select" required>
                         <option value="<?php echo $MUsuariosE['Id_Plantel']; ?>"><?php echo $MUsuariosE['NombrePlantel']; ?></option>
                         <?php while ($LineaPlantel = $EPlanteles->fetch_assoc()) { ?>
                               <option value="<?php echo $LineaPlantel['Id_Plantel']; ?>"><?php echo $LineaPlantel['NombrePlantel'] ?></option>
@@ -87,7 +92,7 @@ include "includes/Acciones.php";
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <select name="EId_TUsuario" id="EId_TUsuario" class="form-select">
+                    <select name="EId_TUsuario" id="EId_TUsuario" class="form-select" required>
                         <option value="<?php echo $MUsuariosE['Id_TUsuario']; ?>"><?php echo $MUsuariosE['NTUsuario']; ?></option>
                         <?php while($LineaTipo = $ECTUsuario->fetch_assoc()) { ?>
                               <option value="<?php echo $LineaTipo['Id_TUsuario']; ?>"><?php echo $LineaTipo['NTUsuario']; ?></option>
@@ -97,7 +102,7 @@ include "includes/Acciones.php";
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <select name="EEstatusUser" id="EEstatusUser" class="form-select">
+                    <select name="EEstatusUser" id="EEstatusUser" class="form-select" required>
                         <option value="<?php echo $MUsuariosE['EstatusUser']; ?>"><?php echo $MUsuariosE['DEstatusUser']; ?></option>
                         <?php while($LineaEstatus = $EstatusUserE->fetch_assoc()){ ?>
                               <option value="<?php echo $LineaEstatus['Id_EstatusUser']; ?>"><?php echo $LineaEstatus['DEstatusUser']; ?></option>
@@ -120,6 +125,23 @@ include "includes/Acciones.php";
 <?php include "process/footer.php"; ?>
 <script src="js/dark-mode.js"></script>
 <script src="js/pace.js"></script>
+<script>
+(function () {
+  'use strict'
+  var forms = document.querySelectorAll('.needs-validation')
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
 </body>
 
 </html>

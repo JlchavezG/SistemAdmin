@@ -408,13 +408,25 @@ $ActIdPlantel = $ConectionBd->real_escape_string($_POST['EPlantel']);
 $ActIdTuser = $ConectionBd->real_escape_string($_POST['EId_TUsuario']);
 $ActStatus = $ConectionBd->real_escape_string($_POST['EEstatusUser']);
 // consulta para actualizar el usuario de sistemas
-$actTuser = "UPDATE Usuario SET Nombre = '$ActNombre', ApellidoP = '$ActApellidoP', ApellidoM = '$ActApellidoM',
+$ActUserS = "UPDATE Usuario SET Nombre = '$ActNombre', ApellidoP = '$ActApellidoP', ApellidoM = '$ActApellidoM',
 Telefono = '$ActTelefono', Email = '$ActEmail', Id_Plantel = '$ActIdPlantel', Id_TUsuario = '$ActIdTuser', EstatusUser = '$ActStatus' 
 WHERE Id_Usuario = '$IdActUser'";
-$EjAc = $ConectionBd->query($actTuser);
-if($EjAc > 0){
-  header("location:OptionUser");
+$eJ = $ConectionBd->query($ActUserS);
+if($eJ > 0){
+  $AlertActUser.= "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                       <strong>Genial el usuario se actualizo en el sistema </strong> Espera 5 segundos la pagina se refrescara.
+                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                   </div>";
+                   header("Refresh:5; url=OptionUser");
 }
+else{
+  $AlertActUser.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                       <strong>Error al actualizar el usuario en el sistema </strong> Espera 10 segundos la pagina se refrescara.
+                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                   </div>";
+                   header("Refresh:5; url=OptionUser");
+}
+
 }
 
 
