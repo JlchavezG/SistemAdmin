@@ -6,25 +6,24 @@ include "includes/consultas.php";
 require "library/phpqrcode/qrlib.php";
 require "includes/Acciones.php";
 // total de paginas
-$TPagina = 5;
+$TPaginaLab = 5 ;
 // dividir el paginador por los usuarios x pagina con usuarios totales
-$paginas = $Tlabs / $TPagina;
-$paginas = ceil($paginas);
+$paginasLab = $Tlabs / $TPaginaLab;
+$paginasLab = ceil($paginasLab);
 // calcular el numero de pagina segun los registros de la bd 
-$iniciar = ($_GET['pagina']-1) * $TPagina;
-// consulta para extraer los datos de laboratorios con pagina
-$PagLab = "SELECT L.Id_Laboratorio, L.NombreLaboratorio, L.Id_Plantel , L.Id_carrera, PL.Id_Plantel, PL.NombrePlantel, CA.Id_Carrera, CA.NombreCarrera 
-FROM Laboratorios L INNER JOIN Plantel PL ON L.Id_Plantel = PL.Id_Plantel INNER JOIN Carreras CA ON L.Id_carrera = CA.Id_Carrera ORDER BY PL.Id_Plantel ASC";
-$EjePagLab = $ConectionBd->query($PagLab);
-
-
+$iniciarLab = ($_GET['pagina']-1) * $TPaginaLab;
 // validamos si no se presenta un metodo get iniciamos en el contador 1 
 if(!$_GET){
     header('location:NewLab?pagina=1');
    }
-   if($_GET['pagina'] > $paginas || $_GET['pagina'] <= 0){
+   if($_GET['pagina'] > $paginasLab || $_GET['pagina'] <= 0){
     header('location:NewLab?pagina=1');
    }
+// consulta para extraer los datos de laboratorios con pagina
+$PagLab = "SELECT L.Id_Laboratorio, L.NombreLaboratorio, L.Id_Plantel , L.Id_carrera, PL.Id_Plantel, PL.NombrePlantel, CA.Id_Carrera, CA.NombreCarrera 
+FROM Laboratorios L INNER JOIN Plantel PL ON L.Id_Plantel = PL.Id_Plantel INNER JOIN Carreras CA ON L.Id_carrera = CA.Id_Carrera  LIMIT ".$paginasLab.",".$TPaginaLab;
+$EjePagLab = $ConectionBd->query($PagLab);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -166,7 +165,7 @@ if(!$_GET){
                       </a>
                    </li>
                    <!-- se crea ciclo for para obtener el numero paginacion -->
-                   <?php for($i = 0; $i<$paginas; $i++):?>
+                   <?php for($i = 0; $i<$paginasLab; $i++):?>
                    <li class="page-item <?php echo $_GET['pagina'] == $i+1 ? 'active' : '' ?>">
                     <a class="page-link" href="NewLab?pagina=<?php echo $i+1;  ?>">
                         <?php echo $i+1;  ?>
@@ -175,7 +174,7 @@ if(!$_GET){
                    <!-- termina ciclo for -->
                    <?php endfor ?>
                     <!-- detectamos la pagina para siguiente con un get y asignamos la clase disabled al paginador -->
-                   <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>">
+                   <li class="page-item <?php echo $_GET['pagina'] >= $paginasLab ? 'disabled' : '' ?>">
                     <a class="page-link" href="NewLab?pagina=<?php echo $_GET['pagina']+1; ?>">Siguiente</a>
                    </li>
                 </ul>

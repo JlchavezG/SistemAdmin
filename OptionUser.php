@@ -81,7 +81,12 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
                         <svg class='bi text-success' width='20' height='20' fill='currentColor'>
                              <use xlink:href='library/icons/bootstrap-icons.svg#printer-fill'/> 
                         </svg>
-                    </a> Imprimir 
+                    </a> Imprimir |
+                    <a href="#" data-bs-toggle="offcanvas" data-bs-target="#AyudaOptionUser" aria-controls="AyudaOptionUser" class="text-decoration-none text-success">
+                         <svg class="bi" width="18" height="18" fill="currentColor">
+                            <use xlink:href="library/icons/bootstrap-icons.svg#question-circle" />
+                         </svg>
+                    </a> Ayuda soporte
                  </span>
                </div>
             </div>
@@ -175,6 +180,24 @@ $EjUsuarios = $ConectionBd->query($UsuariosPag);
                 </ul>
             </nav>
          </div>
+    </div>
+    <!-- offcanva de ayuda  -->
+    <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="AyudaOptionUser" aria-labelledby="AyudaOptionUserLabel">
+        <div class="offcanvas-header">
+            <h5 id="AyudaOptionUserLabel">
+                <svg class='bi' width='25' height='25' fill='currentColor'>
+                    <use xlink:href='library/icons/bootstrap-icons.svg#question-circle' />
+                </svg> Opciones de usuarios
+            </h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+        <ul class="list-group list-group-flush">
+           <li class="list-group-item bg-light text-success">1.- Selecciona la opcion para editar los datos del usuario y/o eliminar los datos del usuario.</li>
+           <li class="list-group-item bg-light text-success">2.- En editar podras modificar datos generales del usuario, tipo de usuario, estatus, plantel asignado.</li>
+           <li class="list-group-item bg-light text-success">3.- En eliminar usuario se eliminara todo dato y registro del mismo en la plataforma.</li>
+        </ul>
+        </div>
     </div>
     <?php include "process/footer.php"; ?>
     <script type='text/javascript'>

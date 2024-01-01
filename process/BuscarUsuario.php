@@ -14,6 +14,15 @@
         <div class="col-sm-6 col-md-6 col-lg-6 mt-1"></div>
     </div>
     <div class="row mt-1">
+        <div class="row mt-3">
+            <span class="text-end text-success">
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#AyudaBuscarUser" aria-controls="AyudaBuscarUser" class="text-decoration-none text-success">
+                <svg class="bi" width="18" height="18" fill="currentColor">
+                    <use xlink:href="library/icons/bootstrap-icons.svg#question-circle" />
+                </svg> Ayuda soporte
+                </a>
+            </span>
+        </div>
         <div class="container mt-3 py-2 d-flex justify-content-center">
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="needs-validation" novalidate method="POST" />
@@ -36,6 +45,26 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- offcanva de ayuda  -->
+    <div class="offcanvas offcanvas-end bg-light" tabindex="-1" id="AyudaBuscarUser" aria-labelledby="AyudaBuscarUserLabel">
+        <div class="offcanvas-header">
+            <h5 id="AyudaBuscarUserLabel">
+                <svg class='bi' width='25' height='25' fill='currentColor'>
+                    <use xlink:href='library/icons/bootstrap-icons.svg#question-circle' />
+                </svg> Buscar Usuarios
+            </h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+        <ul class="list-group list-group-flush">
+           <li class="list-group-item bg-light text-success">1.- Dentro de la caha de texto digita al usuario a buscar.</li>
+           <li class="list-group-item bg-light text-success">2.- Clic en boton buscar.</li>
+           <li class="list-group-item bg-light text-success">3.- Si la busqueda tuvo exito aparecera un listado con los usuarios registrados.</li>
+           <li class="list-group-item bg-light text-success">4.- Selecciona la opcion para editar los datos del usuario y/o eliminar los datos del usuario.</li>
+           <li class="list-group-item bg-light text-success">5.- Si la busqueda no tuvo exito aparecera una alerta indicandote que los usuarios buscados no estan registrados.</li>
+        </ul>
         </div>
     </div>
     <?php include "process/modalModificarUsuario.php"; ?>
