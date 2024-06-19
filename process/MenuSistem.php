@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item items">
-                <a href="#" class="nav-link">
+                <a href="Materiales" class="nav-link">
                     <svg class="bi text-light" width="20" height="20" fill="currentColor">
                         <use xlink:href="library/icons/bootstrap-icons.svg#clipboard-check-fill" />
                     </svg>&nbsp;&nbsp;&nbsp;<span class="text-light">Materiales</span>

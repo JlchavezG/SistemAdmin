@@ -44,6 +44,7 @@ if($extraer > 0){
   $on = "UPDATE Usuario SET Online = '1' WHERE Id_Usuario = '$online'";
   $line = $ConectionBd->query($on);
 }
+
 // validacion del tiempo para expirar una sesion dentro del sistema 
 if(isset($_SESSION['time'])){
     // damos el tiempo en segundos para determinar en cuanto tiempo expirara la sesión

@@ -37,34 +37,9 @@ $TCOnUser = $COnUser->num_rows;
 $UserAct = "SELECT * FROM Usuario WHERE EstatusUser = 1";
 $UserActE = $ConectionBd->query($UserAct);
 $TUserAct = $UserActE->num_rows;
-// obtener los registros toatales de materiales
-$CMateriales = "SELECT * FROM Materiales";
-$EMateriales = $ConectionBd->query($CMateriales);
-$TMateriales = $EMateriales->num_rows;
-// obtener el numero de registros en solicitudes
-$CSolicitudes = "SELECT * FROM SolicitudMaterial";
-$ESolicitud = $ConectionBd->query($CSolicitudes);
-$TSolicitudes = $ESolicitud->num_rows;
-// obtener el numero de registros en Laboratorios
-$CLaboratorios = "SELECT * FROM Laboratorios ORDER BY NombreLaboratorio ASC";
-$ELaboratorios = $ConectionBd->query($CLaboratorios);
-$TLaboratorios = $ELaboratorios->num_rows;
-// obtener el numero de registros en Planteles
-$CPlanteles = "SELECT * FROM Plantel ORDER BY NombrePlantel ASC";
-$EPlanteles = $ConectionBd->query($CPlanteles);
-$TPlanteles = $EPlanteles->num_rows;
-// obtener numero de carreras dentro del sistema 
-$CCarreras = "SELECT * FROM Carreras ORDER BY NombreCarrera ASC";
-$ECarreras = $ConectionBd->query($CCarreras);
-$TCarreras = $ECarreras->num_rows;
-// consulta cruzada de laboratorios 
-$InnerLab = "SELECT L.Id_Laboratorio, L.NombreLaboratorio, L.Id_Plantel , L.Id_carrera, PL.Id_Plantel, PL.NombrePlantel, CA.Id_Carrera, CA.NombreCarrera 
-FROM Laboratorios L INNER JOIN Plantel PL ON L.Id_Plantel = PL.Id_Plantel INNER JOIN Carreras CA ON L.Id_carrera = CA.Id_Carrera";
-$EInnerLab = $ConectionBd->query($InnerLab);
-$Tlabs = $EInnerLab->num_rows;
-// consulta para extraer datos estatus user 
-$EstatusUser = "SELECT * FROM EstatusUser ORDER BY DEstatusUser";
-$EstatusUserE = $ConectionBd->query($EstatusUser);
+// consulta para extraer categorias de materiales 
+$CatMaterial = "SELECT * FROM CategoriaMaterial";
+$ECatMaterial = $ConectionBd->query($CatMaterial);
 // fecha para dasboard
 $FechaD = date('d-m-Y');
 // obtener todos los datos de los usuarios con inner join de la plataforma
@@ -75,7 +50,17 @@ TU.Id_TUsuario, TU.NTUsuario, ES.Id_EstatusUser, ES.DEstatusUser FROM Usuario U 
 Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario = TU.Id_TUsuario 
 INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser"; 
 $EjecutaUserG = $ConectionBd->query($UsuariosG);
-
-
-
+// cusultar total de materiales consumibles
+$Tmateriales = "SELECT * FROM Materiales WHERE Id_CatMaterial = 1";
+$ETmateriales = $ConectionBd->query($Tmateriales);
+$TotalesM = $ETmateriales->num_rows;
+// consultar total materiales Activos 
+$TmaterialesA = "SELECT * FROM Materiales WHERE Id_CatMaterial = 2";
+$ETmaterialesA = $ConectionBd->query($TmaterialesA);
+$TotalesMA = $ETmaterialesA->num_rows;
+// consulta para extraer informacion sobre materiales 
+$Materiales = "SELECT M.Id_Material, M.NomMaterial, M.DescripMaterial, M.Id_CatMaterial, M.Cantidad, M.Stok, M.ImgMaterial, 
+C.Id_Categoria, C.NombreCate FROM Materiales M INNER JOIN CategoriaMaterial C ON M.Id_CatMaterial = C.Id_Categoria";
+$EMateriales = $ConectionBd->query($Materiales);
+$TotalMateriales = $EMateriales->num_rows;
 ?>

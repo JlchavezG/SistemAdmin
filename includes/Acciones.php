@@ -11,7 +11,7 @@ if (isset($_POST['BtnRecPass'])) {
   $Buser = "SELECT * FROM Usuario WHERE Email = '$RecuperaEmail' and UserName = '$RecuperaUser'";
   $EBuser = $ConectionBd->query($Buser);
   $ResultadoB = $EBuser->fetch_array();
-  $idBuscar = $ResultadoB['Id_Usuario'];
+  ;$idBuscar = $ResultadoB['Id_Usuario'];
   $EmailBuscar = $ResultadoB['Email'];
   if ($ResultadoB > 0) {
     $AlertaB .= "<div class='alert alert-success alert-dismissible fade show' role='alert'>
@@ -302,6 +302,70 @@ if(isset($_POST['MoPassword'])){
                 </div>";
    }
   }
+// consulta buscar materiales 
+if(isset($_POST['btnMaterial'])){
+  $Consumible = 1;
+  $Activo = 2; 
+  $DatosBM = $ConectionBd->real_escape_string($_POST['buscarMaterial']); 
+  $BusquedaM = "SELECT * FROM Materiales WHERE NomMaterial LIKE '%$DatosBM%'";
+  $BusquedaME = $ConectionBd->query($BusquedaM);
+  if($BusquedaME ->num_rows > 0){
+      $datosMA.="<div class='table-responsive container mt-2 mb-3'>
+                    <div class='col-sm-12 col-md-12 col-lg-12'> 
+                        <table class='table'>
+                          <thead class='bg-light'>
+                              <tr>
+                                <th class='bg-light' scope='col'>Imagen</th>
+                                <th class='bg-light' scope='col'>Nombre de Material</th>
+                                <th scope='col'>Descripcion</th>
+                                <th scope='col'>Categoria</th>
+                                <th scope='col'>Existencia</th>
+                                <th scope='col'>Stock</th>
+                                <th scope='col'>Opciones</th>
+                              </tr>
+                          </thead>
+                          <tbody>";
+                          while($LineaDatos = $BusquedaME->fetch_assoc()){
+                            $datosMA.="<tr>
+                                          <td class='bg-light text-center' scope='row'><img src='img/materiales/".$LineaDatos['ImgMaterial']."'style='width: 30px; height: 30px;' class='rounded-circle'></td>
+                                          <td class='bg-light' scope='row'>".$LineaDatos['NomMaterial']."</td>
+                                          <td class='bg-light' scope='row'>".$LineaDatos['DescripMaterial']."</td>";
+                                          if($LineaDatos['Id_CatMaterial'] == $Consumible){
+                                              $IconOn = "<svg class='bi text-success' width='15' height='15' fill='currentColor'>
+                                                            <use xlink:href='library/icons/bootstrap-icons.svg#circle-fill'/> 
+                                                          </svg>";
+                                            }
+                                            else{
+                                            $IconOn = "<svg class='bi text-warning' width='15' height='15' fill='currentColor'>
+                                                          <use xlink:href='library/icons/bootstrap-icons.svg#circle'/> 
+                                                      </svg>";
+                                            }
+                            $datosMA.="<td class='bg-light text-center' scope='row'>".$IconOn."</td>
+                                          
+                                          <td class='bg-light' scope='row'>".$LineaDatos['Cantidad']."</td>
+                                          <td class='bg-light' scope='row'>".$LineaDatos['Stok']."</td>
+                                          <td class='bg-light' scope='row'>
+                                              <a href='EditarMaterial?Id_Material=".$LineaDatos['Id_Material']."' class='text-success text-decoration-none'>
+                                                  <svg class='bi' width='15' height='15' fill='currentColor'>
+                                                      <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
+                                                  </svg>
+                                              </a> - 
+                                              <a href='includes/EliminarMaterial.php?Id_Material=".$LineaDatos['Id_Material']."' class='text-success text-decoration-none'>
+                                                  <svg class='bi' width='15' height='15' fill='currentColor'>
+                                                      <use xlink:href='library/icons/bootstrap-icons.svg#trash-fill'/> 
+                                                  </svg>
+                                              </a>
+                                          </td>
+                                    </tr>";              
+      }              
+  }
+  else{
+      $datosMA.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                    <strong>No se Encontraron Coinsidencias en la busqueda</strong> Puedes buscar por Nombre de material ó descripcion de material.
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>";
+  }
+} 
 // registro nuevo usuario superUsuarios
 if(isset($_POST['btnRegistrar'])){
 $NewNombreR = $ConectionBd->real_escape_string($_POST['Nombre']);
@@ -349,34 +413,8 @@ else {
 
 }
 }
-// regisstro de laboratorios en el sistemas
-if (isset($_POST['btn_newlab'])) {
-  $NomLab = $ConectionBd->real_escape_string($_POST['NomLab']);
-  $IPlantel = $ConectionBd->real_escape_string($_POST['Plantel']);
-  $ICarr = $ConectionBd->real_escape_string($_POST['Carrera']);
-  // consulta para verificar si ya existe el laboraorio en plantel 
-  $InLab = "INSERT INTO Laboratorios(NombreLaboratorio,Id_Plantel,Id_carrera)VALUES('$NomLab','$IPlantel','$ICarr')";
-  $EInlab = $ConectionBd->query($InLab);
-  if($EInlab > 0){
-    $MensjeLab.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                      <strong>Excelente el Nuevo Laboratorio se registro con exito </strong> en la plataforma.
-                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                </div>";
-                header("refresh:3;NewLab.php"); 
 
-  }
-  else{
-    $MensjeLab.="<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                      <strong>Error al registrar el nuevo laboratorio </strong> No se pudo registrar el laboratorio en la plataforma.
-                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                  </div>";
-  }
-
-
-
-
-}
-// realizar consulta para generar reporte de suarios registrados entre las fechas solicitadas
+// realizar consulta para generar reporte de usuarios registrados entre las fechas solicitadas
 if(isset($_POST['btnBuscarF'])){
 $Fecha1 = $ConectionBd->real_escape_string($_POST['Fecha1']);
 $Fecha2 = $ConectionBd->real_escape_string($_POST['Fecha2']);
@@ -395,6 +433,29 @@ Plantel P ON U.Id_Plantel =P.Id_Plantel INNER JOIN TUsuario TU ON U.Id_TUsuario 
 INNER JOIN EstatusUser ES ON U.EstatusUser = ES.Id_EstatusUser WHERE Id_Usuario = '$IdMUser'";
 $EMUsuarios = $ConectionBd->query($MUsuarios); 
 $MUsuariosE = $EMUsuarios->fetch_assoc();
+// consulta para extraer los datos de los materiales a editar
+$Id_MaterialesS = $_GET['Id_Material'];
+$RecMateriales = "SELECT M.Id_Material, M.NomMaterial, M.DescripMaterial, M.Id_CatMaterial, M.Cantidad, M.Stok, M.ImgMaterial, 
+C.Id_Categoria, C.NombreCate FROM Materiales M INNER JOIN CategoriaMaterial C ON M.Id_CatMaterial = C.Id_Categoria WHERE Id_Material = '$Id_MaterialesS'";
+$EjRecMateriales = $ConectionBd->query($RecMateriales);
+$EMaterialesEx = $EjRecMateriales->fetch_assoc();
+// actualizar material en sistemas 
+if(isset($_POST['btnActualizarMat'])){
+  $IdMat = $ConectionBd->real_escape_string($_POST['idMatAct']);
+  $NomMaaterial = $ConectionBd->real_escape_string($_POST['"ENombreM']);
+  $DescripMater = $ConectionBd->real_escape_string($_POST['DescripMaterial']);
+  $CategoriamAT = $ConectionBd->real_escape_string($_POST['categoria']);
+  $Existencia = $ConectionBd->real_escape_string($_POST['Cantidad']);
+  $StokMat = $ConectionBd->real_escape_string($_POST['Stock']);
+  // consulta para actualizar en la tabla 
+  $ActMateriaal = "UPDATE Materiales SET NomMaterial = '$NomMaaterial', DescripMaterial = '$DescripMater', Id_CatMaterial = '$CategoriamAT', Cantidad = '$Existencia', Stok = '$StokMat' WHERE Id_Material = '$IdMat'";
+  $eM = $ConectionBd->query($ActMateriaal);
+  if($eM > 0){
+      
+  }
+}
+
+
 
 // actualizar usuario apartado sistemas
 if(isset($_POST['btnActualizarUser'])){
@@ -414,17 +475,17 @@ WHERE Id_Usuario = '$IdActUser'";
 $eJ = $ConectionBd->query($ActUserS);
 if($eJ > 0){
   $AlertActUser.= "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-                       <strong>Genial el usuario se actualizo en el sistema </strong> Espera 5 segundos la pagina se refrescara.
-                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                   </div>";
-                   header("Refresh:5; url=OptionUser");
+                        <strong>Genial el usuario se actualizo en el sistema </strong> Espera 5 segundos la pagina se refrescara.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    </div>";
+                    header("Refresh:5; url=OptionUser");
 }
 else{
   $AlertActUser.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-                       <strong>Error al actualizar el usuario en el sistema </strong> Espera 10 segundos la pagina se refrescara.
-                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                   </div>";
-                   header("Refresh:5; url=OptionUser");
+                        <strong>Error al actualizar el usuario en el sistema </strong> Espera 10 segundos la pagina se refrescara.
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    </div>";
+                    header("Refresh:5; url=OptionUser");
 }
 
 }

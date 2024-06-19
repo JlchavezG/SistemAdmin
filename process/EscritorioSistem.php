@@ -1,3 +1,4 @@
+
 <div class="container justify-content-center">
     <div class="row py-2 px-2 mt-3 text-center mt-5">
         <div class="col-sm-12 col-md-3 col-lg-3">
@@ -5,7 +6,6 @@
                 <div class="row mt-2">
                     <div class="col mb-2">
                         <span class="fw-light fs-6">Usuarios</span>&nbsp;&nbsp;&nbsp;<b><?php echo $TUsuarios; ?></b>
-
                     </div>
                     <div class="col mb-2">
                         <svg class="bi" width="30" height="30" fill="currentColor">
@@ -111,7 +111,7 @@
             <div class="border-bottom rounded-top border-1 border-success bg-light py-2 shadow">
                 <div class="row mt-2">
                     <div class="col mb-2">
-                        <span class="fw-light fs-6"><?php echo $Perfil['Nombre']." ".$Perfil['ApellidoP']." ".$Perfil['ApellidoM'] ?></span>
+                        <span class="fw-light fs-6"><?php echo $Perfil['Nombre'] . " " . $Perfil['ApellidoP'] . " " . $Perfil['ApellidoM'] ?></span>
 
                     </div>
                     <div class="col mb-2">
@@ -159,9 +159,9 @@
                 <div class="row mt-2">
                     <div class="col mb-2">
                         <span class="fw-light fs-6">
-                          <form name="form_reloj" class="bg-light">
-                            <input type="text" name="reloj" size="10" class="border-0 px-2 bg-light">
-                          </form>
+                            <form name="form_reloj" class="bg-light">
+                                <input type="text" name="reloj" size="10" class="border-0 px-2 bg-light">
+                            </form>
                         </span>
                     </div>
                     <div class="col mb-2">
@@ -215,19 +215,41 @@
             </div>
         </div>
     </div>
+    <!-- termina la linea -->
     <div class="row py-2 px-2 mt-3 text-center mt-3">
-        <div class="container justify-content-center">
-            1
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="py-2 ">
+                <div class="row mt-2">
+                    <div class="col mb-2">
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <svg class="bi" width="25" height="25" fill="currentColor">
+                                        <use xlink:href="library/icons/bootstrap-icons.svg#bell-fill" />
+                                    </svg>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Notificacion para usuarios" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="d-grid gap-2 mb-4">
+                                <input type="submit" value="Notificar" class="btn btn-sm btn-outline-success rounded-pill">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class=" py-2">
+            <div class="row mt-4">
+                <div class="col mb-2">
+                   <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <strong>No hay alertas del sistema!</strong> No hay tareas pendientes al momento.
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- termina la linea -->
 </div>

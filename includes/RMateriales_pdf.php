@@ -13,7 +13,7 @@ function Header()
     // Movernos a la derecha
     $this->Cell(80);
     // Título
-    $this->Cell(95,10,'Reporte de Laboratorios registrados en la plataforma',0,0,'C');
+    $this->Cell(95,10,'Reporte de Materiales registrados en la plataforma',0,0,'C');
     // Salto de línea
     $this->Ln(30);
 }
@@ -48,19 +48,23 @@ $pdf->SetMargins(5,30,5);
 $pdf->Cell(30,5,'Hora del reporte: '.$tiempo,0,0,'C');
 $pdf->Cell(408,5,'Fecha: '.$fecha,0,1,'C');
 $pdf->Cell(70,5,iconv('UTF-8','ISO-8859-2','Reporte Impreso por: '.$Perfil['Nombre'].' '.$Perfil['ApellidoP'].' '.$Perfil['ApellidoM']) ,0,1,'C');
-$pdf->Cell(32,5,'Total de Registros:'.$Tlabs,0,0,'C');
+$pdf->Cell(32,5,'Total de Registros:'.$TotalMateriales,0,0,'C');
 $pdf->Ln(6);
 $pdf->SetFillColor(227, 234, 240);
 $pdf->SetDrawColor(61,61,61);
 $pdf->SetTextColor(86, 87, 89);
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(40,6,'Nombre del Laboratorio','B',0,'',1);
-$pdf->Cell(40,6,'Nombre del plantel','B',0,'',1);
-$pdf->Cell(40,6,'Nombre de la carrera','B',1,'',1);
-while($row = $EInnerLab->fetch_assoc()){    
-$pdf->Cell(40,6,iconv('UTF-8','ISO-8859-2',''.$row['NombreLaboratorio']),'B',0,'J');
-$pdf->Cell(40,6,iconv('UTF-8','ISO-8859-2',''.$row['NombreCarrera']),'B',0,'J');
-$pdf->Cell(40,6,iconv('UTF-8','ISO-8859-2',''.$row['NombrePlantel']),'B',1,'J');
+$pdf->Cell(60,6,'Nombre de Material','B',0,'',1);
+$pdf->Cell(150,6,'Descripcion','B',0,'',1);
+$pdf->Cell(27,6,'Categoria','B',0,'',1);
+$pdf->Cell(15,6,'Existencia','B',0,'',1);
+$pdf->Cell(10,6,'Stok','B',1,'',1);
+while($row = $EMateriales->fetch_assoc()){    
+$pdf->Cell(60,6,iconv('UTF-8','ISO-8859-2',''.$row['NomMaterial']),'B',0,'J');
+$pdf->Cell(150,6,iconv('UTF-8','ISO-8859-2',''.$row['DescripMaterial']),'B',0,'J');
+$pdf->Cell(27,6,iconv('UTF-8','ISO-8859-2',''.$row['NombreCate']),'B',0,'J');
+$pdf->Cell(15,6,$row['Cantidad'],'B',0,'C');
+$pdf->Cell(10,6,$row['Stok'],'B',1,'C');                  
 }
 $pdf->Ln();
 
