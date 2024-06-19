@@ -144,7 +144,7 @@
                                     <svg class="bi text-warning" width="32" height="32" fill="currentColor">
                                         <use xlink:href="library/icons/bootstrap-icons.svg#bell-fill"/> 
                                     </svg>
-                                    <span class="text-secondary" style="font-size: 25px;"><?php  ?></span>
+                                    <span class="text-secondary" style="font-size: 25px;"><?php echo $TalertasM; ?></span>
                                 </div>
                             </div>
                         </div>

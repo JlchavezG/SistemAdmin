@@ -345,7 +345,7 @@ if(isset($_POST['btnMaterial'])){
                                           <td class='bg-light' scope='row'>".$LineaDatos['Cantidad']."</td>
                                           <td class='bg-light' scope='row'>".$LineaDatos['Stok']."</td>
                                           <td class='bg-light' scope='row'>
-                                              <a href='EditarMaterial?Id_Material=".$LineaDatos['Id_Material']."' class='text-success text-decoration-none'>
+                                              <a href='EditarMateriales?Id_Material=".$LineaDatos['Id_Material']."' class='text-success text-decoration-none'>
                                                   <svg class='bi' width='15' height='15' fill='currentColor'>
                                                       <use xlink:href='library/icons/bootstrap-icons.svg#pencil-fill'/> 
                                                   </svg>
@@ -442,21 +442,30 @@ $EMaterialesEx = $EjRecMateriales->fetch_assoc();
 // actualizar material en sistemas 
 if(isset($_POST['btnActualizarMat'])){
   $IdMat = $ConectionBd->real_escape_string($_POST['idMatAct']);
-  $NomMaaterial = $ConectionBd->real_escape_string($_POST['"ENombreM']);
+  $NomMaaterial = $ConectionBd->real_escape_string($_POST['NombreMat']);
   $DescripMater = $ConectionBd->real_escape_string($_POST['DescripMaterial']);
   $CategoriamAT = $ConectionBd->real_escape_string($_POST['categoria']);
   $Existencia = $ConectionBd->real_escape_string($_POST['Cantidad']);
   $StokMat = $ConectionBd->real_escape_string($_POST['Stock']);
   // consulta para actualizar en la tabla 
-  $ActMateriaal = "UPDATE Materiales SET NomMaterial = '$NomMaaterial', DescripMaterial = '$DescripMater', Id_CatMaterial = '$CategoriamAT', Cantidad = '$Existencia', Stok = '$StokMat' WHERE Id_Material = '$IdMat'";
-  $eM = $ConectionBd->query($ActMateriaal);
-  if($eM > 0){
-      
+  $ActMaterialS = "UPDATE Materiales SET NomMaterial = '$NomMaaterial', DescripMaterial = '$DescripMater', Id_CatMaterial = '$CategoriamAT',
+  Cantidad = '$Existencia', Stok = '$StokMat' WHERE Id_Material = '$IdMat'";
+  $UpdateMat = $ConectionBd->query($ActMaterialS);
+  if($UpdateMat > 0){
+    $AlertActMaterial.= "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                          <strong>Genial el Material se actualizo en el sistema </strong> Espera 3 segundos la pagina se refrescara.
+                          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    </div>";
+                    header("Refresh:5; url=OptionMateriales");
+  }
+  else{
+    $AlertActMaterial.= "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            <strong>Error el Material no se actualizo en el sistema </strong> Espera 3 segundos la pagina se refrescara.
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>";
+                        header("Refresh:3; url=OptionMateriales");
   }
 }
-
-
-
 // actualizar usuario apartado sistemas
 if(isset($_POST['btnActualizarUser'])){
 $IdActUser = $ConectionBd->real_escape_string($_POST['idUserAct']); 
@@ -489,6 +498,7 @@ else{
 }
 
 }
+// generar las alertas para verificar el stok de los materiales 
 
 
 ?>

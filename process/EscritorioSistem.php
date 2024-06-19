@@ -242,10 +242,19 @@
         <div class=" py-2">
             <div class="row mt-4">
                 <div class="col mb-2">
-                   <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                      <strong>No hay alertas del sistema!</strong> No hay tareas pendientes al momento.
-                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
+                    <?php if($EAlertMate->num_rows > 0) { ?> 
+                        <?php while($LineMatAlert = $EAlertMate->fetch_assoc()) { ?>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Verifica  <?php echo $LineMatAlert['NomMaterial'];?></strong> a llegado al stok indicado solicitar por favor.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php } ?>    
+                    <?php } else { ?>
+                            <div class="alert alert-wdanger alert-dismissible fade show" role="alert">
+                                <strong>No existen alertas </strong> hasta este momento.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                    <?php } ?>    
                 </div>
             </div>
         </div>

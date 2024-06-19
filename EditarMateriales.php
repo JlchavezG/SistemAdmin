@@ -48,7 +48,7 @@ include "includes/Acciones.php";
        </span>
     </div>
     <div class="row mt-2">
-        <?php echo $AlertActUser; ?>
+        <?php echo  $AlertActMaterial ?>
         <?php if($eJ > 0){$Clase = true;}
          ?>
     </div>
@@ -56,43 +56,43 @@ include "includes/Acciones.php";
     <div class="row mt-2 d-flex justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="row d-flex justify-content-center">
-                <img src="img/materiales/<?php echo $EMaterialesEx['ImgMaterial']?>" alt="Imagen de perfil" class="img-fluid" style="width: 200px; height: 180px; border-radius:50%;">
+                <img src="img/materiales/<?php echo $EMaterialesEx['ImgMaterial']?>" alt="Imagen de perfil" class="img-fluid <?php echo $UpdateMat > 0 ? 'd-none' : ''?>" style="width: 200px; height: 180px; border-radius:50%;">
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6-col-lg-6">
                 <input type="hidden" name="idMatAct" value="<?php echo $EMaterialesEx['Id_Material']; ?>">
-                <input type="text" name="ENombreM" id="ENombreM" placeholder="Ingresa el nombre de material" class="form-control" value="<?php echo $EMaterialesEx['NomMaterial']; ?>" required>
+                <input type="text" name="NombreMat" id="ENombreM" placeholder="Ingresa el nombre de material" class="form-control <?php echo $UpdateMat > 0 ? 'd-none' : ''?>" value="<?php echo $EMaterialesEx['NomMaterial']; ?>" required>
                 </div>
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6 col-lg-6 mt-2 ">
-                    <textarea name="DescripMaterial" id="DescripMaterial" class="form-control" placeholder="Descripcion Material" rows="2">
+                    <textarea name="DescripMaterial" id="DescripMaterial" class="form-control <?php echo $UpdateMat > 0 ? 'd-none' : ''?>" placeholder="Descripcion Material" rows="2">
                         <?php echo $EMaterialesEx['DescripMaterial']; ?>
                     </textarea>
                 </div>
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <select class="form-select" aria-label="Default select example" name="categoria">
-                        <option selected><?php echo $EMaterialesEx['NombreCate'];?></option>
+                    <select class="form-select <?php echo $UpdateMat > 0 ? 'd-none' : ''?>" aria-label="Default select example" name="categoria">
+                        <option value="<?php echo $EMaterialesEx['Id_CatMaterial'];?>"><?php echo $EMaterialesEx['NombreCate'];?></option>
                             <?php while($LineM = $ECatMaterial->fetch_assoc()) { ?>
-                            <option value="<?php echo $LineM['Id_Material'];?>"><?php echo $LineM['NombreCate'];?></option>
+                            <option value="<?php echo $LineM['Id_CatMaterial'];?>"><?php echo $LineM['NombreCate'];?></option>
                             <?php } ?>
                     </select>
                 </div>
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-3 col-md-3 col-lg-3">
-                    <input type="number" name="Cantidad" value="<?php echo $EMaterialesEx['Cantidad'];?>" id="Cantidad" placeholder="Cantidad" min="1" max="100" class="form-control">
+                    <input type="number" name="Cantidad" value="<?php echo $EMaterialesEx['Cantidad'];?>" id="Cantidad" placeholder="Cantidad" min="1" max="100" class="form-control <?php echo $UpdateMat > 0 ? 'd-none' : ''?>">
                 </div>
                 <div class="col-sm-3 col-md-3 col-lg-3">
-                    <input type="number" name="Stock" value="<?php echo $EMaterialesEx['Stok'];?>" id="Stok" placeholder="Stok" min="1" max="100" class="form-control">
+                    <input type="number" name="Stock" value="<?php echo $EMaterialesEx['Stok'];?>" id="Stok" placeholder="Stok" min="1" max="100" class="form-control <?php echo $UpdateMat > 0 ? 'd-none' : ''?>">
                 </div>
             </div>
             <div class="row mt-2 d-flex justify-content-center">
                 <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="d-grid gap-2">
-                     <input type="submit" value="Actualizar" class="btn btn-sm btn-outline-success rounded-pill" name="btnActualizarMat">
+                        <input type="submit" value="Actualizar" class="btn btn-sm btn-outline-success rounded-pill <?php echo $UpdateMat > 0 ? 'd-none' : ''?>" name="btnActualizarMat">
                     </div>
                 </div>
             </div>

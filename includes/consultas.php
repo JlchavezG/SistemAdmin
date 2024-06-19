@@ -63,4 +63,9 @@ $Materiales = "SELECT M.Id_Material, M.NomMaterial, M.DescripMaterial, M.Id_CatM
 C.Id_Categoria, C.NombreCate FROM Materiales M INNER JOIN CategoriaMaterial C ON M.Id_CatMaterial = C.Id_Categoria";
 $EMateriales = $ConectionBd->query($Materiales);
 $TotalMateriales = $EMateriales->num_rows;
+// consulta para verificar si existen alertas de stok en los materiales 
+$AlertMate = "SELECT * FROM Materiales WHERE Cantidad <= Stok";
+$EAlertMate = $ConectionBd->query($AlertMate);
+$NomMaterial = $EAlertMate->fetch_assoc();
+$TalertasM = $EAlertMate->num_rows; 
 ?>
