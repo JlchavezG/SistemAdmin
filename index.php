@@ -35,7 +35,7 @@ if ($hora_actual >= 5 && $hora_actual < 12) {
             </div>
             <div class="row mt-1 text-center">
                 <div class="col container ">
-                    <img src="img/New_Logo_Gris_2023.png" alt="logoIscjlchavez" style="width: 200px;" class="img-fluid" id="img1">
+                    <img src="img/Diseño sin título.svg" alt="logoIscjlchavez" style="width: 200px;" class="img-fluid" id="img1">
                 </div>
 
             </div>

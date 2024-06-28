@@ -413,6 +413,84 @@ else {
 
 }
 }
+// ingresar nuevo material en sistemas 
+if(isset($_POST['btnRegistrarMat'])){
+$NomMaterial = $ConectionBd->real_escape_string($_POST['NombreMaterial']);
+$DescMat = $ConectionBd->real_escape_string($_POST['DescripcionM']);
+$CatMaterial = $ConectionBd->real_escape_string($_POST['categoriam']);
+$Cantidad = $ConectionBd->real_escape_string($_POST['Cantidad']);
+$StockMat = $ConectionBd->real_escape_string($_POST['Stok']);
+$imgFile = $_FILES['imagen']['name'];
+  $tmp_dir = $_FILES['imagen']['tmp_name'];
+  $imgSize = $_FILES['imagen']['size'];
+  if(empty($imgFile)){
+    $MensajeMat.="<div class='alert alert-danger alert-dismissible fade show shadow' role='alert'>
+                    <svg class='bi text-danger' width='20' height='20' role='img' aria-label='Tools'>
+                      <use xlink:href='library/icons/bootstrap-icons.svg#x-circle-fill'/>
+                    </svg>
+                    <strong> Error</strong> Por favor selecciona un archivo en formato de imagen.
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>";
+  } 
+  else{
+  $upload_dir = './img/materiales/'; // Directorio en donde se subira el achivo
+  $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // extencion de la imagen
+   // validando imagen y extensiones
+  $valid_extensions = array('jpeg', 'jpg', 'png'); // extenciones validas
+   // renombrando uploading imagen
+  $userpic = rand(1000,1000000).".".$imgExt;
+// permitir formatos de archivo de imagen válidos
+    if(in_array($imgExt, $valid_extensions)){     
+       // Comprobando el tamaño del archivo '1 MB'
+      if($imgSize < 1000000)       {
+        move_uploaded_file($tmp_dir,$upload_dir.$userpic);
+      }
+      else{
+        $MensajeMat.="<div class='alert alert-danger alert-dismissible fade show shadow' role='alert'>
+                      <svg class='bi text-danger' width='20' height='20' role='img' aria-label='Tools'>
+                          <use xlink:href='library/icons/bootstrap-icons.svg#x-circle-fill'/>
+                      </svg>
+                      <strong> Error</strong> El archivo de la imagen es muy grande por favor selecciona uno no mayo a 1mb.
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";
+  }
+    }
+    else{
+        $MensajeMat.="<div class='alert alert-danger alert-dismissible fade show shadow' role='alert'>
+                      <svg class='bi text-danger' width='20' height='20' role='img' aria-label='Tools'>
+                        <use xlink:href='library/icons/bootstrap-icons.svg#x-circle-fill'/>
+                      </svg>
+                      <strong> Error</strong> Solo se permiten archivos JPG, JPEG, PNG son permitidos.
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";   
+    }
+  }
+  if(!isset($Mensaje)){
+      $InsertMat = "INSERT INTO Materiales(NomMaterial, DescripMaterial, Id_CatMaterial, Cantidad, Stok, ImgMaterial)
+      VALUES('$NomMaterial','$DescMat','$CatMaterial','$Cantidad','$StockMat'.'$imgFile')";
+      $imgInsert = $ConectionBd->query($InsertMat);
+      
+      if($imgInsert > 0){
+        $MensajeMat.="<div class='alert alert-success alert-dismissible fade show' role='alert'>
+                      <strong>Excelente! </strong>Se registro el material de manera exitosa dentro de la plataforma en breve se refrescara la pagina.
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";     
+       header("refresh:3;Materiales"); // redirects image view page after 5 seconds.
+      }
+    else
+    {
+      $MensajeMat.= "Error al insertar ...";
+    }
+  }
+
+
+
+
+
+}
+
+
+
 
 // realizar consulta para generar reporte de usuarios registrados entre las fechas solicitadas
 if(isset($_POST['btnBuscarF'])){

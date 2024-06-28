@@ -1,6 +1,6 @@
 <div class="container mt-3">
     <div class="row mt-2 justify-content-center">
-        <?php echo $AccionUser; ?>
+        <?php echo $MensajeMat; ?>
         <h3 class="text-center display-6 fs-5">Modulo Materiales <span class="text-success"> Sistemas</span></h3>
     </div>
     <div class="row mt-1 justify-content-center">
@@ -57,7 +57,7 @@
                                                 <use xlink:href="library/icons/bootstrap-icons.svg#plus-circle-fill"/> 
                                             </svg>
                                             <span>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#NewUserModal" class="text-decoration-none text-muted">&nbsp; Ingresar Material</a> 
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#NewMaterialModal" class="text-decoration-none text-muted">&nbsp; Ingresar Material</a> 
                                             </span>
                                         </li>
                                         <li class="list-group-item bg-light">
@@ -74,6 +74,30 @@
                                             </svg>
                                             <span>
                                                 <a href="OptionMateriales" class="text-decoration-none text-muted">&nbsp; Administrar Materiales </a> 
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item bg-light">
+                                            <svg class="bi text-success" width="20" height="20" fill="currentColor">
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#pc-display"/> 
+                                            </svg>
+                                            <span>
+                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Nuevo Pc </a> 
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item bg-light">
+                                            <svg class="bi text-success" width="20" height="20" fill="currentColor">
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#upc-scan"/> 
+                                            </svg>
+                                            <span>
+                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Administrar Pc's </a> 
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item bg-light">
+                                            <svg class="bi text-success" width="20" height="20" fill="currentColor">
+                                                <use xlink:href="library/icons/bootstrap-icons.svg#clipboard-check-fill"/> 
+                                            </svg>
+                                            <span>
+                                                <a href="#" class="text-decoration-none text-muted">&nbsp; Nueva Bitacora </a> 
                                             </span>
                                         </li>
                                     </ul>
@@ -187,7 +211,7 @@ var myChart = new Chart(ctx, {
         labels: ['Total de Materiales', 'Consumibles', 'Activo Fijo', 'Equipos de computo'],
         datasets: [{
             label: 'Materiales Registrados',
-            data: [<?php echo $TotalMateriales; ?>, <?php echo $TotalesM;  ?>, <?php echo $TotalesMA; ?>],
+            data: [<?php echo $TotalMateriales; ?>, <?php echo $TotalesM;  ?>, <?php echo $TotalesMA; ?>, <?php echo $NumPc; ?>],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)',
                 'rgba(255, 99, 132, 0.2)',

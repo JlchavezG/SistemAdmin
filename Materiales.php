@@ -33,7 +33,7 @@ include "includes/consultas.php";
  else if($Tmenu == $MAlumno){include "process/MenuAlumnos.php";}?>
 <?php include 'process/MMateriales.php';?>
 <!-- terminar el menu -->
-<?php include "process/ModalNMaterial.php"; ?>
+<?php include "process/ModalNewMaterial.php"; ?>
 <?php include "process/footer.php"; ?>
 <script src="js/dark-mode.js"></script>
 <script src="js/pace.js"></script>

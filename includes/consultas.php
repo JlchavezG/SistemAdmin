@@ -68,4 +68,10 @@ $AlertMate = "SELECT * FROM Materiales WHERE Cantidad <= Stok";
 $EAlertMate = $ConectionBd->query($AlertMate);
 $NomMaterial = $EAlertMate->fetch_assoc();
 $TalertasM = $EAlertMate->num_rows; 
+// consulta para extraer las pc 
+$Cpc = "SELECT P.Id_PC, P.NumPC, P.MarveteGabinete, P.MarveteTeclado, P.MarveteMause, P.MarveteMonitor, P.Id_EstatusPc, 
+P.Id_Asignacion, E.Id_EstatusPc, E.EstatusPc, A.Id_Asignacion, A.NomArea FROM PC P  INNER JOIN EstatusPC E ON P.Id_EstatusPc = E.Id_EstatusPc 
+INNER JOIN AsignacionEquipos A ON P.Id_Asignacion = A.Id_Asignacion";
+$ECpc = $ConectionBd->query($Cpc);
+$NumPc = $ECpc->num_rows; 
 ?>
